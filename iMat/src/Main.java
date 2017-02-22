@@ -23,6 +23,9 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("imat.fxml"), bundle);
 
+        //För att köra hemvyn tills vidare
+        //Parent root = FXMLLoader.load(getClass().getResource("homeView.fxml"), bundle);
+
         Scene scene = new Scene(root);
 
         stage.setTitle(bundle.getString("application.name"));
