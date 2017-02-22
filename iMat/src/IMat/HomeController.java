@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Erik on 2017-02-22.
  */
-public class IhomeController implements Initializable{
+public class HomeController implements Initializable{
 
 
     @FXML
