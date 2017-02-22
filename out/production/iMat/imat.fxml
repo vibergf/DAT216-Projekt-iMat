@@ -53,12 +53,8 @@
             <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
          </children>
       </GridPane>
-<<<<<<< HEAD
-      <StackPane layoutX="78.0" layoutY="100.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
-=======
       <StackPane layoutX="78.0" layoutY="100.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" >
           <fx:include fx:id="list" source="list.fxml" />
       </StackPane>
->>>>>>> 7ab73943fe32e72f98fba4bc160828450a759abc
    </children>
 </AnchorPane>
