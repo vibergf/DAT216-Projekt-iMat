@@ -39,9 +39,9 @@ public class IMatController implements Initializable {
         try {
             homeView = FXMLLoader.load(getClass().getResource("/homeView.fxml"));
             listView = FXMLLoader.load(getClass().getResource("/listView.fxml"));
-//            historyView = FXMLLoader.load(getClass().getResource("/historyView.fxml"));
-//            cartView = FXMLLoader.load(getClass().getResource("/cartView.fxml"));
-//            checkoutView = FXMLLoader.load(getClass().getResource("/checkoutView.fxml"));
+            historyView = FXMLLoader.load(getClass().getResource("/historyView.fxml"));
+            cartView = FXMLLoader.load(getClass().getResource("/cartView.fxml"));
+            checkoutView = FXMLLoader.load(getClass().getResource("/checkoutView.fxml"));
         }catch (Exception e){
             e.printStackTrace();
             System.exit(0);
@@ -68,16 +68,16 @@ public class IMatController implements Initializable {
 
     @FXML
     private void historyButtonPressed(){
-//        switchView(historyView, historyButton);
+        switchView(historyView, historyButton);
     }
 
     @FXML
     private void cartButtonPressed(){
-//        switchView(cartView, cartButton);
+        switchView(cartView, cartButton);
     }
 
     @FXML
     private void checkoutButtonPressed(){
-//        switchView(checkoutView, checkoutButton);
+        switchView(checkoutView, checkoutButton);
     }
 }
