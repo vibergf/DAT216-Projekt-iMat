@@ -12,6 +12,8 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -36,6 +38,8 @@ public class IMatController implements Initializable {
     private Parent historyView;
     private Parent cartView;
     private Parent checkoutView;
+
+    private static final String DATE_FORMAT = "dd/MM - yyyy";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,6 +69,14 @@ public class IMatController implements Initializable {
         for(ShoppingItem s : itemList)
             total += s.getTotal();
         return total;
+    }
+
+    public static String getTotalPriceAsString(Order order){
+        return getTotalPrice(order) + " :-";
+    }
+
+    public static String formatDate(Date date){
+        return new SimpleDateFormat(DATE_FORMAT).format(date);
     }
 
     @FXML

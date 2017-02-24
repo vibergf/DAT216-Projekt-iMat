@@ -5,8 +5,10 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
@@ -17,6 +19,12 @@ import java.util.ResourceBundle;
 public class HistoryController implements Initializable {
 
     @FXML protected ListView historyListView;
+
+    @FXML private BorderPane mainView;
+    @FXML private BorderPane detailedView;
+
+    @FXML private Label detailedViewDateLabel;
+    @FXML private Label detailedViewSumLabel;
 
     private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
 
@@ -48,13 +56,34 @@ public class HistoryController implements Initializable {
         dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(4));
         dataHandler.placeOrder();
 
+        HistoryController handle = this;
         historyListView.setSelectionModel(new DisabledSelectionModel<Order>());
         historyListView.setItems(FXCollections.observableList(dataHandler.getOrders()));
         historyListView.setCellFactory(new Callback<ListView<Order>, ListCell<Order>>() {
             @Override
             public ListCell<Order> call(ListView<Order> param) {
-                return new HistoryListCell();
+                return new HistoryListCell(handle);
             }
         });
+
+        detailedView.setVisible(false);
+        mainView.setVisible(true);
+    }
+
+    @FXML private void detailedViewBackButtonPressed(){
+        switchToMainView();
+    }
+
+    protected void switchToDetailedView(Order order){
+        mainView.setVisible(false);
+
+        detailedViewDateLabel.setText(IMatController.formatDate(order.getDate()));
+        detailedViewSumLabel.setText("Summa: " + IMatController.getTotalPriceAsString(order));
+        detailedView.setVisible(true);
+    }
+
+    protected void switchToMainView(){
+        detailedView.setVisible(false);
+        mainView.setVisible(true);
     }
 }

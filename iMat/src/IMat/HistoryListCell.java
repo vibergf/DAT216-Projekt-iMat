@@ -22,10 +22,21 @@ public class HistoryListCell extends ListCell<Order> {
     @FXML protected Label itemListLabel;
     @FXML protected GridPane gridPane;
 
+    private HistoryController parent;
+    private Order associatedOrder;
+
     private FXMLLoader loader;
 
-    private static final String DATE_FORMAT = "dd/MM - yyyy";
     private static final int MAX_PREVIEW_ITEMS = 3;
+
+    public HistoryListCell(HistoryController parent){
+        this.parent = parent;
+    }
+
+    @FXML
+    private void detailedViewButtonPressed(){
+        parent.switchToDetailedView(associatedOrder);
+    }
 
     @Override
     public void updateItem(Order order, boolean empty) {
@@ -41,6 +52,7 @@ public class HistoryListCell extends ListCell<Order> {
                 } catch (IOException e) { e.printStackTrace(); }
             }
             setContent(order);
+            associatedOrder = order;
         }
     }
 
@@ -50,9 +62,9 @@ public class HistoryListCell extends ListCell<Order> {
 
     private void setContent(Order order) {
 
-        dateLabel.setText(new SimpleDateFormat(DATE_FORMAT).format(order.getDate()));
+        dateLabel.setText(IMatController.formatDate(order.getDate()));
         itemListLabel.setText(getListOfItems(order));
-        priceLabel.setText(IMatController.getTotalPrice(order) + " :-");
+        priceLabel.setText(IMatController.getTotalPriceAsString(order));
 
         setGraphic(gridPane);
     }

@@ -1,23 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.HistoryController">
-   <top>
-      <Label alignment="CENTER" styleClass="pageTitle" stylesheets="@imat.css" text="Historik" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </Label>
-   </top>
-   <center>
-      <ListView fx:id="historyListView" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" stylesheets="@historyListStylesheet.css" BorderPane.alignment="CENTER" />
-   </center>
-   <padding>
-      <Insets bottom="100.0" top="50.0" />
-   </padding>
-</BorderPane>
+<AnchorPane stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.HistoryController">
+   <children>
+      <BorderPane fx:id="mainView" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="100.0" top="50.0" />
+         </padding>
+         <top>
+            <Label alignment="CENTER" styleClass="pageTitle" stylesheets="@imat.css" text="Historik" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <ListView fx:id="historyListView" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" stylesheets="@historyListStylesheet.css" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="detailedView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane maxWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="200.0" text="Namn" />
+                      <TableColumn prefWidth="100.0" text="Antal" />
+                        <TableColumn prefWidth="100.0" text="Pris" />
+                    </columns>
+                  </TableView>
+                  <Button mnemonicParsing="false" onAction="#detailedViewBackButtonPressed" prefHeight="60.0" prefWidth="80.0" text="Tillbaka till översikt" wrapText="true" />
+               </children>
+            </AnchorPane>
+         </center>
+         <padding>
+            <Insets bottom="50.0" top="50.0" />
+         </padding>
+         <top>
+            <Label fx:id="detailedViewDateLabel" alignment="CENTER" styleClass="pageTitle" text="detailedViewDateLabel" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Label id="historyDetailedViewSumLabel" fx:id="detailedViewSumLabel" text="detailedViewSumLabel" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="300.0" top="20.0" />
+               </BorderPane.margin>
+            </Label>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
