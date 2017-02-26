@@ -1,0 +1,8 @@
+.pageTitle {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 32px;
+    -fx-underline: true;
+}
+#historyDetailedViewSumLabel {
+    -fx-font-size: 24px;
+}
