@@ -71,8 +71,8 @@ public class IMatController implements Initializable {
         return total;
     }
 
-    public static String getTotalPriceAsString(Order order){
-        return getTotalPrice(order) + " :-";
+    public static String formatPrice(double price){
+        return price + " :-";
     }
 
     public static String formatDate(Date date){

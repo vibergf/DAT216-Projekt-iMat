@@ -8,6 +8,8 @@ import javafx.scene.layout.GridPane;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
+import static IMat.IMatController.*;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +33,13 @@ public class HistoryListCell extends ListCell<Order> {
 
     public HistoryListCell(HistoryController parent){
         this.parent = parent;
+
+        loader = new FXMLLoader(getClass().getResource("/historyListCell.fxml"));
+        loader.setController(this);
+        try {
+            loader.load();
+        } catch (IOException e) { e.printStackTrace(); }
+
     }
 
     @FXML
@@ -41,32 +50,18 @@ public class HistoryListCell extends ListCell<Order> {
     @Override
     public void updateItem(Order order, boolean empty) {
         super.updateItem(order, empty);
-        if (empty || order == null) {
-            clearContent();
-        } else {
-            if (loader == null) {
-                loader = new FXMLLoader(getClass().getResource("/historyListCell.fxml"));
-                loader.setController(this);
-                try {
-                    loader.load();
-                } catch (IOException e) { e.printStackTrace(); }
-            }
+
+        if (!(empty || order == null)) {
             setContent(order);
+            setGraphic(gridPane);
             associatedOrder = order;
         }
     }
 
-    private void clearContent() {
-        setGraphic(null);
-    }
-
     private void setContent(Order order) {
-
-        dateLabel.setText(IMatController.formatDate(order.getDate()));
+        dateLabel.setText(formatDate(order.getDate()));
         itemListLabel.setText(getListOfItems(order));
-        priceLabel.setText(IMatController.getTotalPriceAsString(order));
-
-        setGraphic(gridPane);
+        priceLabel.setText(formatPrice(getTotalPrice(order)));
     }
 
     private String getListOfItems(Order order){
