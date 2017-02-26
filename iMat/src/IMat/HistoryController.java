@@ -1,17 +1,21 @@
 package IMat;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
+import se.chalmers.ait.dat215.project.ShoppingItem;
+
+import static IMat.IMatController.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +29,11 @@ public class HistoryController implements Initializable {
 
     @FXML private Label detailedViewDateLabel;
     @FXML private Label detailedViewSumLabel;
+
+    @FXML private TableView<ShoppingItem> detailedViewTable;
+    @FXML private TableColumn<ShoppingItem, ShoppingItem> detailedViewNameColumn;
+    @FXML private TableColumn<ShoppingItem, String> detailedViewAmountColumn;
+    @FXML private TableColumn<ShoppingItem, String> detailedViewPriceColumn;
 
     private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
 
@@ -44,6 +53,17 @@ public class HistoryController implements Initializable {
         dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
         dataHandler.placeOrder();
         dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(3));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(11));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(21));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(26));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(30));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(8));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(20));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(22));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(23));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(24));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(25));
         dataHandler.placeOrder();
         dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(4));
         dataHandler.placeOrder();
@@ -66,6 +86,8 @@ public class HistoryController implements Initializable {
             }
         });
 
+        detailedViewTable.setSelectionModel(null);
+
         detailedView.setVisible(false);
         mainView.setVisible(true);
     }
@@ -77,8 +99,22 @@ public class HistoryController implements Initializable {
     protected void switchToDetailedView(Order order){
         mainView.setVisible(false);
 
-        detailedViewDateLabel.setText(IMatController.formatDate(order.getDate()));
-        detailedViewSumLabel.setText("Summa: " + IMatController.getTotalPriceAsString(order));
+        detailedViewDateLabel.setText(formatDate(order.getDate()));
+        detailedViewSumLabel.setText("Summa: " + formatPrice(getTotalPrice(order)));
+
+        detailedViewNameColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
+            @Override
+            public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
+                TableCell<ShoppingItem, ShoppingItem> cell = new HistoryTableCell();
+                return cell;
+            }
+        });
+        detailedViewNameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
+        detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
+        detailedViewPriceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
+
+        detailedViewTable.setItems(FXCollections.observableList(order.getItems()));
+
         detailedView.setVisible(true);
     }
 
