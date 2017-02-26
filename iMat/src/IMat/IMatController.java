@@ -7,9 +7,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import se.chalmers.ait.dat215.project.Order;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class IMatController implements Initializable {
@@ -34,6 +39,8 @@ public class IMatController implements Initializable {
     private Parent cartView;
     private Parent checkoutView;
 
+    private static final String DATE_FORMAT = "dd/MM - yyyy";
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -54,6 +61,22 @@ public class IMatController implements Initializable {
         //TODO Clear toolbar selection
         mainStackPane.getChildren().add(newView);
         //TODO Select newButton in toolbar
+    }
+
+    public static int getTotalPrice(Order order){
+        List<ShoppingItem> itemList = order.getItems();
+        int total = 0;
+        for(ShoppingItem s : itemList)
+            total += s.getTotal();
+        return total;
+    }
+
+    public static String getTotalPriceAsString(Order order){
+        return getTotalPrice(order) + " :-";
+    }
+
+    public static String formatDate(Date date){
+        return new SimpleDateFormat(DATE_FORMAT).format(date);
     }
 
     @FXML
