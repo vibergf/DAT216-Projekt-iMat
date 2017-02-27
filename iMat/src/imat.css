@@ -3,6 +3,14 @@
     -fx-font-size: 32px;
     -fx-underline: true;
 }
+.plainText {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 16px;
+}
+.inputField {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+}
 .buttonHighlight {
     -fx-background-color: lightblue;
 }

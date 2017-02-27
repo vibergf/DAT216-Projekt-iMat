@@ -19,18 +19,18 @@
             <Label alignment="CENTER" styleClass="pageTitle" stylesheets="@imat.css" text="Historik" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <ListView fx:id="historyListView" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" stylesheets="@historyListStylesheet.css" BorderPane.alignment="CENTER" />
+            <ListView fx:id="historyListView" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" stylesheets="@historyListStylesheet.css" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
       <BorderPane fx:id="detailedView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <AnchorPane maxWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <AnchorPane maxWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="detailedViewTable" focusTraversable="false" prefHeight="200.0" stylesheets="@historyTableStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="detailedViewTable" focusTraversable="false" prefHeight="200.0" styleClass="plainText" stylesheets="@historyTableStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="detailedViewNameColumn" minWidth="200.0" prefWidth="260.0" sortable="false" text="Namn" />
-                      <TableColumn fx:id="detailedViewAmountColumn" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" resizable="false" sortable="false" styleClass="amountColumn" text="Antal" />
-                        <TableColumn fx:id="detailedViewPriceColumn" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" resizable="false" sortable="false" styleClass="priceColumn" text="Pris" />
+                      <TableColumn fx:id="detailedViewAmountColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="amountColumn" text="Antal" />
+                        <TableColumn fx:id="detailedViewPriceColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="priceColumn" text="Pris" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -41,7 +41,7 @@
             </AnchorPane>
          </center>
          <padding>
-            <Insets bottom="50.0" top="50.0" />
+            <Insets bottom="45.0" top="50.0" />
          </padding>
          <top>
             <Label fx:id="detailedViewDateLabel" alignment="CENTER" styleClass="pageTitle" text="detailedViewDateLabel" BorderPane.alignment="CENTER" />

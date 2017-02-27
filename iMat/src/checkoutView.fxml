@@ -1,10 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CheckoutController">
-   <children>
-      <FlowPane fx:id="flowPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-   </children>
-</AnchorPane>
+
+<BorderPane stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CheckoutController">
+   <center>
+      <AnchorPane maxWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane>
+                     <children>
+                        <Label alignment="CENTER" styleClass="pageTitle" text="Kassa" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <VBox>
+                     <children>
+                        <Label styleClass="plainText" text="Namn" />
+                        <TextField styleClass="inputField" />
+                     </children>
+                  </VBox>
+                  <HBox spacing="10.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Adress" />
+                              <TextField styleClass="inputField" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Lägenhetsnummer" />
+                              <TextField styleClass="inputField" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox spacing="10.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Våning" />
+                              <TextField styleClass="inputField" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Portkod" />
+                              <TextField styleClass="inputField" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox>
+                     <children>
+                        <Label styleClass="plainText" text="Postort" />
+                        <TextField styleClass="inputField" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label styleClass="plainText" text="Telefonnummer" />
+                        <TextField styleClass="inputField" />
+                     </children>
+                  </VBox>
+                  <CheckBox mnemonicParsing="false" styleClass="plainText" text="Spara mina uppgifter till nästa gång" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <padding>
+      <Insets top="50.0" />
+   </padding>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" text="Wizard goes here" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="100.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

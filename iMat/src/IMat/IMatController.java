@@ -84,7 +84,8 @@ public class IMatController implements Initializable {
     }
 
     public static String formatPrice(double price){
-        return price + " :-";
+        return (price + " kr").replaceAll("\\.", ",");
+        //return price + " :-";
     }
 
     public static String formatDate(Date date){

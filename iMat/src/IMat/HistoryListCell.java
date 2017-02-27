@@ -29,7 +29,7 @@ public class HistoryListCell extends ListCell<Order> {
 
     private FXMLLoader loader;
 
-    private static final int MAX_PREVIEW_ITEMS = 3;
+    private static final int MAX_PREVIEW_ITEMS = 5;
 
     public HistoryListCell(HistoryController parent){
         this.parent = parent;
