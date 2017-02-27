@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.ListController">
+   <children>
+      <Label layoutX="40.0" layoutY="25.0" text="Börjes Kakor">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+      <Button layoutX="565.0" layoutY="96.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="113.0" text="Detaljer" />
+      <Button layoutX="436.0" layoutY="96.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="113.0" text="Ta Bort Lista" />
+      <Label layoutX="565.0" layoutY="25.0" text="257 :-">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="80.0" text="Havregryn, Vetemjöl, Jäst, Socker, hasch" />
+      <Label layoutX="40.0" layoutY="100.0" prefHeight="63.0" prefWidth="340.0" text="Underbara kakor, grädda 10 min 250 grader. Serveras med ett glas av stans bästa öl." textOverrun="WORD_ELLIPSIS" wrapText="true" />
+   </children>
+</AnchorPane>
