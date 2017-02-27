@@ -27,17 +27,18 @@ import java.util.ResourceBundle;
 /**
  * Created by Erik on 2017-02-22.
  */
-public class ListController implements Initializable {
+public class ShoppingListController implements Initializable {
 
 
     private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
 
     private @FXML
     ListView<ShoppingList> shoppingList;
+    private ObservableList<ShoppingList> items;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<ShoppingList> items = FXCollections.observableArrayList (ShoppingList.getSampleShoppingLists());
+        items = FXCollections.observableArrayList (ShoppingList.getSampleShoppingLists());
         shoppingList.setItems(items);
         shoppingList.setCellFactory(listView -> new ListViewCell());
     }
@@ -50,8 +51,10 @@ public class ListController implements Initializable {
             super.updateItem(shoppingList,empty);
             if(shoppingList != null) {
                 Data data = new Data();
-                data.setInfo(shoppingList);
+                data.setInfo(shoppingList, getListView());
                 setGraphic(data.getBox());
+            } else {
+                setGraphic(null);
             }
         }
     }
@@ -85,7 +88,7 @@ public class ListController implements Initializable {
             }
         }
 
-        public void setInfo(ShoppingList list)
+        public void setInfo(final ShoppingList list, ListView<ShoppingList> listView)
         {
             labelTitle.setText(list.getName());
             labelSummary.setText(list.getDescription());
@@ -94,6 +97,9 @@ public class ListController implements Initializable {
                 @Override public void handle(ActionEvent e) {
                     // TODO: Delete
                     System.out.println("Delete");
+                    ObservableList<ShoppingList> items = listView.getItems();
+                    items.remove(list);
+                    listView.refresh();
                 }
             });
             btnDetails.setOnAction(new EventHandler<ActionEvent>() {
