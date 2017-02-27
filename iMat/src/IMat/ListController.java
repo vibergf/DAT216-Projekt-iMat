@@ -8,14 +8,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.util.Callback;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 /**
@@ -34,6 +37,14 @@ public class ListController implements Initializable {
         ObservableList<String> items = FXCollections.observableArrayList (
                 "Börjes Kakor", "Vecko Listan", "Kanelbullar", "Kroppkakor", "Norrlands Pölsa");
         shoppingList.setItems(items);
+        shoppingList.setCellFactory(new Callback<ListView<String>, ListCell<String>>()
+        {
+            @Override
+            public ListCell<String> call(ListView<String> listView)
+            {
+                return new ListViewCell();
+            }
+        });
     }
 
 
@@ -55,14 +66,17 @@ public class ListController implements Initializable {
     public static class Data
     {
         @FXML
-        private HBox hBox;
+        private AnchorPane hBox;
         @FXML
-        private Label label1;
+        private Label labelTitle;
         @FXML
-        private Label label2;
+        private Label labelSummary;
+
+        @FXML
+        private Label labelPrice;
 
         public Data() {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/listCellItem.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/shoppingListCell.fxml"));
             fxmlLoader.setController(this);
             try
             {
@@ -76,11 +90,12 @@ public class ListController implements Initializable {
 
         public void setInfo(String string)
         {
-            label1.setText(string);
-            label2.setText(string);
+            labelTitle.setText(string);
+            labelSummary.setText(string + " " + string);
+            labelPrice.setText(new Random().nextInt(1000) + " :-");
         }
 
-        public HBox getBox()
+        public AnchorPane getBox()
         {
             return hBox;
         }

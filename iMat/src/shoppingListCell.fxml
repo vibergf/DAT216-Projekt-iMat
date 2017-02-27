@@ -5,20 +5,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.ListController">
+<AnchorPane fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="40.0" layoutY="25.0" text="Börjes Kakor">
+      <Label fx:id="labelTitle" layoutX="40.0" layoutY="25.0" text="Börjes Kakor">
          <font>
             <Font size="27.0" />
          </font></Label>
-      <Button layoutX="565.0" layoutY="96.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="113.0" text="Detaljer" />
-      <Button layoutX="436.0" layoutY="96.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="113.0" text="Ta Bort Lista" />
-      <Label layoutX="565.0" layoutY="25.0" text="257 :-">
+      <Button fx:id="btnDetails" layoutX="472.0" layoutY="101.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="126.0" text="Detaljer" />
+      <Button fx:id="btnDelete" layoutX="607.0" layoutY="100.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="126.0" text="Ta bort Lista" />
+      <Label fx:id="labelPrice" layoutX="797.0" layoutY="54.0" text="257 :-">
          <font>
-            <Font size="38.0" />
+            <Font size="50.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="80.0" text="Havregryn, Vetemjöl, Jäst, Socker, hasch" />
-      <Label layoutX="40.0" layoutY="100.0" prefHeight="63.0" prefWidth="340.0" text="Underbara kakor, grädda 10 min 250 grader. Serveras med ett glas av stans bästa öl." textOverrun="WORD_ELLIPSIS" wrapText="true" />
+      <Label fx:id="labelSummary" layoutX="40.0" layoutY="80.0" text="Havregryn, Vetemjöl, Jäst, Socker, hasch" />
+      <Label fx:id="labelDetails" layoutX="40.0" layoutY="100.0" prefHeight="63.0" prefWidth="340.0" text="Underbara kakor, grädda 10 min 250 grader. Serveras med ett glas av stans bästa öl." textOverrun="WORD_ELLIPSIS" wrapText="true" />
    </children>
 </AnchorPane>
