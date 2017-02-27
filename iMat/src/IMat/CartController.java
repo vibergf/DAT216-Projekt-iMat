@@ -34,5 +34,10 @@ public class CartController implements Initializable {
 
     }
 
+    //test
+    @FXML public void checkoutButtonPressed(){
+        IMatController.getInstance().checkoutButtonPressed();
+    }
+
     //TODO add functionality and cells to listview
 }

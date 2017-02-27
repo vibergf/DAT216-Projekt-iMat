@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class IMatController implements Initializable {
 
+    private static IMatController instance;
+
     @FXML
     private StackPane mainStackPane;
 
@@ -43,6 +45,7 @@ public class IMatController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        instance = this;
         try {
             homeView = FXMLLoader.load(getClass().getResource("/homeView.fxml"));
             listView = FXMLLoader.load(getClass().getResource("/listView.fxml"));
@@ -54,6 +57,10 @@ public class IMatController implements Initializable {
             System.exit(0);
         }
         homeButtonPressed();
+    }
+
+    public static IMatController getInstance(){
+        return instance;
     }
 
     private void switchView(Node newView, Button newButton){
@@ -80,27 +87,27 @@ public class IMatController implements Initializable {
     }
 
     @FXML
-    private void homeButtonPressed(){
+    public void homeButtonPressed(){
         switchView(homeView, homeButton);
     }
 
     @FXML
-    private void listButtonPressed(){
+    public void listButtonPressed(){
         switchView(listView, listButton);
     }
 
     @FXML
-    private void historyButtonPressed(){
+    public void historyButtonPressed(){
         switchView(historyView, historyButton);
     }
 
     @FXML
-    private void cartButtonPressed(){
+    public void cartButtonPressed(){
         switchView(cartView, cartButton);
     }
 
     @FXML
-    private void checkoutButtonPressed(){
+    public void checkoutButtonPressed(){
         switchView(checkoutView, checkoutButton);
     }
 }
