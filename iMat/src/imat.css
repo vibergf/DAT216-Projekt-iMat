@@ -3,6 +3,9 @@
     -fx-font-size: 32px;
     -fx-underline: true;
 }
+.buttonHighlight {
+    -fx-background-color: lightblue;
+}
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
 }

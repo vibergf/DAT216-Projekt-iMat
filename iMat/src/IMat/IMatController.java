@@ -35,6 +35,8 @@ public class IMatController implements Initializable {
     @FXML
     private Button checkoutButton;
 
+    private Button selectedButton;
+
     private Parent homeView;
     private Parent listView;
     private Parent historyView;
@@ -65,9 +67,12 @@ public class IMatController implements Initializable {
 
     private void switchView(Node newView, Button newButton){
         mainStackPane.getChildren().clear();
-        //TODO Clear toolbar selection
         mainStackPane.getChildren().add(newView);
-        //TODO Select newButton in toolbar
+
+        if(selectedButton != null)
+            selectedButton.getStyleClass().remove("buttonHighlight");
+        newButton.getStyleClass().add("buttonHighlight");
+        selectedButton = newButton;
     }
 
     public static int getTotalPrice(Order order){
