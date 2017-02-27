@@ -2,9 +2,12 @@ package IMat;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -13,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.util.Callback;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,34 +33,24 @@ public class ListController implements Initializable {
     private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
 
     private @FXML
-    ListView<String> shoppingList;
+    ListView<ShoppingList> shoppingList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> items = FXCollections.observableArrayList (
-                "Börjes Kakor", "Vecko Listan", "Kanelbullar", "Kroppkakor", "Norrlands Pölsa");
+        ObservableList<ShoppingList> items = FXCollections.observableArrayList (ShoppingList.getSampleShoppingLists());
         shoppingList.setItems(items);
-        shoppingList.setCellFactory(new Callback<ListView<String>, ListCell<String>>()
-        {
-            @Override
-            public ListCell<String> call(ListView<String> listView)
-            {
-                return new ListViewCell();
-            }
-        });
+        shoppingList.setCellFactory(listView -> new ListViewCell());
     }
 
-
-    public static class ListViewCell extends ListCell<String>
+    public static class ListViewCell extends ListCell<ShoppingList>
     {
         @Override
-        public void updateItem(String string, boolean empty)
+        public void updateItem(ShoppingList shoppingList, boolean empty)
         {
-            super.updateItem(string,empty);
-            if(string != null)
-            {
+            super.updateItem(shoppingList,empty);
+            if(shoppingList != null) {
                 Data data = new Data();
-                data.setInfo(string);
+                data.setInfo(shoppingList);
                 setGraphic(data.getBox());
             }
         }
@@ -75,6 +68,10 @@ public class ListController implements Initializable {
         @FXML
         private Label labelPrice;
 
+        @FXML private Button btnDelete;
+
+        @FXML private Button btnDetails;
+
         public Data() {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/shoppingListCell.fxml"));
             fxmlLoader.setController(this);
@@ -88,11 +85,23 @@ public class ListController implements Initializable {
             }
         }
 
-        public void setInfo(String string)
+        public void setInfo(ShoppingList list)
         {
-            labelTitle.setText(string);
-            labelSummary.setText(string + " " + string);
-            labelPrice.setText(new Random().nextInt(1000) + " :-");
+            labelTitle.setText(list.getName());
+            labelSummary.setText(list.getDescription());
+            labelPrice.setText(list.getPriceString());
+            btnDelete.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    // TODO: Delete
+                    System.out.println("Delete");
+                }
+            });
+            btnDetails.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    // TODO: Browse
+                    System.out.println("btnDetails");
+                }
+            });
         }
 
         public AnchorPane getBox()
@@ -101,65 +110,4 @@ public class ListController implements Initializable {
         }
     }
 
-
-    public static class ShoppingList {
-        private String name;
-        private String description;
-        private List<Product> items;
-
-        public ShoppingList(String name, String description, List<Product> items) {
-            this.name = name;
-            this.description = description;
-            this.items = items;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public List<Product> getItems() {
-            return items;
-        }
-
-        public void setItems(List<Product> items) {
-            this.items = items;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            ShoppingList that = (ShoppingList) o;
-
-            if (name != null ? !name.equals(that.name) : that.name != null) return false;
-            if (description != null ? !description.equals(that.description) : that.description != null) return false;
-            return items != null ? items.equals(that.items) : that.items == null;
-        }
-
-        @Override
-        public String toString() {
-            return name;
-        }
-
-        @Override
-        public int hashCode() {
-            int result = name != null ? name.hashCode() : 0;
-            result = 31 * result + (description != null ? description.hashCode() : 0);
-            result = 31 * result + (items != null ? items.hashCode() : 0);
-            return result;
-        }
-    }
 }
