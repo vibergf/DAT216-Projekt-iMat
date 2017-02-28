@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -43,20 +44,19 @@ public class HomeController implements Initializable{
     private  int r = 0;
     private int size = 0;
     private boolean first = true;
-
+    Image i = new Image("Home-icon.png");
 
 
     @Override
         public void initialize (URL location, ResourceBundle resources){
-
-        Valkommen.setText("Välkommen till IMat" + "\n"
+          Valkommen.setText("Välkommen till IMat" + "\n"
                 + "I denna app kan du: " + "\n"
                 + "\t" + "-Söka & handla alla våra matvaror"
                 + "\n" + "\t" + "-Hålla koll på dina köp mha vår histoikfunktion"
                 + "\n" + "\t" + "-Göra dina egna inköpslistor så att du snabbt och lätt kan handla"
                 + "\n" + "\n" + "Längst upp på skärmen har du verktyg för att komma åt alla delar av programmet"
                 + "\n" + "Till vänster kan du söka efter varor eller välja en kategori.");
-        Valkommen.setFont(Font.font(14));
+          Valkommen.setFont(Font.font(14));
         ObservableList<String> items = FXCollections.observableArrayList("Baljväxter","Bröd", "Bär", "Citrusfrukter","Drycker","Exotiska frukter","Grönsaker","Kål","Kött & Fisk",
                 "Mejeriprodukter","Meloner","Mjöl,Socker,Salt & Örtkryddor","Nötter, Stenfrukter & Frön","Pasta,Ris & Potatis","Sötsaker");
         aList.setItems(items);
@@ -67,9 +67,9 @@ public class HomeController implements Initializable{
     }
     public  static HomeController getInstance(){return instance;}
 
-        @FXML void returnSearch () {
-        System.out.println(searchField.getText());
+        @FXML void returnSearch (){
         Valkommen.setVisible(false);
+        System.out.println(searchField.getText());
     }
         @FXML void listClicked () {
         String o = aList.getFocusModel().getFocusedItem().toString();

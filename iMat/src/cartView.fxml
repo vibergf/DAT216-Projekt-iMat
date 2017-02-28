@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CartController">
    <children>
       <Label fx:id="cartLabel" layoutX="113.0" layoutY="61.0" text="Din kundvagn">
          <font>
@@ -26,10 +23,10 @@
       <Button fx:id="saveListButton" layoutX="814.0" layoutY="150.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" text="Spara som lista" />
       <TableView fx:id="cartItems" layoutX="81.0" layoutY="151.0" prefHeight="525.0" prefWidth="708.0">
         <columns>
-          <TableColumn editable="false" prefWidth="288.3333282470703" text="Namn" />
-          <TableColumn prefWidth="139.6666717529297" text="Antal" />
-            <TableColumn prefWidth="214.6666717529297" text="Pris" />
-            <TableColumn prefWidth="65.99996948242188" text="Ta bort" />
+          <TableColumn fx:id="nameColumn" editable="false" prefWidth="288.3333282470703" text="Namn" />
+          <TableColumn fx:id="amountColumn" prefWidth="139.6666717529297" text="Antal" />
+            <TableColumn fx:id="priceColumn" prefWidth="214.6666717529297" text="Pris" />
+            <TableColumn fx:id="removeColumn" prefWidth="65.99996948242188" text="Ta bort" />
         </columns>
       </TableView>
    </children>
