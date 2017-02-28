@@ -22,7 +22,6 @@ public class IMatController implements Initializable {
 
     @FXML
     private StackPane mainStackPane;
-
     @FXML
     private Button homeButton;
     @FXML
@@ -33,6 +32,7 @@ public class IMatController implements Initializable {
     private Button cartButton;
     @FXML
     private Button checkoutButton;
+
 
     private Button selectedButton;
 
