@@ -1,93 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CheckoutController">
-   <center>
-      <AnchorPane maxWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+<VBox alignment="TOP_CENTER" fillWidth="false" spacing="30.0" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CheckoutController">
+   <children>
+      <AnchorPane>
          <children>
-            <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane>
-                     <children>
-                        <Label alignment="CENTER" styleClass="pageTitle" text="Kassa" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                  <VBox>
-                     <children>
-                        <Label styleClass="plainText" text="Namn" />
-                        <TextField styleClass="inputField" />
-                     </children>
-                  </VBox>
-                  <HBox spacing="10.0">
-                     <children>
-                        <VBox>
-                           <children>
-                              <Label styleClass="plainText" text="Adress" />
-                              <TextField styleClass="inputField" />
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Label styleClass="plainText" text="Lägenhetsnummer" />
-                              <TextField styleClass="inputField" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox spacing="10.0">
-                     <children>
-                        <VBox>
-                           <children>
-                              <Label styleClass="plainText" text="Våning" />
-                              <TextField styleClass="inputField" />
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Label styleClass="plainText" text="Portkod" />
-                              <TextField styleClass="inputField" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <VBox>
-                     <children>
-                        <Label styleClass="plainText" text="Postort" />
-                        <TextField styleClass="inputField" />
-                     </children>
-                  </VBox>
-                  <VBox>
-                     <children>
-                        <Label styleClass="plainText" text="Telefonnummer" />
-                        <TextField styleClass="inputField" />
-                     </children>
-                  </VBox>
-                  <CheckBox mnemonicParsing="false" styleClass="plainText" text="Spara mina uppgifter till nästa gång" />
-               </children>
-            </VBox>
+            <Label alignment="CENTER" styleClass="pageTitle" text="Kassa" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
-   </center>
+      <AnchorPane fx:id="checkoutPane" maxHeight="-Infinity" prefHeight="370.0">
+         <children>
+            <AnchorPane fx:id="checkoutPageTwo" maxWidth="-Infinity" prefWidth="400.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <Label styleClass="plainText" text="Korttyp" />
+                              <ChoiceBox fx:id="checkoutCardTypeField" prefWidth="100.0" styleClass="inputField" />
+                           </children>
+                        </HBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Kortinnehavare" />
+                              <TextField fx:id="checkoutCardOwnerField" styleClass="inputField" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Kortnummer" />
+                              <TextField fx:id="checkoutCardNumberField" styleClass="inputField" />
+                           </children>
+                        </VBox>
+                        <HBox spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="plainText" text="Utgångsdatum" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <TextField fx:id="checkoutCardDayField" prefWidth="40.0" styleClass="inputField" />
+                                          <Label styleClass="plainText" text="/" />
+                                          <TextField fx:id="checkoutCardMonthField" prefWidth="40.0" styleClass="inputField" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="plainText" text="CVV/CVC" />
+                                    <TextField fx:id="checkoutCardCVVField" prefWidth="60.0" styleClass="inputField" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <CheckBox mnemonicParsing="false" styleClass="plainText" text="Spara mina kortuppgifter till nästa gång" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="checkoutPageOne" maxWidth="-Infinity" prefWidth="400.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Namn" />
+                              <TextField fx:id="checkoutNameField" styleClass="inputField" />
+                           </children>
+                        </VBox>
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="plainText" text="Adress" />
+                                    <TextField fx:id="checkoutAddressField" styleClass="inputField" />
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="plainText" text="Lägenhetsnummer" />
+                                    <TextField fx:id="checkoutApartmentField" styleClass="inputField" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="plainText" text="Våning" />
+                                    <TextField fx:id="checkoutFloorField" styleClass="inputField" />
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="plainText" text="Portkod" />
+                                    <TextField fx:id="checkoutDoorField" styleClass="inputField" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Postort" />
+                              <TextField fx:id="checkoutCityField" styleClass="inputField" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="plainText" text="Telefonnummer" />
+                              <TextField fx:id="checkoutPhoneField" styleClass="inputField" />
+                           </children>
+                        </VBox>
+                        <CheckBox mnemonicParsing="false" styleClass="plainText" text="Spara mina personuppgifter till nästa gång" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="checkoutPageThree" maxWidth="-Infinity" prefWidth="800.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" styleClass="plainText" text="Var god bekräfta din information nedan." AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <ListView fx:id="checkoutOverviewList" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TextArea fx:id="checkoutOverviewField" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="plainText" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="checkoutPageFour" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" styleClass="plainText" text="Din beställning är nu skickad. Tack!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane maxWidth="-Infinity" prefWidth="400.0">
+         <children>
+            <BorderPane AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+               <right>
+                  <Button fx:id="forwardButton" mnemonicParsing="false" onAction="#forwardButtonPressed" text="Nästa" BorderPane.alignment="CENTER" />
+               </right>
+               <left>
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonPressed" text="Bakåt" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <Label alignment="CENTER" text="Wizard.png goes here" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
    <padding>
       <Insets top="50.0" />
    </padding>
-   <bottom>
-      <AnchorPane BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" text="Wizard goes here" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="100.0" />
-         </BorderPane.margin>
-      </AnchorPane>
-   </bottom>
-</BorderPane>
+</VBox>
