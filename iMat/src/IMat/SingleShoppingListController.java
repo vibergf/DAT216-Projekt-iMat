@@ -18,11 +18,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- *  Lists all available Shopping Lists.
+ *
+ * Browse the items of a single Shopping list.
  *
  * Created by Erik on 2017-02-22.
  */
-public class ShoppingListController implements Initializable {
+public class SingleShoppingListController implements Initializable {
 
     private @FXML
     ListView<ShoppingList> shoppingList;

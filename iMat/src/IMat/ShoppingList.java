@@ -16,6 +16,14 @@ public class ShoppingList {
     private String description;
     private List<ShoppingItem> items;
 
+    private static final List<ShoppingList> allLists = getSampleShoppingLists();
+
+    public static List<ShoppingList> getAllShoppingLists() {
+        return allLists;
+    }
+
+
+
     public ShoppingList(String name, String description, List<ShoppingItem> items) {
         this.name = name;
         this.description = description;
