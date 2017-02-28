@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="labelTitle" layoutX="40.0" layoutY="25.0" text="Börjes Kakor">
          <font>
             <Font size="27.0" />
          </font></Label>
-      <Button fx:id="btnDetails" layoutX="424.0" layoutY="101.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="126.0" text="Detaljer" />
-      <Button fx:id="btnDelete" layoutX="559.0" layoutY="100.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="126.0" text="Ta bort Lista" />
-      <Label fx:id="labelPrice" layoutX="740.0" layoutY="54.0" prefHeight="73.0" prefWidth="220.0" text="257 :-">
+      <Button fx:id="btnDetails" layoutX="380.0" layoutY="114.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="126.0" text="Detaljer" />
+      <Button fx:id="btnDelete" layoutX="514.0" layoutY="114.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="126.0" text="Ta bort Lista" />
+      <Label fx:id="labelPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="530.0" layoutY="28.0" prefHeight="73.0" prefWidth="220.0" text="257 :-">
          <font>
-            <Font size="50.0" />
+            <Font size="41.0" />
          </font>
       </Label>
       <Label fx:id="labelSummary" layoutX="40.0" layoutY="80.0" text="Havregryn, Vetemjöl, Jäst, Socker, hasch" />

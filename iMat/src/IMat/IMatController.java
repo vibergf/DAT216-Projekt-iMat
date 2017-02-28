@@ -10,7 +10,6 @@ import javafx.scene.layout.StackPane;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,7 +49,7 @@ public class IMatController implements Initializable {
         instance = this;
         try {
             homeView = FXMLLoader.load(getClass().getResource("/homeView.fxml"));
-            listView = FXMLLoader.load(getClass().getResource("/listView.fxml"));
+            listView = FXMLLoader.load(getClass().getResource("/shoppingListView.fxml"));
             historyView = FXMLLoader.load(getClass().getResource("/historyView.fxml"));
             cartView = FXMLLoader.load(getClass().getResource("/cartView.fxml"));
             checkoutView = FXMLLoader.load(getClass().getResource("/checkoutView.fxml"));
