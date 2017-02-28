@@ -68,9 +68,26 @@ public class HomeController implements Initializable{
     public  static HomeController getInstance(){return instance;}
 
         @FXML void returnSearch (){
+        c=0;
+        r=0;
         Valkommen.setVisible(false);
+        itemGrid.getChildren().clear();
+        scrollPane.setVvalue(0);
         System.out.println(searchField.getText());
-    }
+        String input = searchField.getText().toLowerCase();
+        size=dataHandler.getProducts().size();
+        for(int n=0;n<size;n++){
+            Product product = dataHandler.getProducts().get(n);
+            String proName = product.getName().toLowerCase();
+            if(proName.startsWith(input)){
+                HomeGridCell h = new HomeGridCell(product);
+                itemGrid.add(h,c,r);
+                if(c==0){c=1;}
+                else{c=0;r++;}
+                }
+            }
+        }
+
         @FXML void listClicked () {
         String o = aList.getFocusModel().getFocusedItem().toString();
         Valkommen.setVisible(false);
