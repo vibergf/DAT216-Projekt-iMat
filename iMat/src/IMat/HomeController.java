@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -39,6 +36,9 @@ public class HomeController implements Initializable{
     private ListView aList;
     @FXML
     private GridPane itemGrid;
+    @FXML
+    private ScrollPane scrollPane;
+
     private int c =0;
     private  int r = 0;
     private int size = 0;
@@ -82,6 +82,8 @@ public class HomeController implements Initializable{
     }
     protected void getItems(String s){
             itemGrid.getChildren().clear();
+            scrollPane.setVvalue(0);
+
             r = 0;
             c = 0;
         switch (s) {

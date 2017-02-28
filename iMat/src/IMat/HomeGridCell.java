@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -25,6 +26,8 @@ public class HomeGridCell extends AnchorPane{
     private Label units;
     @FXML
     private Label name;
+    @FXML
+    private Label confirmLabel;
     @FXML
     private Button incButton;
     @FXML
@@ -59,12 +62,14 @@ public class HomeGridCell extends AnchorPane{
     }
     @FXML void downPressed(){
         i = Integer.parseInt(units.getText());
-        if(i>0) {
+        if(i>1) {
             i--;
             units.setText(i + "");
         }
     }
     @FXML void add(){
         System.out.println(i + " st "+ product.getName() + " lades till i kundvagnen.");
+        confirmLabel.setTextFill(Color.GREEN);
+        confirmLabel.setText(i + " st "+ product.getName() + " lades till i kundvagnen.");
     }
 }
