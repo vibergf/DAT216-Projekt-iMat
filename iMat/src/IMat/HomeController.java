@@ -42,6 +42,7 @@ public class HomeController implements Initializable{
     private int c =0;
     private  int r = 0;
     private int size = 0;
+    private boolean first = true;
 
 
 
@@ -80,8 +81,9 @@ public class HomeController implements Initializable{
         getItems(o);
     }
     protected void getItems(String s){
-        r=0;
-        c=0;
+            itemGrid.getChildren().clear();
+            r = 0;
+            c = 0;
         switch (s) {
 
             case "Baljväxter":
@@ -130,9 +132,12 @@ public class HomeController implements Initializable{
                     if (c == 0) {c = 1;}
                     else {c = 0;r++;}
                 }
-                size = dataHandler.getProducts(ProductCategory.HOT_DRINKS).size();
+                break;
+
+            case"Bär":
+                size = dataHandler.getProducts(ProductCategory.BERRY).size();
                 for (int n = 0; n < size; n++) {
-                    Product product = dataHandler.getProducts(ProductCategory.HOT_DRINKS).get(n);
+                    Product product = dataHandler.getProducts(ProductCategory.BERRY).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
                     if (c == 0) {c = 1;}
@@ -140,10 +145,109 @@ public class HomeController implements Initializable{
                 }
                 break;
 
-            case"Bär":
-                size = dataHandler.getProducts(ProductCategory.BERRY).size();
+            case"Exotiska frukter":
+                size = dataHandler.getProducts(ProductCategory.EXOTIC_FRUIT).size();
                 for (int n = 0; n < size; n++) {
-                    Product product = dataHandler.getProducts(ProductCategory.BERRY).get(n);
+                    Product product = dataHandler.getProducts(ProductCategory.EXOTIC_FRUIT).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Grönsaker":
+                size = dataHandler.getProducts(ProductCategory.VEGETABLE_FRUIT).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.VEGETABLE_FRUIT).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Kål":
+                size = dataHandler.getProducts(ProductCategory.CABBAGE).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.CABBAGE).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Kött & Fisk":
+                size = dataHandler.getProducts(ProductCategory.MEAT).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.MEAT).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Mejeriprodukter":
+                size = dataHandler.getProducts(ProductCategory.DAIRIES).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.DAIRIES).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Meloner":
+                size = dataHandler.getProducts(ProductCategory.MELONS).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.MELONS).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Mjöl,Socker,Salt & Örtkryddor":
+                size = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Nötter, Stenfrukter & Frön":
+                size = dataHandler.getProducts(ProductCategory.NUTS_AND_SEEDS).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.NUTS_AND_SEEDS).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Pasta,Ris & Potatis":
+                size = dataHandler.getProducts(ProductCategory.PASTA).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.PASTA).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    if (c == 0) {c = 1;}
+                    else {c = 0;r++;}
+                }
+                break;
+
+            case"Sötsaker":
+                size = dataHandler.getProducts(ProductCategory.SWEET).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.SWEET).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
                     if (c == 0) {c = 1;}
