@@ -26,13 +26,17 @@ public class HomeGridCell extends AnchorPane{
     @FXML
     private Label name;
     @FXML
-    private Button addButton;
+    private Button incButton;
     @FXML
     private Button decButton;
+    @FXML
+    private Button addButton;
 
     private FXMLLoader loader;
 
     private Product product;
+
+    private int i =1;
 
     public HomeGridCell(Product product){
         loader = new FXMLLoader(getClass().getResource("/homeGridCell.fxml"));
@@ -49,15 +53,18 @@ public class HomeGridCell extends AnchorPane{
         units.setText("1");
     }
     @FXML void upPressed(){
-        int i = Integer.parseInt(units.getText());
+        i = Integer.parseInt(units.getText());
         i++;
         units.setText(i+"");
     }
     @FXML void downPressed(){
-        int i = Integer.parseInt(units.getText());
+        i = Integer.parseInt(units.getText());
         if(i>0) {
             i--;
             units.setText(i + "");
         }
+    }
+    @FXML void add(){
+        System.out.println(i + " st "+ product.getName() + " lades till i kundvagnen.");
     }
 }
