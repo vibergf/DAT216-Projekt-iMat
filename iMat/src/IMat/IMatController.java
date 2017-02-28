@@ -10,7 +10,6 @@ import javafx.scene.layout.StackPane;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,7 +22,6 @@ public class IMatController implements Initializable {
 
     @FXML
     private StackPane mainStackPane;
-
     @FXML
     private Button homeButton;
     @FXML
@@ -34,6 +32,7 @@ public class IMatController implements Initializable {
     private Button cartButton;
     @FXML
     private Button checkoutButton;
+
 
     private Button selectedButton;
 

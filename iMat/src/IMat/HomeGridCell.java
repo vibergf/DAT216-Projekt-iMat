@@ -2,21 +2,33 @@ package IMat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * Created by Vibergf on 27/02/2017.
  */
 public class HomeGridCell extends AnchorPane{
 
-    @FXML Button button;
+    private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
+    @FXML
+    private ImageView picture;
+    @FXML
+    private Label units;
+    @FXML
+    private Label name;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button decButton;
 
     private FXMLLoader loader;
 
@@ -30,6 +42,22 @@ public class HomeGridCell extends AnchorPane{
              loader.load();
         } catch (IOException e) { e.printStackTrace(); }
         this.product = product;
-        button.setText(product.getName());
+        Image i=dataHandler.getFXImage(product);
+        picture.setImage(i);
+        name.setText(product.getName());
+        name.setFont(Font.font(16));
+        units.setText("1");
+    }
+    @FXML void upPressed(){
+        int i = Integer.parseInt(units.getText());
+        i++;
+        units.setText(i+"");
+    }
+    @FXML void downPressed(){
+        int i = Integer.parseInt(units.getText());
+        if(i>0) {
+            i--;
+            units.setText(i + "");
+        }
     }
 }
