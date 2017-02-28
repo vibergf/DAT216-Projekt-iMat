@@ -17,7 +17,7 @@
             <Font size="42.0" />
          </font></Label>
       <Button fx:id="checkoutButton" layoutX="814.0" layoutY="624.0" mnemonicParsing="false" onAction="#checkoutButtonPressed" prefHeight="52.0" prefWidth="172.0" text="Gå till kassan" />
-      <Button fx:id="clearCartButton" layoutX="814.0" layoutY="205.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" text="Töm kundvagn" />
+      <Button fx:id="clearCartButton" layoutX="814.0" layoutY="205.0" mnemonicParsing="false" onAction="#clearCartButtonPressed" prefHeight="44.0" prefWidth="172.0" text="Töm kundvagn" />
       <Label fx:id="sumLabel" layoutX="844.0" layoutY="520.0" text="Totalt:">
          <font>
             <Font size="29.0" />
@@ -26,10 +26,10 @@
       <Button fx:id="saveListButton" layoutX="814.0" layoutY="150.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" text="Spara som lista" />
       <TableView fx:id="cartItems" layoutX="81.0" layoutY="151.0" prefHeight="525.0" prefWidth="708.0">
         <columns>
-          <TableColumn editable="false" prefWidth="288.3333282470703" text="Namn" />
-          <TableColumn prefWidth="139.6666717529297" text="Antal" />
-            <TableColumn prefWidth="214.6666717529297" text="Pris" />
-            <TableColumn prefWidth="65.99996948242188" text="Ta bort" />
+          <TableColumn fx:id="nameColumn" editable="false" prefWidth="288.3333282470703" text="Namn" />
+          <TableColumn fx:id="amountColumn" prefWidth="139.6666717529297" text="Antal" />
+            <TableColumn fx:id="priceColumn" prefWidth="214.6666717529297" text="Pris" />
+            <TableColumn fx:id="removeColumn" prefWidth="65.99996948242188" text="Ta bort" />
         </columns>
       </TableView>
    </children>
