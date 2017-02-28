@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Toggle;
 import javafx.scene.layout.StackPane;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -42,17 +43,26 @@ public class IMatController implements Initializable {
     private Parent cartView;
     private Parent checkoutView;
 
+    private CheckoutController checkoutController;
+
     private static final String DATE_FORMAT = "dd/MM - yyyy";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
+        FXMLLoader loader;
         try {
-            homeView = FXMLLoader.load(getClass().getResource("/homeView.fxml"));
-            listView = FXMLLoader.load(getClass().getResource("/shoppingListView.fxml"));
-            historyView = FXMLLoader.load(getClass().getResource("/historyView.fxml"));
-            cartView = FXMLLoader.load(getClass().getResource("/cartView.fxml"));
-            checkoutView = FXMLLoader.load(getClass().getResource("/checkoutView.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/homeView.fxml"));
+            homeView = loader.load();
+            loader = new FXMLLoader(getClass().getResource("/shoppingListView.fxml"));
+            listView = loader.load();
+            loader = new FXMLLoader(getClass().getResource("/historyView.fxml"));
+            historyView = loader.load();
+            loader = new FXMLLoader(getClass().getResource("/cartView.fxml"));
+            cartView = loader.load();
+            loader = new FXMLLoader(getClass().getResource("/checkoutView.fxml"));
+            checkoutView = loader.load();
+            checkoutController = loader.getController();
         }catch (Exception e){
             e.printStackTrace();
             System.exit(0);
@@ -113,6 +123,7 @@ public class IMatController implements Initializable {
 
     @FXML
     public void checkoutButtonPressed(){
+        checkoutController.onEnter();
         switchView(checkoutView, checkoutButton);
     }
 }

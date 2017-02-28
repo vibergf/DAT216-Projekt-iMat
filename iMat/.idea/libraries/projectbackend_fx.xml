@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="projectbackend-fx">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/projectbackend-fx.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

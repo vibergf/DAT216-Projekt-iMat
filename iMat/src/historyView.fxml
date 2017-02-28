@@ -13,7 +13,7 @@
    <children>
       <BorderPane fx:id="mainView" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
-            <Insets bottom="100.0" top="50.0" />
+            <Insets bottom="100.0" />
          </padding>
          <top>
             <Label alignment="CENTER" styleClass="pageTitle" stylesheets="@imat.css" text="Historik" BorderPane.alignment="CENTER" />
@@ -41,7 +41,7 @@
             </AnchorPane>
          </center>
          <padding>
-            <Insets bottom="45.0" top="50.0" />
+            <Insets bottom="45.0" />
          </padding>
          <top>
             <Label fx:id="detailedViewDateLabel" alignment="CENTER" styleClass="pageTitle" text="detailedViewDateLabel" BorderPane.alignment="CENTER" />
@@ -55,4 +55,7 @@
          </bottom>
       </BorderPane>
    </children>
+   <padding>
+      <Insets top="50.0" />
+   </padding>
 </AnchorPane>
