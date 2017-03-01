@@ -34,10 +34,11 @@ public class ShoppingList {
         IMatDataHandler dataHandler = IMatDataHandler.getInstance();
         List<Product> allItems = dataHandler.getProducts();
         List<ShoppingList> result = new ArrayList<>();
-        result.add(new ShoppingList("Börjes Kakor", "Mina fina kakor smakar så bra", getRandomItems(allItems, 5)));
-        result.add(new ShoppingList("Veckolistan", "Öl smakar bäst på stan.", getRandomItems(allItems, 7)));
+        result.add(new ShoppingList("Börjes Kakor", "Börjes specialkakor. Underbara!", getRandomItems(allItems, 5)));
+        result.add(new ShoppingList("Veckolistan", "De vanliga jag brukar köpa.", getRandomItems(allItems, 7)));
         result.add(new ShoppingList("Emils Hamburgare", "Stekta i Surte tågvagn.", getRandomItems(allItems, 2)));
-        result.add(new ShoppingList("LAN Mat", "Nyttig & billig mat till årets höjdpunkt.", getRandomItems(allItems, 10)));
+        result.add(new ShoppingList("Thai gryta", "God Thai gryta. Färsk riven ingefära.", getRandomItems(allItems, 10)));
+        result.add(new ShoppingList("Apelsin saft", "De som behövs för att göra god saft.", getRandomItems(allItems, 12)));
         return result;
     }
 
@@ -119,5 +120,20 @@ public class ShoppingList {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (items != null ? items.hashCode() : 0);
         return result;
+    }
+
+    public String getShortIngredients() {
+        if (items == null || items.isEmpty()) {
+            return "";
+        }
+        String s = "";
+        for (int i = 0; i < items.size(); i++) {
+            if (i == 0) {
+                s += items.get(i).getProduct().getName();
+            } else {
+                s += ", " + items.get(i).getProduct().getName();
+            }
+        }
+        return s;
     }
 }

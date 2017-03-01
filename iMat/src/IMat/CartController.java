@@ -14,6 +14,7 @@ import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
+import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.awt.Label;
 import java.net.URL;
@@ -75,7 +76,7 @@ public class CartController implements Initializable {
         nameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
         amountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
         priceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
-
+       // removeColumn.setCellFactory(c-> new SimpleStringProperty()
 
 
         cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
@@ -87,6 +88,7 @@ public class CartController implements Initializable {
     @FXML
     public void clearCartButtonPressed() {
         dataHandler.getShoppingCart().clear();
+        cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
     }
 
     @FXML
@@ -99,5 +101,5 @@ public class CartController implements Initializable {
         IMatController.getInstance().checkoutButtonPressed();
     }
 
-    //TODO add functionality and cells to listview
+    //TODO add spinner for amount, add remove button for each object and functionality for saving cart as a list
 }

@@ -12,6 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +30,10 @@ public class ShoppingListController implements Initializable {
     private @FXML
     ListView<ShoppingList> shoppingList;
     private ObservableList<ShoppingList> items;
+
+
+    @FXML private BorderPane shoppingListView;
+    @FXML private BorderPane listDetailsView;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,6 +66,8 @@ public class ShoppingListController implements Initializable {
         private Label labelTitle;
         @FXML
         private Label labelSummary;
+        @FXML
+        private Label labelDetails;
 
         @FXML
         private Label labelPrice;
@@ -66,6 +75,7 @@ public class ShoppingListController implements Initializable {
         @FXML private Button btnDelete;
 
         @FXML private Button btnDetails;
+        @FXML private Button btnAddCart;
 
         Data() {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/shoppingListCell.fxml"));
@@ -83,7 +93,8 @@ public class ShoppingListController implements Initializable {
         public void setInfo(final ShoppingList list, ListView<ShoppingList> listView)
         {
             labelTitle.setText(list.getName());
-            labelSummary.setText(list.getDescription());
+            labelDetails.setText(list.getDescription());
+            labelSummary.setText(list.getShortIngredients());
             labelPrice.setText(list.getPriceString());
             btnDelete.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
@@ -98,6 +109,14 @@ public class ShoppingListController implements Initializable {
                 @Override public void handle(ActionEvent e) {
                     // TODO: Browse
                     System.out.println("btnDetails");
+                }
+            });
+            btnAddCart.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    for (ShoppingItem shoppingItem : list.getItems()) {
+                        IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingItem);
+                    }
+                    btnAddCart.setText("Listan är Tillagd");
                 }
             });
         }
