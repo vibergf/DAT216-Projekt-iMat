@@ -13,6 +13,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
 import java.net.URL;
@@ -73,6 +75,7 @@ public class ShoppingListController implements Initializable {
         @FXML private Button btnDelete;
 
         @FXML private Button btnDetails;
+        @FXML private Button btnAddCart;
 
         Data() {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/shoppingListCell.fxml"));
@@ -106,6 +109,14 @@ public class ShoppingListController implements Initializable {
                 @Override public void handle(ActionEvent e) {
                     // TODO: Browse
                     System.out.println("btnDetails");
+                }
+            });
+            btnAddCart.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    for (ShoppingItem shoppingItem : list.getItems()) {
+                        IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingItem);
+                    }
+                    btnAddCart.setText("Listan är Tillagd");
                 }
             });
         }
