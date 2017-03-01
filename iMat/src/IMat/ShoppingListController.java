@@ -35,6 +35,17 @@ public class ShoppingListController implements Initializable {
     @FXML private BorderPane shoppingListView;
     @FXML private BorderPane listDetailsView;
 
+
+    private void switchToList() {
+        shoppingList.setVisible(true);
+        listDetailsView.setVisible(false);
+    }
+
+    private void switchToDetails(ShoppingList list) {
+        shoppingList.setVisible(true);
+        listDetailsView.setVisible(false);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         items = FXCollections.observableArrayList (ShoppingList.getAllShoppingLists());
