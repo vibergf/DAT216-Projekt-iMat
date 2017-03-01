@@ -22,7 +22,10 @@ public class ShoppingList {
         return allLists;
     }
 
-
+    public static void addNewShoppingList(ShoppingList a) {
+        allLists.add(a);
+        //TODO: Notify view to update.
+    }
 
     public ShoppingList(String name, String description, List<ShoppingItem> items) {
         this.name = name;
