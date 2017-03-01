@@ -44,7 +44,7 @@ public class HomeController implements Initializable{
     private  int r = 0;
     private int size = 0;
     private boolean first = true;
-    Image i = new Image("Home-icon.png");
+    //Image i = new Image("Home-icon.png");
 
 
     @Override

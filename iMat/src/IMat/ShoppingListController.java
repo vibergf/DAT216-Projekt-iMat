@@ -1,5 +1,10 @@
 package IMat;
 
+import com.sun.istack.internal.Nullable;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,18 +12,25 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Callback;
+import javafx.util.Duration;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static IMat.IMatController.formatDate;
+import static IMat.IMatController.formatPrice;
+import static IMat.IMatController.getTotalPrice;
 
 /**
  *  Lists all available Shopping Lists.
@@ -34,16 +46,43 @@ public class ShoppingListController implements Initializable {
 
     @FXML private BorderPane shoppingListView;
     @FXML private BorderPane listDetailsView;
+    @FXML private Label detailedViewSumLabel;
 
+    @FXML private Button btnBackToList;
+    @FXML private Label labelTopTitle;
+
+    @FXML private TableView<ShoppingItem> detailedViewTable;
+    @FXML private TableColumn<ShoppingItem, ShoppingItem> detailedViewNameColumn;
+    @FXML private TableColumn<ShoppingItem, String> detailedViewAmountColumn;
+    @FXML private TableColumn<ShoppingItem, String> detailedViewPriceColumn;
+
+    @Nullable private ShoppingList selectedList = null;
 
     private void switchToList() {
-        shoppingList.setVisible(true);
+        shoppingListView.setVisible(true);
         listDetailsView.setVisible(false);
     }
 
     private void switchToDetails(ShoppingList list) {
-        shoppingList.setVisible(true);
-        listDetailsView.setVisible(false);
+        shoppingListView.setVisible(false);
+        listDetailsView.setVisible(true);
+        labelTopTitle.setText(list.getName());
+        selectedList = list;
+
+        detailedViewSumLabel.setText("Summa: " + list.getPriceString());
+
+        detailedViewNameColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
+            @Override
+            public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
+                TableCell<ShoppingItem, ShoppingItem> cell = new HistoryTableCell();
+                return cell;
+            }
+        });
+        detailedViewNameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
+        detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
+        detailedViewPriceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
+
+        detailedViewTable.setItems(FXCollections.observableList(list.getItems()));
     }
 
     @Override
@@ -51,9 +90,16 @@ public class ShoppingListController implements Initializable {
         items = FXCollections.observableArrayList (ShoppingList.getAllShoppingLists());
         shoppingList.setItems(items);
         shoppingList.setCellFactory(listView -> new ListViewCell());
+        shoppingList.setSelectionModel(new DisabledSelectionModel<ShoppingList>());
+        btnBackToList.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                switchToList();
+            }
+        });
     }
 
-    public static class ListViewCell extends ListCell<ShoppingList>
+    public class ListViewCell extends ListCell<ShoppingList>
     {
         @Override
         public void updateItem(ShoppingList shoppingList, boolean empty)
@@ -69,7 +115,7 @@ public class ShoppingListController implements Initializable {
         }
     }
 
-    private static class Data
+    private class Data
     {
         @FXML
         private AnchorPane hBox;
@@ -119,7 +165,7 @@ public class ShoppingListController implements Initializable {
             btnDetails.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     // TODO: Browse
-                    System.out.println("btnDetails");
+                    switchToDetails(list);
                 }
             });
             btnAddCart.setOnAction(new EventHandler<ActionEvent>() {
@@ -128,6 +174,10 @@ public class ShoppingListController implements Initializable {
                         IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingItem);
                     }
                     btnAddCart.setText("Listan är Tillagd");
+                    Timeline timeline = new Timeline(new KeyFrame(
+                            Duration.millis(3000),
+                            ae -> btnAddCart.setText("Lägg till i Kundvagn")));
+                    timeline.play();
                 }
             });
         }

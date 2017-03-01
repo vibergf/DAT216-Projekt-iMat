@@ -74,7 +74,7 @@ public class ShoppingList {
 
     public String getPriceString() {
         double price = Math.round(getPrice() * 100.0) / 100.0;
-        String s = String.valueOf(price);
+        String s = String.valueOf(price).replaceAll("\\.", ",");
         int p1 = (int) ((price*100) % 10);
         if (p1 == 0) {
             s = s + "0";
