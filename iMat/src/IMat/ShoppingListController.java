@@ -26,6 +26,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static IMat.IMatController.formatDate;
@@ -154,21 +155,21 @@ public class ShoppingListController implements Initializable {
             labelDetails.setText(list.getDescription());
             labelSummary.setText(list.getShortIngredients());
             labelPrice.setText(list.getPriceString());
-            btnDelete.setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent e) {
-                    // TODO: Delete
-                    System.out.println("Delete");
+            btnDelete.setOnAction(e -> {
+                ;Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Bekräfta");
+                alert.setHeaderText("Är du säker att du vill ta bort listan?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
                     ObservableList<ShoppingList> items = listView.getItems();
                     items.remove(list);
                     listView.refresh();
+                } else {
+                    alert.close();
                 }
             });
-            btnDetails.setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent e) {
-                    // TODO: Browse
-                    switchToDetails(list);
-                }
-            });
+            btnDetails.setOnAction(e -> switchToDetails(list));
             btnAddCart.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     for (ShoppingItem shoppingItem : list.getItems()) {
