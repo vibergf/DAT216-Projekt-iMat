@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -16,9 +16,10 @@
 
 <VBox alignment="TOP_CENTER" fillWidth="false" spacing="30.0" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CheckoutController">
    <children>
-      <AnchorPane>
+      <AnchorPane maxWidth="-Infinity" prefWidth="800.0">
          <children>
-            <Label alignment="CENTER" styleClass="pageTitle" text="Kassa" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label styleClass="pageTitle" text="Kassa" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Separator prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="checkoutPane" maxHeight="-Infinity" prefHeight="370.0">
@@ -72,7 +73,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="checkoutPageOne" maxWidth="-Infinity" prefWidth="400.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="checkoutPageOne" maxWidth="-Infinity" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -173,7 +174,4 @@
          </children>
       </AnchorPane>
    </children>
-   <padding>
-      <Insets top="50.0" />
-   </padding>
 </VBox>

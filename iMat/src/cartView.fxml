@@ -5,29 +5,61 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CartController">
+<AnchorPane styleClass="viewPane" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CartController">
    <children>
-      <Label fx:id="cartLabel" layoutX="113.0" layoutY="61.0" text="Din kundvagn">
-         <font>
-            <Font size="42.0" />
-         </font></Label>
-      <Button fx:id="checkoutButton" layoutX="814.0" layoutY="624.0" mnemonicParsing="false" onAction="#checkoutButtonPressed" prefHeight="52.0" prefWidth="172.0" text="Gå till kassan" />
-      <Button fx:id="clearCartButton" layoutX="814.0" layoutY="205.0" mnemonicParsing="false" onAction="#clearCartButtonPressed" prefHeight="44.0" prefWidth="172.0" text="Töm kundvagn" />
-      <Label fx:id="sumLabel" layoutX="844.0" layoutY="520.0" text="Totalt:">
-         <font>
-            <Font size="29.0" />
-         </font>
-      </Label>
-      <Button fx:id="saveListButton" layoutX="814.0" layoutY="150.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" text="Spara som lista" />
-      <TableView fx:id="cartItems" layoutX="81.0" layoutY="151.0" prefHeight="525.0" prefWidth="708.0">
-        <columns>
-          <TableColumn fx:id="nameColumn" editable="false" prefWidth="288.3333282470703" text="Namn" />
-          <TableColumn fx:id="amountColumn" prefWidth="139.6666717529297" text="Antal" />
-            <TableColumn fx:id="priceColumn" prefWidth="214.6666717529297" text="Pris" />
-            <TableColumn fx:id="removeColumn" prefWidth="65.99996948242188" text="Ta bort" />
-        </columns>
-      </TableView>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane maxWidth="-Infinity" prefWidth="1400.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="cartLabel" styleClass="pageTitle" text="Din kundvagn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="42.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane maxWidth="-Infinity" prefWidth="1400.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="cartItems" focusTraversable="false" prefHeight="500.0" styleClass="plainText" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="nameColumn" editable="false" minWidth="200.0" prefWidth="460.0" sortable="false" text="Namn" />
+                      <TableColumn fx:id="amountColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="amountColumn" text="Antal" />
+                        <TableColumn fx:id="priceColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="priceColumn" text="Pris" />
+                        <TableColumn fx:id="removeColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" text="Ta bort" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <AnchorPane maxWidth="-Infinity" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox fillWidth="false" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="saveListButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" text="Spara som lista" />
+                              <Button fx:id="clearCartButton" mnemonicParsing="false" onAction="#clearCartButtonPressed" prefHeight="44.0" prefWidth="172.0" text="Töm kundvagn" />
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                           <children>
+                              <Label fx:id="sumLabel" text="Totalt:">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="checkoutButton" mnemonicParsing="false" onAction="#checkoutButtonPressed" prefHeight="52.0" prefWidth="172.0" text="Gå till kassan" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>

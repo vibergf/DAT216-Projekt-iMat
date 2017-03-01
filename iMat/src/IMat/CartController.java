@@ -14,9 +14,6 @@ import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
-import javax.swing.text.html.ImageView;
-import java.awt.*;
-import java.awt.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -65,6 +62,12 @@ public class CartController implements Initializable {
         dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(30));
         dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(8));
         dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(20));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(22));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(23));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(24));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(25));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(27));
 
         nameColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
             @Override
@@ -78,6 +81,9 @@ public class CartController implements Initializable {
         priceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
        // removeColumn.setCellFactory(c-> new SimpleStringProperty()
 
+
+        cartItems.setSelectionModel(null);
+        cartItems.setPlaceholder(new Label("Kundvagnen är tom."));
 
         cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
 

@@ -88,6 +88,17 @@ public class HistoryController implements Initializable {
 
         detailedViewTable.setSelectionModel(null);
 
+        detailedViewNameColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
+            @Override
+            public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
+                TableCell<ShoppingItem, ShoppingItem> cell = new HistoryTableCell();
+                return cell;
+            }
+        });
+        detailedViewNameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
+        detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
+        detailedViewPriceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
+
         detailedView.setVisible(false);
         mainView.setVisible(true);
     }
@@ -101,17 +112,6 @@ public class HistoryController implements Initializable {
 
         detailedViewDateLabel.setText(formatDate(order.getDate()));
         detailedViewSumLabel.setText("Summa: " + formatPrice(getTotalPrice(order)));
-
-        detailedViewNameColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
-            @Override
-            public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
-                TableCell<ShoppingItem, ShoppingItem> cell = new HistoryTableCell();
-                return cell;
-            }
-        });
-        detailedViewNameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
-        detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
-        detailedViewPriceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
 
         detailedViewTable.setItems(FXCollections.observableList(order.getItems()));
 

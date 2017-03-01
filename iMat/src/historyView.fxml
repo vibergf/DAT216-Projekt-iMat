@@ -9,14 +9,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.HistoryController">
+<AnchorPane styleClass="viewPane" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.HistoryController">
    <children>
       <BorderPane fx:id="mainView" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <padding>
-            <Insets bottom="100.0" />
-         </padding>
          <top>
-            <Label alignment="CENTER" styleClass="pageTitle" stylesheets="@imat.css" text="Historik" BorderPane.alignment="CENTER" />
+            <AnchorPane maxWidth="-Infinity" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <Label styleClass="pageTitle" stylesheets="@imat.css" text="Historik" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
          </top>
          <center>
             <ListView fx:id="historyListView" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" stylesheets="@historyListStylesheet.css" BorderPane.alignment="CENTER" />
@@ -26,7 +30,7 @@
          <center>
             <AnchorPane maxWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="detailedViewTable" focusTraversable="false" prefHeight="200.0" styleClass="plainText" stylesheets="@historyTableStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="detailedViewTable" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" styleClass="plainText" stylesheets="@historyTableStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="detailedViewNameColumn" minWidth="200.0" prefWidth="260.0" sortable="false" text="Namn" />
                       <TableColumn fx:id="detailedViewAmountColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="amountColumn" text="Antal" />
@@ -40,22 +44,30 @@
                </children>
             </AnchorPane>
          </center>
-         <padding>
-            <Insets bottom="45.0" />
-         </padding>
          <top>
-            <Label fx:id="detailedViewDateLabel" alignment="CENTER" styleClass="pageTitle" text="detailedViewDateLabel" BorderPane.alignment="CENTER" />
+            <AnchorPane maxWidth="-Infinity" prefWidth="1000.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <Label fx:id="detailedViewDateLabel" styleClass="pageTitle" text="detailedViewDateLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
          </top>
          <bottom>
-            <Label id="historyDetailedViewSumLabel" fx:id="detailedViewSumLabel" text="detailedViewSumLabel" BorderPane.alignment="CENTER">
+            <AnchorPane maxWidth="-Infinity" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets left="300.0" top="20.0" />
+                  <Insets />
                </BorderPane.margin>
-            </Label>
+               <children>
+                  <Label id="historyDetailedViewSumLabel" fx:id="detailedViewSumLabel" alignment="CENTER_RIGHT" text="detailedViewSumLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </AnchorPane>
          </bottom>
       </BorderPane>
    </children>
-   <padding>
-      <Insets top="50.0" />
-   </padding>
 </AnchorPane>
