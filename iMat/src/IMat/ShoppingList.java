@@ -36,7 +36,7 @@ public class ShoppingList {
         List<ShoppingList> result = new ArrayList<>();
         result.add(new ShoppingList("Börjes Kakor", "Börjes specialkakor. Underbara!", getRandomItems(allItems, 5)));
         result.add(new ShoppingList("Veckolistan", "De vanliga jag brukar köpa.", getRandomItems(allItems, 7)));
-        result.add(new ShoppingList("Emils Hamburgare", "Stekta i Surte tågvagn.", getRandomItems(allItems, 2)));
+        result.add(new ShoppingList("Emils Hamburgare", "Stekta i Surte tågvagn.", getRandomItems(allItems, 3)));
         result.add(new ShoppingList("Thai gryta", "God Thai gryta. Färsk riven ingefära.", getRandomItems(allItems, 10)));
         result.add(new ShoppingList("Apelsin saft", "De som behövs för att göra god saft.", getRandomItems(allItems, 12)));
         return result;

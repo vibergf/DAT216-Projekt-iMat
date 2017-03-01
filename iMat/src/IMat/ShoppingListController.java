@@ -97,6 +97,7 @@ public class ShoppingListController implements Initializable {
                 switchToList();
             }
         });
+        detailedViewTable.setSelectionModel(null);
     }
 
     public class ListViewCell extends ListCell<ShoppingList>
@@ -174,9 +175,15 @@ public class ShoppingListController implements Initializable {
                         IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingItem);
                     }
                     btnAddCart.setText("Listan är Tillagd");
+                    btnAddCart.setDefaultButton(true);
+                    btnAddCart.setDisable(true);
                     Timeline timeline = new Timeline(new KeyFrame(
-                            Duration.millis(3000),
-                            ae -> btnAddCart.setText("Lägg till i Kundvagn")));
+                            Duration.millis(3500),
+                            event -> {
+                                btnAddCart.setText("Lägg till i Kundvagn");
+                                btnAddCart.setDefaultButton(false);
+                                btnAddCart.setDisable(false);
+                            }));
                     timeline.play();
                 }
             });
