@@ -28,6 +28,10 @@ import static IMat.IMatController.formatPrice;
  */
 public class CartController implements Initializable {
 
+    //TODO add listener for shopping cart for better code
+
+    //TODO add functionality for removing a single object in the cart
+
     @FXML
     private javafx.scene.control.Label cartLabel;
     @FXML
@@ -80,6 +84,16 @@ public class CartController implements Initializable {
                 return cell;
             }
         });
+        removeColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
+            @Override
+            public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
+                TableCell<ShoppingItem, ShoppingItem> cell = new CartTableRemoveCell();
+                return cell;
+                //TODO remove unnecessary types
+            }
+        });
+
+
         nameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
         amountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
         priceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));

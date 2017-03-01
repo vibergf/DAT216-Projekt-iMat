@@ -2,6 +2,7 @@ package IMat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.image.Image;
@@ -13,12 +14,13 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 import java.io.IOException;
 
 /**
- * Created by Emil on 2017-02-28.
+ * Created by Emil on 2017-03-01.
  */
-public class CartTableCell extends TableCell<ShoppingItem, ShoppingItem> {
-    @FXML
-    protected Label productLabel;
-    @FXML protected ImageView productThumbnail;
+public class CartTableRemoveCell extends TableCell<ShoppingItem, ShoppingItem> {
+
+    @FXML protected ImageView removeImage;
+    @FXML protected Button removeButton;
+
 
     @FXML protected HBox hBox;
 
@@ -27,8 +29,8 @@ public class CartTableCell extends TableCell<ShoppingItem, ShoppingItem> {
 
     private static final int THUMBNAIL_SIZE = 50;
 
-    public CartTableCell(){
-        loader = new FXMLLoader(getClass().getResource("/cartTableCell.fxml"));
+    public CartTableRemoveCell(){
+        loader = new FXMLLoader(getClass().getResource("/cartTableRemoveCell.fxml"));
         loader.setController(this);
         try {
             loader.load();
@@ -41,7 +43,7 @@ public class CartTableCell extends TableCell<ShoppingItem, ShoppingItem> {
 //        super.updateItem(item, empty);
 
         if (!(empty || item == null)) {
-            setContent(item);
+            setContent();
             setGraphic(hBox);
         }else{
             setGraphic(null);
@@ -49,8 +51,12 @@ public class CartTableCell extends TableCell<ShoppingItem, ShoppingItem> {
     }
 
 
-    private void setContent(ShoppingItem item) {
-        productLabel.setText(item.getProduct().getName());
-        productThumbnail.setImage(IMatDataHandler.getInstance().getFXImage(item.getProduct(), THUMBNAIL_SIZE, THUMBNAIL_SIZE));
+    private void setContent() {
+        Image removeIcon = new Image("/resources/remove-icon.png");
+        removeImage.setImage(removeIcon);
+
+        //TODO fix image size, button size and some fine adjusting
     }
 }
+
+
