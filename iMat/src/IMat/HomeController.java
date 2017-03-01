@@ -76,9 +76,11 @@ public class HomeController implements Initializable{
         System.out.println(searchField.getText());
         String input = searchField.getText().toLowerCase();
         size=dataHandler.getProducts().size();
+
         for(int n=0;n<size;n++){
             Product product = dataHandler.getProducts().get(n);
             String proName = product.getName().toLowerCase();
+
             if(proName.startsWith(input)){
                 HomeGridCell h = new HomeGridCell(product);
                 itemGrid.add(h,c,r);
@@ -100,9 +102,9 @@ public class HomeController implements Initializable{
     protected void getItems(String s){
             itemGrid.getChildren().clear();
             scrollPane.setVvalue(0);
-
             r = 0;
             c = 0;
+
         switch (s) {
 
             case "Baljväxter":
