@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -18,8 +19,10 @@ public class CartTableCell extends TableCell<ShoppingItem, ShoppingItem> {
     @FXML
     protected Label productLabel;
     @FXML protected ImageView productThumbnail;
+    @FXML protected ImageView removeImage;
 
     @FXML protected HBox hBox;
+
 
     private FXMLLoader loader;
 
@@ -48,7 +51,9 @@ public class CartTableCell extends TableCell<ShoppingItem, ShoppingItem> {
 
 
     private void setContent(ShoppingItem item) {
+        Image removeIcon = new Image("/resources/remove-icon.png");
         productLabel.setText(item.getProduct().getName());
         productThumbnail.setImage(IMatDataHandler.getInstance().getFXImage(item.getProduct(), THUMBNAIL_SIZE, THUMBNAIL_SIZE));
+        removeImage.setImage(removeIcon);
     }
 }

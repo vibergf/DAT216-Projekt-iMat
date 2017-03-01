@@ -5,8 +5,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -79,7 +83,7 @@ public class CartController implements Initializable {
         nameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
         amountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
         priceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
-       // removeColumn.setCellFactory(c-> new SimpleStringProperty()
+        removeColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
 
 
         cartItems.setSelectionModel(null);
@@ -95,10 +99,27 @@ public class CartController implements Initializable {
     public void clearCartButtonPressed() {
         dataHandler.getShoppingCart().clear();
         cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
+
     }
 
     @FXML
     public void saveListButtonPressed(){
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Spara som lista");
+        dialog.setHeaderText("Fyll i namn och beskrvning för din lista");
+        TextField name = new TextField();
+        TextField description = new TextField();
+
+      /*  GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,150,10,10));
+        grid.add(new javafx.scene.control.Label("Namn"), 0 ,0);
+        grid.add(name, 1, 0);
+        grid.add(new javafx.scene.control.Label("Beskrvining"), 0 ,0);
+        grid.add(description, 1, 1);
+*/
+        dialog.showAndWait();
     }
 
 
