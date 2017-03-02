@@ -13,9 +13,9 @@
    <children>
        <BorderPane fx:id="listDetailsView" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <center>
-               <AnchorPane maxWidth="-Infinity" BorderPane.alignment="CENTER">
+               <AnchorPane maxWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                    <children>
-                       <TableView fx:id="detailedViewTable" focusTraversable="false" prefHeight="200.0" styleClass="plainText" stylesheets="@historyTableStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
+                       <TableView fx:id="detailedViewTable" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" styleClass="plainText" stylesheets="@historyTableStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
                            <columns>
                                <TableColumn fx:id="detailedViewNameColumn" minWidth="200.0" prefWidth="260.0" sortable="false" text="Namn" />
                                <TableColumn fx:id="detailedViewAmountColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="amountColumn" text="Antal" />
@@ -25,22 +25,33 @@
                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                        </TableView>
-                       <Button fx:id="btnBackToList" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Tillbaka till Listor" wrapText="true" />
+                       <Button mnemonicParsing="false" fx:id="btnBackToList" prefHeight="60.0" prefWidth="80.0" text="Tillbaka till Listor" wrapText="true" />
                    </children>
                </AnchorPane>
            </center>
-           <padding>
-               <Insets bottom="45.0" top="50.0" />
-           </padding>
            <top>
-               <Label fx:id="labelTopTitle" alignment="CENTER" styleClass="pageTitle" text="detailedViewDateLabel" BorderPane.alignment="CENTER" />
-           </top>
-           <bottom>
-               <Label id="historyDetailedViewSumLabel" fx:id="detailedViewSumLabel" text="detailedViewSumLabel" BorderPane.alignment="CENTER">
+                <AnchorPane maxWidth="-Infinity" prefWidth="1000.0" BorderPane.alignment="CENTER">
                    <BorderPane.margin>
-                       <Insets left="300.0" top="20.0" />
+                       <Insets />
                    </BorderPane.margin>
-               </Label>
+                   <children>
+                       <Label fx:id="labelTopTitle" styleClass="pageTitle" text="detailedViewDateLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                   </children>
+               </AnchorPane>
+            </top>
+           <bottom>
+               <AnchorPane maxWidth="-Infinity" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                   <BorderPane.margin>
+                       <Insets />
+                   </BorderPane.margin>
+                   <children>
+                       <Label id="historyDetailedViewSumLabel" fx:id="detailedViewSumLabel" alignment="CENTER_RIGHT" text="detailedViewSumLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                               <Insets top="20.0" />
+                           </padding>
+                       </Label>
+                   </children>
+               </AnchorPane>
            </bottom>
        </BorderPane>
        <BorderPane fx:id="shoppingListView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
