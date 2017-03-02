@@ -111,6 +111,10 @@ public class ShoppingListController implements Initializable, PropertyChangeList
         switchToList();
     }
 
+    public void onEnter() {
+        switchToList();
+    }
+
     public class ListViewCell extends ListCell<ShoppingList>
     {
         @Override

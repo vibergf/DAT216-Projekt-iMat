@@ -44,6 +44,7 @@ public class IMatController implements Initializable {
     private CheckoutController checkoutController;
 
     private static final String DATE_FORMAT = "dd/MM - yyyy";
+    private ShoppingListController listController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,6 +55,7 @@ public class IMatController implements Initializable {
             homeView = loader.load();
             loader = new FXMLLoader(getClass().getResource("/shoppingListView.fxml"));
             listView = loader.load();
+            listController = loader.getController();
             loader = new FXMLLoader(getClass().getResource("/historyView.fxml"));
             historyView = loader.load();
             loader = new FXMLLoader(getClass().getResource("/cartView.fxml"));
@@ -115,6 +117,7 @@ public class IMatController implements Initializable {
 
     @FXML
     public void listButtonPressed(){
+        listController.onEnter();
         switchView(listView, listButton);
     }
 
