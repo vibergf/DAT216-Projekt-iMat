@@ -4,6 +4,8 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,12 +20,28 @@ public class ShoppingList {
 
     private static final List<ShoppingList> allLists = getSampleShoppingLists();
 
+    private static final PropertyChangeSupport observers = new PropertyChangeSupport(new ShoppingList(null, null, null));
+
+    public static void addObserver(PropertyChangeListener observer) {
+        observers.addPropertyChangeListener(observer);
+    }
+
+    public static void removeObserver(PropertyChangeListener observer) {
+        observers.removePropertyChangeListener(observer);
+    }
+
+    public static void notifyShoppingListChanged() {
+        observers.firePropertyChange("ShoppingList Changed", null, null);
+    }
+
+
     public static List<ShoppingList> getAllShoppingLists() {
         return allLists;
     }
 
     public static void addNewShoppingList(ShoppingList a) {
-        allLists.add(a);
+        allLists.add(0, a);
+        notifyShoppingListChanged();
         //TODO: Notify view to update.
     }
 

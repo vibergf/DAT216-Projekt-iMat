@@ -24,6 +24,8 @@ import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -38,7 +40,7 @@ import static IMat.IMatController.getTotalPrice;
  *
  * Created by Erik on 2017-02-22.
  */
-public class ShoppingListController implements Initializable {
+public class ShoppingListController implements Initializable, PropertyChangeListener {
 
     private @FXML
     ListView<ShoppingList> shoppingList;
@@ -99,6 +101,14 @@ public class ShoppingListController implements Initializable {
             }
         });
         detailedViewTable.setSelectionModel(null);
+        ShoppingList.addObserver(this);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        items = FXCollections.observableArrayList (ShoppingList.getAllShoppingLists());
+        shoppingList.setItems(items);
+        switchToList();
     }
 
     public class ListViewCell extends ListCell<ShoppingList>
