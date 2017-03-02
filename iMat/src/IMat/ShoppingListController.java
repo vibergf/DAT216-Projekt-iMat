@@ -172,8 +172,7 @@ public class ShoppingListController implements Initializable, PropertyChangeList
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
-                    ObservableList<ShoppingList> items = listView.getItems();
-                    items.remove(list);
+                    ShoppingList.removeShoppingList(list);
                     listView.refresh();
                 } else {
                     alert.close();

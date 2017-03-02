@@ -42,7 +42,11 @@ public class ShoppingList {
     public static void addNewShoppingList(ShoppingList a) {
         allLists.add(0, a);
         notifyShoppingListChanged();
-        //TODO: Notify view to update.
+    }
+
+    public static void removeShoppingList(ShoppingList a) {
+        allLists.remove(a);
+        notifyShoppingListChanged();
     }
 
     public ShoppingList(String name, String description, List<ShoppingItem> items) {
