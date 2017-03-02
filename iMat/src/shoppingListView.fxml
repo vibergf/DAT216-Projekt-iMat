@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
-<AnchorPane maxHeight="800" maxWidth="800" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.ShoppingListController">
+<AnchorPane styleClass="viewPane" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.ShoppingListController">
    <children>
        <BorderPane fx:id="listDetailsView" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <center>
@@ -45,10 +45,10 @@
        </BorderPane>
        <BorderPane fx:id="shoppingListView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <center>
-                <ListView fx:id="shoppingList" stylesheets="@historyListStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <ListView fx:id="shoppingList" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" stylesheets="@historyListStylesheet.css" BorderPane.alignment="CENTER" />
            </center>
          <top>
-              <Label alignment="CENTER" styleClass="pageTitle" text="Inköpslistor" BorderPane.alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"  />
+              <Label styleClass="pageTitle" text="Inköpslistor"  maxWidth="-Infinity" prefWidth="800.0" BorderPane.alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"  />
          </top>
        </BorderPane>
    </children>

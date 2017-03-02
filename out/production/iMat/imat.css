@@ -1,7 +1,8 @@
 .pageTitle {
     -fx-font-family: "Verdana";
     -fx-font-size: 32px;
-    -fx-underline: true;
+    -fx-label-padding: 50 0 20 0;
+    -fx-underline: false;
 }
 .plainText {
     -fx-font-family: "Verdana";
@@ -11,8 +12,22 @@
     -fx-font-family: "Arial";
     -fx-font-size: 14px;
 }
+.viewPane {
+    -fx-padding: 0 0 40 0;
+}
+
+.amountColumn {
+    -fx-alignment: center;
+}
+.priceColumn {
+    -fx-alignment: center;
+}
+
 .buttonHighlight {
     -fx-background-color: lightblue;
+}
+#toolbar {
+    -fx-background-color: #DDDDDD;
 }
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
