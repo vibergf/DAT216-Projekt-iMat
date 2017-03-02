@@ -7,8 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import se.chalmers.ait.dat215.project.Order;
-import se.chalmers.ait.dat215.project.ShoppingItem;
+import se.chalmers.ait.dat215.project.*;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -66,6 +65,15 @@ public class IMatController implements Initializable {
             e.printStackTrace();
             System.exit(0);
         }
+
+        IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(cartEvent -> {
+            int size = IMatDataHandler.getInstance().getShoppingCart().getItems().size();
+            if (size == 0) {
+                cartButton.setText("Kundvagn");
+            } else {
+                cartButton.setText("("+size+") Kundvagn");
+            }
+        });
         homeButtonPressed();
     }
 
