@@ -11,7 +11,7 @@
 <?import javafx.geometry.Insets?>
 <AnchorPane maxHeight="800" maxWidth="800" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.ShoppingListController">
    <children>
-       <BorderPane fx:id="listDetailsView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <BorderPane fx:id="listDetailsView" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <center>
                <AnchorPane maxWidth="-Infinity" BorderPane.alignment="CENTER">
                    <children>
