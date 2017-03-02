@@ -34,6 +34,8 @@ public class HomeGridCell extends AnchorPane {
     private Button decButton;
     @FXML
     private Button addButton;
+    @FXML
+    private Label priceLabel;
 
     private FXMLLoader loader;
     private Product product;
@@ -54,6 +56,8 @@ public class HomeGridCell extends AnchorPane {
         name.setText(product.getName());
         name.setFont(Font.font(16));
         units.setText("1");
+        units.setFont(Font.font(16));
+        priceLabel.setText(product.getPrice()+" "+product.getUnit());
     }
 
     @FXML
@@ -74,8 +78,10 @@ public class HomeGridCell extends AnchorPane {
 
     @FXML
     void add() throws InterruptedException {
-        System.out.println(i + " st " + product.getName() + " lades till i kundvagnen.");
+        System.out.println(i + " "+ product.getUnitSuffix()+ " " + product.getName() + " lades till i kundvagnen.");
         confirmLabel.setTextFill(Color.GREEN);
-        confirmLabel.setText(i + " st " + product.getName() + " lades till i kundvagnen.");
+        confirmLabel.setText(i + " "+ product.getUnitSuffix()+ " " + product.getName() + " lades till i kundvagnen.");
+        units.setText("1");
+        i=1;
     }
 }

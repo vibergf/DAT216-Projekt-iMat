@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -14,8 +13,6 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-
 
 
 /**
@@ -43,8 +40,6 @@ public class HomeController implements Initializable{
     private int c =0;
     private  int r = 0;
     private int size = 0;
-    private boolean first = true;
-    //Image i = new Image("Home-icon.png");
 
 
     @Override
@@ -57,8 +52,8 @@ public class HomeController implements Initializable{
                 + "\n" + "\n" + "Längst upp på skärmen har du verktyg för att komma åt alla delar av programmet"
                 + "\n" + "Till vänster kan du söka efter varor eller välja en kategori.");
           Valkommen.setFont(Font.font(14));
-        ObservableList<String> items = FXCollections.observableArrayList("Baljväxter","Bröd", "Bär", "Citrusfrukter","Drycker","Exotiska frukter","Grönsaker","Kål","Kött & Fisk",
-                "Mejeriprodukter","Meloner","Mjöl,Socker,Salt & Örtkryddor","Nötter, Stenfrukter & Frön","Pasta,Ris & Potatis","Sötsaker");
+        ObservableList<String> items = FXCollections.observableArrayList("Baljväxter","Bröd", "Bär", "Citrusfrukter","Drycker","Exotiska frukter","Frukt","Grönsaker","Kål","Kött & Fisk",
+                "Mejeriprodukter","Meloner","Mjöl,Socker,Salt & Örtkryddor","Nötter, Stenfrukter & Frön","Pasta,Ris,Potatis & Rotfrukter","Sötsaker");
         aList.setItems(items);
         aList.setFixedCellSize(25.0);
         System.out.println(aList.getItems());
@@ -76,18 +71,22 @@ public class HomeController implements Initializable{
         System.out.println(searchField.getText());
         String input = searchField.getText().toLowerCase();
         size=dataHandler.getProducts().size();
+        itemGrid.setVisible(true);
 
         for(int n=0;n<size;n++){
             Product product = dataHandler.getProducts().get(n);
             String proName = product.getName().toLowerCase();
-
-            if(proName.startsWith(input)){
+            if(input.equals("")){}
+            else if(proName.startsWith(input)){
                 HomeGridCell h = new HomeGridCell(product);
                 itemGrid.add(h,c,r);
-                if(c==0){c=1;}
-                else{c=0;r++;}
+                rowChancher();
                 }
             }
+        }
+        private  void rowChancher(){
+            if (c == 0) {c = 1;}
+            else {c = 0;r++;}
         }
 
         @FXML void listClicked () {
@@ -113,23 +112,16 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.POD).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {
-                        c = 1;
-                    } else {
-                        c = 0;
-                        r++;
-                    }
+                   rowChancher();
                 }
             break;
-
             case"Bröd":
                 size = dataHandler.getProducts(ProductCategory.BREAD).size();
                 for (int n = 0; n < size; n++) {
                     Product product = dataHandler.getProducts(ProductCategory.BREAD).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
 
@@ -150,8 +142,15 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.COLD_DRINKS).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
+                }
+                size =dataHandler.getProducts(ProductCategory.HOT_DRINKS).size();
+                for (int m = 0; m < size; m++) {
+                    Product product = dataHandler.getProducts(ProductCategory.HOT_DRINKS).get(m);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    rowChancher();
+                    System.out.println("c: " + c + " r: " + r);
                 }
                 break;
 
@@ -161,8 +160,7 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.BERRY).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
 
@@ -172,19 +170,25 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.EXOTIC_FRUIT).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
-
+            case"Frukt":
+                size = dataHandler.getProducts(ProductCategory.FRUIT).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.FRUIT).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    rowChancher();
+                }
+                break;
             case"Grönsaker":
                 size = dataHandler.getProducts(ProductCategory.VEGETABLE_FRUIT).size();
                 for (int n = 0; n < size; n++) {
                     Product product = dataHandler.getProducts(ProductCategory.VEGETABLE_FRUIT).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
 
@@ -194,19 +198,24 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.CABBAGE).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
 
             case"Kött & Fisk":
-                size = dataHandler.getProducts(ProductCategory.MEAT).size();
+               size = dataHandler.getProducts(ProductCategory.MEAT).size();
                 for (int n = 0; n < size; n++) {
                     Product product = dataHandler.getProducts(ProductCategory.MEAT).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
+                }
+                size =dataHandler.getProducts(ProductCategory.FISH).size();
+                for (int m = 0; m < size; m++) {
+                    Product product = dataHandler.getProducts(ProductCategory.FISH).get(m);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    rowChancher();
                 }
                 break;
 
@@ -216,8 +225,7 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.DAIRIES).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
 
@@ -227,8 +235,7 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.MELONS).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
 
@@ -238,8 +245,14 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
+                }
+                size =dataHandler.getProducts(ProductCategory.HERB).size();
+                for (int n = 0; n < size; n++) {
+                    Product product = dataHandler.getProducts(ProductCategory.HERB).get(n);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    rowChancher();
                 }
                 break;
 
@@ -249,30 +262,39 @@ public class HomeController implements Initializable{
                     Product product = dataHandler.getProducts(ProductCategory.NUTS_AND_SEEDS).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
-
-            case"Pasta,Ris & Potatis":
+            case"Pasta,Ris,Potatis & Rotfrukter":
                 size = dataHandler.getProducts(ProductCategory.PASTA).size();
                 for (int n = 0; n < size; n++) {
                     Product product = dataHandler.getProducts(ProductCategory.PASTA).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
+                }
+                size =dataHandler.getProducts(ProductCategory.POTATO_RICE).size();
+                for (int m = 0; m < size; m++) {
+                    Product product = dataHandler.getProducts(ProductCategory.POTATO_RICE).get(m);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    rowChancher();
+                }
+                size =dataHandler.getProducts(ProductCategory.ROOT_VEGETABLE).size();
+                for (int m = 0; m < size; m++) {
+                    Product product = dataHandler.getProducts(ProductCategory.ROOT_VEGETABLE).get(m);
+                    HomeGridCell h = new HomeGridCell(product);
+                    itemGrid.add(h, c, r);
+                    rowChancher();
                 }
                 break;
-
             case"Sötsaker":
                 size = dataHandler.getProducts(ProductCategory.SWEET).size();
                 for (int n = 0; n < size; n++) {
                     Product product = dataHandler.getProducts(ProductCategory.SWEET).get(n);
                     HomeGridCell h = new HomeGridCell(product);
                     itemGrid.add(h, c, r);
-                    if (c == 0) {c = 1;}
-                    else {c = 0;r++;}
+                    rowChancher();
                 }
                 break;
         }
