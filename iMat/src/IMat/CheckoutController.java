@@ -64,6 +64,8 @@ public class CheckoutController implements Initializable {
         checkoutCardTypeField.setItems(FXCollections.observableList(cardTypeList));
         checkoutCardTypeField.getSelectionModel().selectFirst();
 
+//        checkoutOverviewList
+
         updateState();
     }
 

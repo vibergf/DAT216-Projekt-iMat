@@ -33,8 +33,8 @@
                   <TableView fx:id="detailedViewTable" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" styleClass="plainText" stylesheets="@historyTableStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="detailedViewNameColumn" minWidth="200.0" prefWidth="260.0" sortable="false" text="Namn" />
-                      <TableColumn fx:id="detailedViewAmountColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="amountColumn" text="Antal" />
-                        <TableColumn fx:id="detailedViewPriceColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="priceColumn" text="Pris" />
+                      <TableColumn fx:id="detailedViewAmountColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Antal" />
+                        <TableColumn fx:id="detailedViewPriceColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Pris" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
