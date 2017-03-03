@@ -16,10 +16,7 @@
     -fx-padding: 0 0 40 0;
 }
 
-.amountColumn {
-    -fx-alignment: center;
-}
-.priceColumn {
+.centeredColumn {
     -fx-alignment: center;
 }
 
