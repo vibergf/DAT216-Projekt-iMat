@@ -24,6 +24,8 @@ import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -169,7 +171,11 @@ public class CartController implements Initializable {
 
                 result.ifPresent(usernamePassword -> {
                     System.out.println("Titel=" + usernamePassword.getKey() + ", Beskrining=" + usernamePassword.getValue());
-                    ShoppingList.addNewShoppingList(new ShoppingList(usernamePassword.getKey(), usernamePassword.getValue(), dataHandler.getShoppingCart().getItems()));
+                    List<ShoppingItem> itemsList = new ArrayList<>();
+                    for (ShoppingItem item : dataHandler.getShoppingCart().getItems()) {
+                        itemsList.add(item);
+                    }
+                    ShoppingList.addNewShoppingList(new ShoppingList(usernamePassword.getKey(), usernamePassword.getValue(), itemsList));
                 });
             }
         });

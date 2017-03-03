@@ -16,7 +16,7 @@
       <Button fx:id="btnDetails" layoutX="341.0" layoutY="111.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="94.0" text="Detaljer" />
       <Button fx:id="btnDelete" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="659.0" layoutY="40.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="80.0" text="Ta bort">
           <graphic>
-              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                       <Image url="@resources/remove-icon.png" />
                   </image></ImageView>

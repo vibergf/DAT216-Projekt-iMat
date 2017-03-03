@@ -40,6 +40,7 @@ public class ShoppingList {
     }
 
     public static void addNewShoppingList(ShoppingList a) {
+
         allLists.add(0, a);
         notifyShoppingListChanged();
     }
