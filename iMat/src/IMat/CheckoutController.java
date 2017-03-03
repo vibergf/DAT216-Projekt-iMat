@@ -54,16 +54,14 @@ public class CheckoutController implements Initializable {
     private ChangeListener<String> checkoutPageTwoListener;
 
     private int currentPage;
-    private boolean orderPlaced;
 
     private static String BACK = "Bakåt";
-    private static String FORWARD = "Framåt";
-    private static String CONFIRM = "Beställ";
+    private static String FORWARD = "Nästa";
+//    private static String CONFIRM = "Beställ";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         currentPage = 0;
-        orderPlaced = false;
         checkoutPageOne.setVisible(true);
         checkoutPageTwo.setVisible(true);
         checkoutPageThree.setVisible(true);
@@ -125,10 +123,7 @@ public class CheckoutController implements Initializable {
     }
 
     public void onEnter(){
-        if(orderPlaced){
-            currentPage = 0;
-            orderPlaced = false;
-        }
+        currentPage = 0;
         updateState();
     }
 
@@ -137,8 +132,8 @@ public class CheckoutController implements Initializable {
         switch(currentPage){
             case 0:
                 //TODO Set wizard progress
-                backButton.setDisable(true);
-                backButton.setText(BACK);
+                backButton.setDisable(false);
+                backButton.setText("Tillbaka till kundvagnen");
                 forwardButton.setText(FORWARD);
                 updatePageOne();
                 checkoutPane.getChildren().add(checkoutPageOne);
@@ -158,7 +153,7 @@ public class CheckoutController implements Initializable {
                 backButton.setDisable(false);
                 backButton.setText(BACK);
                 forwardButton.setDisable(false);
-                forwardButton.setText(CONFIRM);
+                forwardButton.setText("Bekräfta beställning");
                 updateOverview();
                 checkoutPane.getChildren().add(checkoutPageThree);
                 break;
@@ -171,7 +166,6 @@ public class CheckoutController implements Initializable {
                 checkoutPane.getChildren().add(checkoutPageFour);
                 IMatDataHandler.getInstance().getShoppingCart().clear();
                 //IMatDataHandler.getInstance().placeOrder(true);
-                orderPlaced = true;
                 break;
         }
     }
@@ -219,6 +213,9 @@ public class CheckoutController implements Initializable {
 
     @FXML
     private void backButtonPressed(){
+        if(currentPage == 0){
+            IMatController.getInstance().cartButtonPressed();
+        }
         currentPage = Math.max(currentPage - 1, 0);
         updateState();
     }

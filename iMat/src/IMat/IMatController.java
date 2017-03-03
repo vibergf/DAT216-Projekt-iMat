@@ -30,8 +30,8 @@ public class IMatController implements Initializable {
     private Button historyButton;
     @FXML
     private Button cartButton;
-    @FXML
-    private Button checkoutButton;
+//    @FXML
+//    private Button checkoutButton;
 
 
     private Button selectedButton;
@@ -136,6 +136,6 @@ public class IMatController implements Initializable {
     @FXML
     public void checkoutButtonPressed(){
         checkoutController.onEnter();
-        switchView(checkoutView, checkoutButton);
+        switchView(checkoutView, cartButton);
     }
 }
