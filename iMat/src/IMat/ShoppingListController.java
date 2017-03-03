@@ -170,12 +170,15 @@ public class ShoppingListController implements Initializable, PropertyChangeList
             labelSummary.setText(list.getShortIngredients());
             labelPrice.setText(list.getPriceString());
             btnDelete.setOnAction(e -> {
-                ;Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                ButtonType yes = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "",
+                        yes,
+                        new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE));
                 alert.setTitle("Bekräfta");
-                alert.setHeaderText("Är du säker att du vill ta bort listan?");
+                alert.setHeaderText("Är du säker på att du vill ta bort listan?");
 
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK){
+                if (result.get() == yes){
                     ShoppingList.removeShoppingList(list);
                     listView.refresh();
                 } else {

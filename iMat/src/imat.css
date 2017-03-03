@@ -27,6 +27,13 @@
 .buttonHighlight {
     -fx-background-color: lightblue;
 }
+.customTable .table-row-cell:empty {
+    -fx-opacity: 0;
+}
+.customList .list-cell:empty {
+    -fx-opacity: 0;
+}
+
 #toolbar {
     -fx-background-color: #DDDDDD;
 }

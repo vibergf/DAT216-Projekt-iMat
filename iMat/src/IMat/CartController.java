@@ -181,32 +181,48 @@ public class CartController implements Initializable {
         });
     }
 
+    public void onEnter(){
+        cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
+    }
+
     @FXML
     public void clearCartButtonPressed() {
-        dataHandler.getShoppingCart().clear();
-        cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
+        ButtonType yes = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "",
+                yes,
+                new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE));
+        alert.setTitle("Bekräfta");
+        alert.setHeaderText("Är du säker på att du vill tömma kundvagnen?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == yes){
+            dataHandler.getShoppingCart().clear();
+            cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
+        } else {
+            alert.close();
+        }
 
     }
 
-    @FXML
-    public void saveListButtonPressed(){
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Spara som lista");
-        dialog.setHeaderText("Fyll i namn och beskrvning för din lista");
-        TextField name = new TextField();
-        TextField description = new TextField();
-
-      /*  GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20,150,10,10));
-        grid.add(new javafx.scene.control.Label("Namn"), 0 ,0);
-        grid.add(name, 1, 0);
-        grid.add(new javafx.scene.control.Label("Beskrvining"), 0 ,0);
-        grid.add(description, 1, 1);
-*/
-        dialog.showAndWait();
-    }
+//    @FXML
+//    public void saveListButtonPressed(){
+//        TextInputDialog dialog = new TextInputDialog();
+//        dialog.setTitle("Spara som lista");
+//        dialog.setHeaderText("Fyll i namn och beskrvning för din lista");
+//        TextField name = new TextField();
+//        TextField description = new TextField();
+//
+//      /*  GridPane grid = new GridPane();
+//        grid.setHgap(10);
+//        grid.setVgap(10);
+//        grid.setPadding(new Insets(20,150,10,10));
+//        grid.add(new javafx.scene.control.Label("Namn"), 0 ,0);
+//        grid.add(name, 1, 0);
+//        grid.add(new javafx.scene.control.Label("Beskrvining"), 0 ,0);
+//        grid.add(description, 1, 1);
+//*/
+//        dialog.showAndWait();
+//    }
 
 
     //test

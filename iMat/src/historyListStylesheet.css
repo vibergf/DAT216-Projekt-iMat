@@ -1,6 +1,0 @@
-.list-cell:empty {
-    -fx-opacity: 0;
-}
-.cellLabel {
-    -fx-font-size: 16px;
-}

@@ -43,10 +43,11 @@ public class IMatController implements Initializable {
     private Parent checkoutView;
 
     private CheckoutController checkoutController;
+    private ShoppingListController listController;
+    private CartController cartController;
 
     private static final String DATE_FORMAT = "dd/MM - yyyy";
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("0.00");
-    private ShoppingListController listController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,6 +63,7 @@ public class IMatController implements Initializable {
             historyView = loader.load();
             loader = new FXMLLoader(getClass().getResource("/cartView.fxml"));
             cartView = loader.load();
+            cartController = loader.getController();
             loader = new FXMLLoader(getClass().getResource("/checkoutView.fxml"));
             checkoutView = loader.load();
             checkoutController = loader.getController();
@@ -130,6 +132,7 @@ public class IMatController implements Initializable {
 
     @FXML
     public void cartButtonPressed(){
+        cartController.onEnter();
         switchView(cartView, cartButton);
     }
 

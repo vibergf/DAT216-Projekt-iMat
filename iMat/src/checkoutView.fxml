@@ -151,7 +151,7 @@
                   </SplitPane>
                   <AnchorPane maxWidth="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                      <children>
-                        <Label fx:id="checkoutOverviewTotalLabel" styleClass="plainText" text="checkoutOverviewTotalLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Label id="checkoutOverviewListTotalLabel" fx:id="checkoutOverviewTotalLabel" styleClass="receiptText" text="checkoutOverviewTotalLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </children>
