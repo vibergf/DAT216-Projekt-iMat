@@ -1,12 +1,19 @@
 package IMat;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.util.converter.IntegerStringConverter;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingItem;
+
+import static IMat.IMatController.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,6 +30,7 @@ public class CheckoutController implements Initializable {
 
     @FXML private ListView<ShoppingItem> checkoutOverviewList;
     @FXML private TextArea checkoutOverviewField;
+    @FXML private Label checkoutOverviewTotalLabel;
 
     @FXML private TextField checkoutNameField;
     @FXML private TextField checkoutAddressField;
@@ -35,12 +43,15 @@ public class CheckoutController implements Initializable {
     @FXML private ChoiceBox<String> checkoutCardTypeField;
     @FXML private TextField checkoutCardOwnerField;
     @FXML private TextField checkoutCardNumberField;
-    @FXML private TextField checkoutCardDayField;
     @FXML private TextField checkoutCardMonthField;
+    @FXML private TextField checkoutCardYearField;
     @FXML private TextField checkoutCardCVVField;
 
     @FXML private Button backButton;
     @FXML private Button forwardButton;
+
+    private ChangeListener<String> checkoutPageOneListener;
+    private ChangeListener<String> checkoutPageTwoListener;
 
     private int currentPage;
     private boolean orderPlaced;
@@ -64,7 +75,51 @@ public class CheckoutController implements Initializable {
         checkoutCardTypeField.setItems(FXCollections.observableList(cardTypeList));
         checkoutCardTypeField.getSelectionModel().selectFirst();
 
-//        checkoutOverviewList
+        checkoutOverviewList.setCellFactory(c -> {
+            return new CheckoutOverviewListCell();
+        });
+
+        checkoutPageOneListener = (observable, oldValue, newValue) -> {
+            updatePageOne();
+        };
+
+        checkoutPageTwoListener = (observable, oldValue, newValue) -> {
+            updatePageTwo();
+        };
+
+        checkoutNameField.textProperty().addListener(checkoutPageOneListener);
+        checkoutAddressField.textProperty().addListener(checkoutPageOneListener);
+        checkoutCityField.textProperty().addListener(checkoutPageOneListener);
+        checkoutPhoneField.textProperty().addListener(checkoutPageOneListener);
+
+        checkoutCardOwnerField.textProperty().addListener(checkoutPageTwoListener);
+
+        checkoutCardNumberField.textProperty().addListener(checkoutPageTwoListener);
+        checkoutCardNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                checkoutCardNumberField.setText(newValue.replaceAll("[^\\d]", ""));
+            }});
+
+        checkoutCardMonthField.textProperty().addListener(checkoutPageTwoListener);
+        checkoutCardMonthField.textProperty().addListener((observable, oldValue, newValue) -> {
+                newValue = newValue.replaceAll("[^\\d]", "");
+                newValue = newValue.length() <= 2 ? newValue : newValue.substring(0, 2);
+                checkoutCardMonthField.setText(newValue);
+            });
+
+        checkoutCardYearField.textProperty().addListener(checkoutPageTwoListener);
+        checkoutCardYearField.textProperty().addListener((observable, oldValue, newValue) -> {
+            newValue = newValue.replaceAll("[^\\d]", "");
+            newValue = newValue.length() <= 2 ? newValue : newValue.substring(0, 2);
+            checkoutCardYearField.setText(newValue);
+        });
+
+        checkoutCardCVVField.textProperty().addListener(checkoutPageTwoListener);
+        checkoutCardCVVField.textProperty().addListener((observable, oldValue, newValue) -> {
+            newValue = newValue.replaceAll("[^\\d]", "");
+            newValue = newValue.length() <= 3 ? newValue : newValue.substring(0, 3);
+            checkoutCardCVVField.setText(newValue);
+        });
 
         updateState();
     }
@@ -81,19 +136,21 @@ public class CheckoutController implements Initializable {
         checkoutPane.getChildren().clear();
         switch(currentPage){
             case 0:
+                //TODO Set wizard progress
                 backButton.setDisable(true);
                 backButton.setText(BACK);
-                forwardButton.setDisable(false);
                 forwardButton.setText(FORWARD);
-                //TODO Set wizard progress
+                updatePageOne();
                 checkoutPane.getChildren().add(checkoutPageOne);
                 break;
             case 1:
                 //TODO Set wizard progress
                 backButton.setDisable(false);
                 backButton.setText(BACK);
-                forwardButton.setDisable(false);
                 forwardButton.setText(FORWARD);
+                if(checkoutCardOwnerField.getText().isEmpty())
+                    checkoutCardOwnerField.setText(checkoutNameField.getText());
+                updatePageTwo();
                 checkoutPane.getChildren().add(checkoutPageTwo);
                 break;
             case 2:
@@ -119,20 +176,44 @@ public class CheckoutController implements Initializable {
         }
     }
 
+    private void updatePageOne(){
+        if(checkoutNameField.getText().isEmpty() || checkoutAddressField.getText().isEmpty()
+                || checkoutCityField.getText().isEmpty() || checkoutPhoneField.getText().isEmpty())
+            forwardButton.setDisable(true);
+        else
+            forwardButton.setDisable(false);
+    }
+
+    private void updatePageTwo(){
+        if(checkoutCardOwnerField.getText().isEmpty() || checkoutCardNumberField.getText().isEmpty()
+                || checkoutCardMonthField.getText().isEmpty() || checkoutCardYearField.getText().isEmpty()
+                ||checkoutCardCVVField.getText().isEmpty())
+            forwardButton.setDisable(true);
+        else
+            forwardButton.setDisable(false);
+    }
+
     private void updateOverview(){
         checkoutOverviewList.setItems(FXCollections.observableList(IMatDataHandler.getInstance().getShoppingCart().getItems()));
-        checkoutOverviewField.setText("Personuppgifter: \n \n" +
+        checkoutOverviewTotalLabel.setText("Totalt: " + formatPrice(IMatDataHandler.getInstance().getShoppingCart().getTotal()));
+        String apartmentNumber = checkoutApartmentField.getText().isEmpty() ? "" :
+                "Lägenhetsnummer: " + checkoutApartmentField.getText() + "\n";
+        String floorNumber = checkoutFloorField.getText().isEmpty() ? "" :
+                "Våning: " + checkoutFloorField.getText() + "\n";
+        String doorCode = checkoutDoorField.getText().isEmpty() ? "" :
+                "Portkod: " + checkoutDoorField.getText() + "\n";
+        checkoutOverviewField.setText(
                 "Namn: " + checkoutNameField.getText() + "\n" +
-                "Adress: " + checkoutAddressField.getText() + "  |  " +
-                "Lägenhetsnummer: " + checkoutApartmentField.getText() + "\n" +
-                "Våning: " + checkoutFloorField.getText() + "  |  " +
-                "Portkod: " + checkoutDoorField.getText() + "\n" +
+                "Adress: " + checkoutAddressField.getText() + "\n" +
+                apartmentNumber +
+                floorNumber +
+                doorCode +
                 "Postort: " + checkoutCityField.getText() + "\n" +
                 "Telefonnummer: " + checkoutPhoneField.getText() + "\n \n" +
-                "Betalningsuppgifter: \n \n" +
+
                 "Kort: " + checkoutCardTypeField.getValue() + "  " + checkoutCardNumberField.getText() + "\n" +
                 "Kortinnehavare: " + checkoutCardOwnerField.getText() + "\n" +
-                "Utgångsdatum: " + checkoutCardDayField.getText() + " / " + checkoutCardMonthField.getText() + "\n" +
+                "Utgångsdatum: " + checkoutCardMonthField.getText() + " / " + checkoutCardYearField.getText() + "\n" +
                 "CVV/CVC: " + checkoutCardCVVField.getText());
     }
 

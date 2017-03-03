@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import se.chalmers.ait.dat215.project.*;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +45,7 @@ public class IMatController implements Initializable {
     private CheckoutController checkoutController;
 
     private static final String DATE_FORMAT = "dd/MM - yyyy";
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("0.00");
     private ShoppingListController listController;
 
     @Override
@@ -102,7 +104,7 @@ public class IMatController implements Initializable {
     }
 
     public static String formatPrice(double price){
-        return (price + " kr").replaceAll("\\.", ",");
+        return (DECIMAL_FORMAT.format(price) + " kr").replaceAll("\\.", ",");
         //return price + " :-";
     }
 

@@ -8,6 +8,10 @@
     -fx-font-family: "Verdana";
     -fx-font-size: 16px;
 }
+.receiptText {
+    -fx-font-family: "Consolas";
+    -fx-font-size: 14px;
+}
 .inputField {
     -fx-font-family: "Arial";
     -fx-font-size: 14px;
@@ -28,4 +32,7 @@
 }
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
+}
+#checkoutOverviewListTotalLabel {
+    -fx-font-weight: bold;
 }
