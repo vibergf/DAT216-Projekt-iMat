@@ -1,5 +1,7 @@
 package IMat;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -11,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
 
@@ -39,7 +42,9 @@ public class HomeGridCell extends AnchorPane {
 
     private FXMLLoader loader;
     private Product product;
-    private int i = 1;
+    private ShoppingItem item = new ShoppingItem(product,1);
+    private double antalIVagn = 0;
+    private double i=1;
 
     public HomeGridCell(Product product) {
         loader = new FXMLLoader(getClass().getResource("/homeGridCell.fxml"));
@@ -54,34 +59,50 @@ public class HomeGridCell extends AnchorPane {
         Image i = dataHandler.getFXImage(product);
         picture.setImage(i);
         name.setText(product.getName());
-        name.setFont(Font.font(16));
-        units.setText("1");
-        units.setFont(Font.font(16));
+        name.setFont(Font.font(20));
+        units.setText(item.getAmount()+"");
+        //units.setText(i+"");
+        units.setFont(Font.font(20));
         priceLabel.setText(product.getPrice()+" "+product.getUnit());
     }
 
     @FXML
     void upPressed() {
-        i = Integer.parseInt(units.getText());
-        i++;
-        units.setText(i + "");
+        i = i+1;
+        units.setText(i+"");
+       /*  item.setAmount(item.getAmount()+1);
+        units.setText(item.getAmount()+"");*/
     }
 
     @FXML
     void downPressed() {
-        i = Integer.parseInt(units.getText());
-        if (i > 1) {
-            i--;
-            units.setText(i + "");
-        }
+        if(i > 1){
+            i=(i-1);
+            units.setText(i+"");
+        }/*
+        if(item.getAmount()> 1) {
+            item.setAmount(item.getAmount() - 1);
+            units.setText(item.getAmount() + "");
+        }*/
     }
 
     @FXML
     void add() throws InterruptedException {
-        System.out.println(i + " "+ product.getUnitSuffix()+ " " + product.getName() + " lades till i kundvagnen.");
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ShoppingItem item = new ShoppingItem(product,i);
+                dataHandler.getShoppingCart().addItem(item);
+            }
+        });
         confirmLabel.setTextFill(Color.GREEN);
-        confirmLabel.setText(i + " "+ product.getUnitSuffix()+ " " + product.getName() + " lades till i kundvagnen.");
-        units.setText("1");
-        i=1;
+        confirmLabel.setText("Du har totalt "+ (antalIVagn+item.getAmount())+product.getUnitSuffix()+" "+ product.getName() + " i kundvagnen");
+        antalIVagn = antalIVagn+item.getAmount();
+        //item.setAmount(1.0);
+        i=1.0;
+        units.setText(i+"");
+       // units.setText(item.getAmount()+"");
     }
+
+
 }
