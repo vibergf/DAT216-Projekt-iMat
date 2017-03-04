@@ -8,6 +8,10 @@
     -fx-font-family: "Verdana";
     -fx-font-size: 16px;
 }
+.receiptText {
+    -fx-font-family: "Consolas";
+    -fx-font-size: 14px;
+}
 .inputField {
     -fx-font-family: "Arial";
     -fx-font-size: 14px;
@@ -16,19 +20,26 @@
     -fx-padding: 0 0 40 0;
 }
 
-.amountColumn {
-    -fx-alignment: center;
-}
-.priceColumn {
+.centeredColumn {
     -fx-alignment: center;
 }
 
 .buttonHighlight {
     -fx-background-color: lightblue;
 }
+.customTable .table-row-cell:empty {
+    -fx-opacity: 0;
+}
+.customList .list-cell:empty {
+    -fx-opacity: 0;
+}
+
 #toolbar {
     -fx-background-color: #DDDDDD;
 }
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
+}
+#checkoutOverviewListTotalLabel {
+    -fx-font-weight: bold;
 }

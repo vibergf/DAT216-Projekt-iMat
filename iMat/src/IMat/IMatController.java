@@ -73,11 +73,11 @@ public class IMatController implements Initializable {
         }
 
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(cartEvent -> {
-            int size = IMatDataHandler.getInstance().getShoppingCart().getItems().size();
+            int size = (int) IMatDataHandler.getInstance().getShoppingCart().getTotal();
             if (size == 0) {
                 cartButton.setText("Kundvagn");
             } else {
-                cartButton.setText("("+size+") Kundvagn");
+                cartButton.setText("("+size+" kr ) Kundvagn");
             }
         });
         homeButtonPressed();
