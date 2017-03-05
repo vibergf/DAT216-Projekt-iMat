@@ -77,7 +77,7 @@ public class IMatController implements Initializable {
             if (size == 0) {
                 cartButton.setText("Kundvagn");
             } else {
-                cartButton.setText("("+size+" kr ) Kundvagn");
+                cartButton.setText("("+size+" kr) Kundvagn");
             }
         });
         homeButtonPressed();
