@@ -108,9 +108,7 @@ public class CartController implements Initializable {
         cartItems.setSelectionModel(null);
         cartItems.setPlaceholder(new Label("Kundvagnen är tom."));
 
-        cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
-
-        sumLabel.setText("Summa: " + formatPrice(dataHandler.getShoppingCart().getTotal()));
+        refreshCartView();
         //cartItems.setItems();
 
         saveListButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -180,13 +178,18 @@ public class CartController implements Initializable {
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(new ShoppingCartListener() {
             @Override
             public void shoppingCartChanged(CartEvent cartEvent) {
-                cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
+                refreshCartView();
             }
         });
     }
 
-    public void onEnter(){
+    private void refreshCartView() {
         cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
+        sumLabel.setText("Summa: " + formatPrice(dataHandler.getShoppingCart().getTotal()));
+    }
+
+    public void onEnter(){
+        refreshCartView();
     }
 
     @FXML
