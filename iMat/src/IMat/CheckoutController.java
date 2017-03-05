@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -49,6 +51,8 @@ public class CheckoutController implements Initializable {
 
     @FXML private Button backButton;
     @FXML private Button forwardButton;
+
+    @FXML private ImageView wizardImage;
 
     private ChangeListener<String> checkoutPageOneListener;
     private ChangeListener<String> checkoutPageTwoListener;
@@ -135,6 +139,7 @@ public class CheckoutController implements Initializable {
                 backButton.setDisable(false);
                 backButton.setText("Tillbaka till kundvagnen");
                 forwardButton.setText(FORWARD);
+                wizardImage.setImage(new Image("/resources/wizard-1.png"));
                 updatePageOne();
                 checkoutPane.getChildren().add(checkoutPageOne);
                 break;
@@ -143,6 +148,7 @@ public class CheckoutController implements Initializable {
                 backButton.setDisable(false);
                 backButton.setText(BACK);
                 forwardButton.setText(FORWARD);
+                wizardImage.setImage(new Image("resources/wizard-2.png"));
                 if(checkoutCardOwnerField.getText().isEmpty())
                     checkoutCardOwnerField.setText(checkoutNameField.getText());
                 updatePageTwo();
@@ -153,6 +159,7 @@ public class CheckoutController implements Initializable {
                 backButton.setDisable(false);
                 backButton.setText(BACK);
                 forwardButton.setDisable(false);
+                wizardImage.setImage(new Image("/resources/wizard-3.png"));
                 forwardButton.setText("Bekräfta beställning");
                 updateOverview();
                 checkoutPane.getChildren().add(checkoutPageThree);
@@ -163,6 +170,7 @@ public class CheckoutController implements Initializable {
                 backButton.setText(BACK);
                 forwardButton.setDisable(true);
                 forwardButton.setText(FORWARD);
+                wizardImage.setImage(new Image("/resources/wizard-4.png"));
                 checkoutPane.getChildren().add(checkoutPageFour);
                 IMatDataHandler.getInstance().getShoppingCart().clear();
                 //IMatDataHandler.getInstance().placeOrder(true);
