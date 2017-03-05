@@ -53,6 +53,7 @@ public class CheckoutController implements Initializable {
     @FXML private Button forwardButton;
 
     @FXML private ImageView wizardImage;
+    @FXML private ImageView successImage;
 
     private ChangeListener<String> checkoutPageOneListener;
     private ChangeListener<String> checkoutPageTwoListener;
@@ -122,6 +123,8 @@ public class CheckoutController implements Initializable {
             newValue = newValue.length() <= 3 ? newValue : newValue.substring(0, 3);
             checkoutCardCVVField.setText(newValue);
         });
+
+        successImage.setImage(new Image("/resources/order_success.png"));
 
         updateState();
     }

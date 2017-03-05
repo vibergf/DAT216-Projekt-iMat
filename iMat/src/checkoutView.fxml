@@ -163,6 +163,7 @@
             <AnchorPane fx:id="checkoutPageFour" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="400.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label alignment="CENTER" styleClass="plainText" text="Din beställning är nu skickad. Tack!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                   <ImageView fx:id="successImage" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" fitHeight="137.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="BOTTOM_CENTER" />
                </children>
             </AnchorPane>
          </children>
