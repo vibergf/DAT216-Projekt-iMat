@@ -51,19 +51,11 @@
                      </image></ImageView>
                </graphic>
             </Button>
-            <Button fx:id="cartButton" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cartButtonPressed" text="Kundvagn" GridPane.columnIndex="5">
+            <Button fx:id="cartButton" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cartButtonPressed" text="Kundvagn" GridPane.columnIndex="6">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@resources/shop-cart-icon.png" />
-                     </image></ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="checkoutButton" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#checkoutButtonPressed" text="Kassa" GridPane.columnIndex="6">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@resources/shopping-bag-icon.png" />
                      </image></ImageView>
                </graphic>
             </Button>

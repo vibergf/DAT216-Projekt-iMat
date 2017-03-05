@@ -18,6 +18,7 @@
 }
 .viewPane {
     -fx-padding: 0 0 40 0;
+    -fx-background-color: #E6F4FB;
 }
 
 .centeredColumn {
@@ -35,8 +36,9 @@
 }
 
 #toolbar {
-    -fx-background-color: #DDDDDD;
+    -fx-background-color: #8CC6E2;
 }
+
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
 }

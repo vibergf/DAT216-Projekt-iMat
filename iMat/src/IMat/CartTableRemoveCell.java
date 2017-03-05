@@ -1,5 +1,7 @@
 package IMat;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -45,6 +47,12 @@ public class CartTableRemoveCell extends TableCell<ShoppingItem, ShoppingItem> {
         if (!(empty || item == null)) {
             setContent();
             setGraphic(hBox);
+            removeButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    IMatDataHandler.getInstance().getShoppingCart().removeItem(item);
+                }
+            });
         }else{
             setGraphic(null);
         }

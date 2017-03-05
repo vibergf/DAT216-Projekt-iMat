@@ -18,10 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.Pair;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.Order;
-import se.chalmers.ait.dat215.project.ShoppingCart;
-import se.chalmers.ait.dat215.project.ShoppingItem;
+import se.chalmers.ait.dat215.project.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -177,6 +174,13 @@ public class CartController implements Initializable {
                     }
                     ShoppingList.addNewShoppingList(new ShoppingList(usernamePassword.getKey(), usernamePassword.getValue(), itemsList));
                 });
+            }
+        });
+
+        IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(new ShoppingCartListener() {
+            @Override
+            public void shoppingCartChanged(CartEvent cartEvent) {
+                cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
             }
         });
     }
