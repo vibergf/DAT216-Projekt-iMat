@@ -186,6 +186,11 @@ public class CartController implements Initializable {
     private void refreshCartView() {
         cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
         sumLabel.setText("Summa: " + formatPrice(dataHandler.getShoppingCart().getTotal()));
+        if (dataHandler.getShoppingCart().getItems().isEmpty()) {
+            saveListButton.setDisable(true);
+        } else {
+            saveListButton.setDisable(false);
+        }
     }
 
     public void onEnter(){
