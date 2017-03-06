@@ -163,7 +163,7 @@
             <AnchorPane fx:id="checkoutPageFour" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="400.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label alignment="CENTER" styleClass="plainText" text="Din beställning är nu skickad. Tack!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                   <ImageView fx:id="successImage" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" fitHeight="137.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="BOTTOM_CENTER" />
+                   <ImageView fx:id="successImage" fitHeight="137.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" BorderPane.alignment="BOTTOM_CENTER" />
                </children>
             </AnchorPane>
          </children>
@@ -178,7 +178,16 @@
                   <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="60.0" prefWidth="90.0" text="Tillbaka" wrapText="true" BorderPane.alignment="CENTER" />
                </left>
                <center>
-                  <ImageView fx:id="wizardImage" fitHeight="47.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                  <AnchorPane BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <ImageView fx:id="wizardImage" fitHeight="39.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="wizardProgressLabel" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+                     </children>
+                  </AnchorPane>
                </center>
             </BorderPane>
          </children>

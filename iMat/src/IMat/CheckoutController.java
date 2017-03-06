@@ -33,6 +33,7 @@ public class CheckoutController implements Initializable {
     @FXML private ListView<ShoppingItem> checkoutOverviewList;
     @FXML private TextArea checkoutOverviewField;
     @FXML private Label checkoutOverviewTotalLabel;
+    @FXML private Label wizardProgressLabel;
 
     @FXML private TextField checkoutNameField;
     @FXML private TextField checkoutAddressField;
@@ -143,6 +144,7 @@ public class CheckoutController implements Initializable {
                 backButton.setText("Tillbaka till kundvagnen");
                 forwardButton.setText(FORWARD);
                 wizardImage.setImage(new Image("/resources/wizard-1.png"));
+                wizardProgressLabel.setText("Kontaktuppgifter");
                 updatePageOne();
                 checkoutPane.getChildren().add(checkoutPageOne);
                 break;
@@ -152,6 +154,7 @@ public class CheckoutController implements Initializable {
                 backButton.setText(BACK);
                 forwardButton.setText(FORWARD);
                 wizardImage.setImage(new Image("resources/wizard-2.png"));
+                wizardProgressLabel.setText("Kortuppgifter");
                 if(checkoutCardOwnerField.getText().isEmpty())
                     checkoutCardOwnerField.setText(checkoutNameField.getText());
                 updatePageTwo();
@@ -163,6 +166,7 @@ public class CheckoutController implements Initializable {
                 backButton.setText(BACK);
                 forwardButton.setDisable(false);
                 wizardImage.setImage(new Image("/resources/wizard-3.png"));
+                wizardProgressLabel.setText("Bekräfta info");
                 forwardButton.setText("Bekräfta beställning");
                 updateOverview();
                 checkoutPane.getChildren().add(checkoutPageThree);
@@ -174,6 +178,7 @@ public class CheckoutController implements Initializable {
                 forwardButton.setDisable(true);
                 forwardButton.setText(FORWARD);
                 wizardImage.setImage(new Image("/resources/wizard-4.png"));
+                wizardProgressLabel.setText("Beställning klar");
                 checkoutPane.getChildren().add(checkoutPageFour);
                 IMatDataHandler.getInstance().getShoppingCart().clear();
                 //IMatDataHandler.getInstance().placeOrder(true);
