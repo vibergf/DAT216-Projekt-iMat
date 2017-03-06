@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="189.0" prefWidth="426.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="189.0" prefWidth="360.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="picture" fitHeight="118.0" fitWidth="199.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="name" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="129.0" text="name" />
@@ -29,7 +29,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="addButton" layoutX="294.0" layoutY="137.0" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="114.0" text="Lägg i vagn">
+      <Button fx:id="addButton" layoutX="218.0" layoutY="34.0" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="114.0" text="Lägg i vagn">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                <image>

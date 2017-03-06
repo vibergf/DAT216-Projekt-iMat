@@ -189,7 +189,7 @@ public class ShoppingListController implements Initializable, PropertyChangeList
             btnAddCart.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     for (ShoppingItem shoppingItem : list.getItems()) {
-                        IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingItem);
+                        IMatController.getInstance().addItem(shoppingItem);
                     }
                     btnAddCart.setText("Listan är Tillagd");
                     btnAddCart.setDefaultButton(true);

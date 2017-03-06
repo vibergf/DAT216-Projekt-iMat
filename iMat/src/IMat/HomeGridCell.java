@@ -88,13 +88,8 @@ public class HomeGridCell extends AnchorPane {
 
     @FXML
     void add() throws InterruptedException {
-        addButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                ShoppingItem item = new ShoppingItem(product,i);
-                dataHandler.getShoppingCart().addItem(item);
-            }
-        });
+        ShoppingItem item = new ShoppingItem(product,i);
+        IMatController.getInstance().addItem(item);
         confirmLabel.setTextFill(Color.GREEN);
         confirmLabel.setText("Du har totalt "+ (antalIVagn+item.getAmount())+product.getUnitSuffix()+" "+ product.getName() + " i kundvagnen");
         antalIVagn = antalIVagn+item.getAmount();

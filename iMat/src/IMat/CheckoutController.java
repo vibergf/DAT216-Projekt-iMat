@@ -34,6 +34,7 @@ public class CheckoutController implements Initializable {
     @FXML private TextArea checkoutOverviewField;
     @FXML private Label checkoutOverviewTotalLabel;
     @FXML private Label wizardProgressLabel;
+    @FXML private Label obligatoryLabel;
 
     @FXML private TextField checkoutNameField;
     @FXML private TextField checkoutAddressField;
@@ -61,6 +62,7 @@ public class CheckoutController implements Initializable {
 
     private int currentPage;
 
+    private static String OBLIGATORY = "*Obligatoriskt fält";
     private static String BACK = "Bakåt";
     private static String FORWARD = "Nästa";
 //    private static String CONFIRM = "Beställ";
@@ -95,6 +97,10 @@ public class CheckoutController implements Initializable {
         checkoutAddressField.textProperty().addListener(checkoutPageOneListener);
         checkoutCityField.textProperty().addListener(checkoutPageOneListener);
         checkoutPhoneField.textProperty().addListener(checkoutPageOneListener);
+        checkoutPhoneField.textProperty().addListener((observable, oldValue, newValue) -> {
+            newValue = newValue.replaceAll("[^\\d]", "");
+            checkoutCardCVVField.setText(newValue);
+        });
 
         checkoutCardOwnerField.textProperty().addListener(checkoutPageTwoListener);
 
@@ -145,6 +151,7 @@ public class CheckoutController implements Initializable {
                 forwardButton.setText(FORWARD);
                 wizardImage.setImage(new Image("/resources/wizard-1.png"));
                 wizardProgressLabel.setText("Kontaktuppgifter");
+                obligatoryLabel.setText(OBLIGATORY);
                 updatePageOne();
                 checkoutPane.getChildren().add(checkoutPageOne);
                 break;
@@ -153,8 +160,9 @@ public class CheckoutController implements Initializable {
                 backButton.setDisable(false);
                 backButton.setText(BACK);
                 forwardButton.setText(FORWARD);
-                wizardImage.setImage(new Image("resources/wizard-2.png"));
+                wizardImage.setImage(new Image("/resources/wizard-2.png"));
                 wizardProgressLabel.setText("Kortuppgifter");
+                obligatoryLabel.setText(OBLIGATORY);
                 if(checkoutCardOwnerField.getText().isEmpty())
                     checkoutCardOwnerField.setText(checkoutNameField.getText());
                 updatePageTwo();
@@ -167,6 +175,7 @@ public class CheckoutController implements Initializable {
                 forwardButton.setDisable(false);
                 wizardImage.setImage(new Image("/resources/wizard-3.png"));
                 wizardProgressLabel.setText("Bekräfta info");
+                obligatoryLabel.setText("");
                 forwardButton.setText("Bekräfta beställning");
                 updateOverview();
                 checkoutPane.getChildren().add(checkoutPageThree);
@@ -179,6 +188,7 @@ public class CheckoutController implements Initializable {
                 forwardButton.setText(FORWARD);
                 wizardImage.setImage(new Image("/resources/wizard-4.png"));
                 wizardProgressLabel.setText("Beställning klar");
+                obligatoryLabel.setText("");
                 checkoutPane.getChildren().add(checkoutPageFour);
                 IMatDataHandler.getInstance().getShoppingCart().clear();
                 //IMatDataHandler.getInstance().placeOrder(true);

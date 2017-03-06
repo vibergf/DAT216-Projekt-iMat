@@ -73,18 +73,38 @@ public class IMatController implements Initializable {
         }
 
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(cartEvent -> {
-            int size = (int) IMatDataHandler.getInstance().getShoppingCart().getTotal();
-            if (size == 0) {
-                cartButton.setText("Kundvagn");
-            } else {
-                cartButton.setText("("+size+" kr) Kundvagn");
-            }
+            updateCartButtonTotal();
         });
+        updateCartButtonTotal();
         homeButtonPressed();
+    }
+
+    private void updateCartButtonTotal(){
+        int total = (int) IMatDataHandler.getInstance().getShoppingCart().getTotal();
+        if (total == 0) {
+            cartButton.setText("Kundvagn");
+        } else {
+            cartButton.setText("("+total+" kr) Kundvagn");
+        }
     }
 
     public static IMatController getInstance(){
         return instance;
+    }
+
+    public void addItem(ShoppingItem item){
+        int index = -1;
+        List<ShoppingItem> list = IMatDataHandler.getInstance().getShoppingCart().getItems();
+        for (int i = 0 ; i < list.size() ; i++){
+            if(list.get(i).getProduct().getName().equals(item.getProduct().getName()))
+                index = i;
+        }
+        if(index != -1){
+            ShoppingItem si = IMatDataHandler.getInstance().getShoppingCart().getItems().get(index);
+            si.setAmount(si.getAmount() + item.getAmount());
+            IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(item, false);
+        }else
+            IMatDataHandler.getInstance().getShoppingCart().addItem(item);
     }
 
     private void switchView(Node newView, Button newButton){
