@@ -30,9 +30,9 @@
                   <TableView fx:id="cartItems" focusTraversable="false" prefHeight="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nameColumn" editable="false" minWidth="200.0" prefWidth="460.0" sortable="false" text="Namn" />
-                      <TableColumn fx:id="amountColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Antal" />
-                        <TableColumn fx:id="priceColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Pris" />
-                        <TableColumn fx:id="removeColumn" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Ta bort" />
+                      <TableColumn fx:id="amountColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Antal" />
+                        <TableColumn fx:id="priceColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Pris" />
+                        <TableColumn fx:id="removeColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Ta bort" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -46,8 +46,8 @@
                      <children>
                         <VBox fillWidth="false" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button fx:id="saveListButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" text="Spara som lista" />
-                              <Button fx:id="clearCartButton" mnemonicParsing="false" onAction="#clearCartButtonPressed" prefHeight="44.0" prefWidth="172.0" text="Töm kundvagn" />
+                              <Button fx:id="saveListButton" focusTraversable="false" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" text="Spara som lista" />
+                              <Button fx:id="clearCartButton" focusTraversable="false" mnemonicParsing="false" onAction="#clearCartButtonPressed" prefHeight="44.0" prefWidth="172.0" text="Töm kundvagn" />
                            </children>
                         </VBox>
                         <VBox fillWidth="false" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
@@ -57,7 +57,7 @@
                                     <Font size="29.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="checkoutButton" mnemonicParsing="false" onAction="#checkoutButtonPressed" prefHeight="52.0" prefWidth="172.0" text="Gå till kassan" />
+                              <Button fx:id="checkoutButton" focusTraversable="false" mnemonicParsing="false" onAction="#checkoutButtonPressed" prefHeight="52.0" prefWidth="172.0" text="Gå till kassan" />
                            </children>
                         </VBox>
                      </children>

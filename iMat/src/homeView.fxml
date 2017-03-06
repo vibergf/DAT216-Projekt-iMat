@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane styleClass="viewPane" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.HomeController">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -24,13 +23,16 @@
                      <children>
                         <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox spacing="5.0">
+                              <HBox maxWidth="195.0" spacing="5.0">
                                  <children>
-                                    <TextField fx:id="searchField" HBox.hgrow="ALWAYS" />
-                                    <Button fx:id="searchButt" mnemonicParsing="false" onAction="#returnSearch" text="Sök" HBox.hgrow="NEVER" />
+                                    <TextField fx:id="searchField" maxWidth="145.0" onAction="#returnSearch" styleClass="inputField" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="searchButt" focusTraversable="false" mnemonicParsing="false" onAction="#returnSearch" text="Sök" HBox.hgrow="NEVER">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin></Button>
                                  </children>
                               </HBox>
-                              <ListView fx:id="aList" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#listClicked" prefWidth="200.0" styleClass="plainText" />
+                              <ListView fx:id="aList" focusTraversable="false" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#listClicked" prefWidth="195.0" styleClass="plainText" />
                            </children>
                            <padding>
                               <Insets top="5.0" />
@@ -41,7 +43,7 @@
                               <AnchorPane>
                                  <children>
                                     <FlowPane fx:id="itemGrid" hgap="20.0" prefWrapLength="800.0" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                    <TextArea fx:id="Valkommen" editable="false" styleClass="plainText" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TextArea fx:id="Valkommen" editable="false" focusTraversable="false" styleClass="plainText" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </content>

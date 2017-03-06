@@ -26,7 +26,7 @@
       </AnchorPane>
       <AnchorPane fx:id="checkoutPane" maxHeight="-Infinity" prefHeight="370.0">
          <children>
-            <AnchorPane fx:id="checkoutPageOne" maxWidth="-Infinity" prefWidth="400.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="checkoutPageOne" maxWidth="-Infinity" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -80,19 +80,19 @@
                               <TextField fx:id="checkoutPhoneField" styleClass="inputField" />
                            </children>
                         </VBox>
-                        <CheckBox mnemonicParsing="false" styleClass="plainText" text="Spara mina personuppgifter till nästa gång" />
+                        <CheckBox focusTraversable="false" mnemonicParsing="false" styleClass="plainText" text="Spara mina personuppgifter till nästa gång" />
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="checkoutPageTwo" maxWidth="-Infinity" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="checkoutPageTwo" maxWidth="-Infinity" prefWidth="400.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <HBox spacing="10.0">
                            <children>
                               <Label styleClass="plainText" text="Korttyp*" />
-                              <ChoiceBox fx:id="checkoutCardTypeField" prefWidth="100.0" styleClass="inputField" />
+                              <ChoiceBox fx:id="checkoutCardTypeField" focusTraversable="false" prefWidth="100.0" styleClass="inputField" />
                            </children>
                         </HBox>
                         <VBox>
@@ -129,7 +129,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <CheckBox mnemonicParsing="false" styleClass="plainText" text="Spara mina kortuppgifter till nästa gång" />
+                        <CheckBox focusTraversable="false" mnemonicParsing="false" styleClass="plainText" text="Spara mina kortuppgifter till nästa gång" />
                      </children>
                   </VBox>
                </children>
@@ -141,12 +141,12 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <ListView fx:id="checkoutOverviewList" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ListView fx:id="checkoutOverviewList" focusTraversable="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <TextArea fx:id="checkoutOverviewField" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="plainText" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <TextArea fx:id="checkoutOverviewField" editable="false" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" styleClass="plainText" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </items>
@@ -170,10 +170,10 @@
          <children>
             <BorderPane AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                <right>
-                  <Button fx:id="forwardButton" mnemonicParsing="false" onAction="#forwardButtonPressed" prefHeight="60.0" prefWidth="90.0" text="Nästa" wrapText="true" BorderPane.alignment="CENTER" />
+                  <Button fx:id="forwardButton" focusTraversable="false" mnemonicParsing="false" onAction="#forwardButtonPressed" prefHeight="60.0" prefWidth="90.0" text="Nästa" wrapText="true" BorderPane.alignment="CENTER" />
                </right>
                <left>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="60.0" prefWidth="90.0" text="Tillbaka" wrapText="true" BorderPane.alignment="CENTER" />
+                  <Button fx:id="backButton" focusTraversable="false" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="60.0" prefWidth="90.0" text="Tillbaka" wrapText="true" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <AnchorPane BorderPane.alignment="CENTER">

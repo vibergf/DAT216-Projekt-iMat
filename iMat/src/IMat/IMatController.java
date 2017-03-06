@@ -44,6 +44,7 @@ public class IMatController implements Initializable {
 
     private CheckoutController checkoutController;
     private ShoppingListController listController;
+    private HistoryController historyController;
     private CartController cartController;
 
     private static final String DATE_FORMAT = "dd/MM - yyyy";
@@ -61,6 +62,7 @@ public class IMatController implements Initializable {
             listController = loader.getController();
             loader = new FXMLLoader(getClass().getResource("/historyView.fxml"));
             historyView = loader.load();
+            historyController = loader.getController();
             loader = new FXMLLoader(getClass().getResource("/cartView.fxml"));
             cartView = loader.load();
             cartController = loader.getController();
@@ -84,7 +86,7 @@ public class IMatController implements Initializable {
         if (total == 0) {
             cartButton.setText("Kundvagn");
         } else {
-            cartButton.setText("("+total+" kr) Kundvagn");
+            cartButton.setText("Kundvagn ("+ formatPrice(total) + ")");
         }
     }
 
@@ -147,6 +149,7 @@ public class IMatController implements Initializable {
 
     @FXML
     public void historyButtonPressed(){
+        historyController.onEnter();
         switchView(historyView, historyButton);
     }
 

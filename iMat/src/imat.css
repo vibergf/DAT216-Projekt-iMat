@@ -6,7 +6,7 @@
 }
 .plainText {
     -fx-font-family: "Verdana";
-    -fx-font-size: 16px;
+    -fx-font-size: 15px;
 }
 .receiptText {
     -fx-font-family: "Consolas";
@@ -25,6 +25,10 @@
     -fx-alignment: center;
 }
 
+.button {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 13px;
+}
 .buttonHighlight {
     -fx-background-color: #E6F4FB;
 }
@@ -33,6 +37,9 @@
 }
 .customList .list-cell:empty {
     -fx-opacity: 0;
+}
+.list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#65ADFD 0%, #429DEF 100%);
 }
 
 #toolbar {

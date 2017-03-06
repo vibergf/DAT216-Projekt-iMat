@@ -103,6 +103,10 @@ public class HistoryController implements Initializable {
         mainView.setVisible(true);
     }
 
+    public void onEnter(){
+        switchToMainView();
+    }
+
     @FXML private void detailedViewBackButtonPressed(){
         switchToMainView();
     }

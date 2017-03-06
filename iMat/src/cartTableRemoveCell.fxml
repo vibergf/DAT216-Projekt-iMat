@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <Button minWidth="54" minHeight="43" fx:id="removeButton" mnemonicParsing="false" prefHeight="10.0" prefWidth="0.0">
+      <Button fx:id="removeButton" focusTraversable="false" minHeight="43" minWidth="54" mnemonicParsing="false" prefHeight="10.0" prefWidth="0.0">
          <graphic>
               <ImageView fx:id="removeImage" fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
