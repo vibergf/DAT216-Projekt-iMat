@@ -7,13 +7,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="labelTitle" layoutX="30.0" layoutY="21.0" text="Börjes Kakor">
          <font>
             <Font size="25.0" />
          </font></Label>
-      <Button fx:id="btnDetails" focusTraversable="false" layoutX="341.0" layoutY="111.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="94.0" text="Detaljer" />
+      <Button fx:id="btnDetails" focusTraversable="false" layoutX="341.0" layoutY="111.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="94.0" text="Detaljer">
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Button-Info-icon.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Button fx:id="btnDelete" alignment="BOTTOM_CENTER" contentDisplay="TOP" focusTraversable="false" layoutX="659.0" layoutY="40.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="80.0" text="Ta bort">
           <graphic>
               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">

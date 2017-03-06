@@ -1,7 +1,5 @@
 package IMat;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -61,7 +59,6 @@ public class HomeGridCell extends AnchorPane {
         name.setText(product.getName());
         name.setFont(Font.font(20));
         units.setText(item.getAmount()+"");
-        //units.setText(i+"");
         units.setFont(Font.font(20));
         priceLabel.setText(product.getPrice()+" "+product.getUnit());
     }
@@ -70,8 +67,6 @@ public class HomeGridCell extends AnchorPane {
     void upPressed() {
         i = i+1;
         units.setText(i+"");
-       /*  item.setAmount(item.getAmount()+1);
-        units.setText(item.getAmount()+"");*/
     }
 
     @FXML
@@ -79,24 +74,22 @@ public class HomeGridCell extends AnchorPane {
         if(i > 1){
             i=(i-1);
             units.setText(i+"");
-        }/*
-        if(item.getAmount()> 1) {
-            item.setAmount(item.getAmount() - 1);
-            units.setText(item.getAmount() + "");
-        }*/
+        }
     }
 
     @FXML
     void add() throws InterruptedException {
         ShoppingItem item = new ShoppingItem(product,i);
         IMatController.getInstance().addItem(item);
+        for(int n=0;n<dataHandler.getShoppingCart().getItems().size();n++) {
+            if(dataHandler.getShoppingCart().getItems().get(n).getProduct().equals(product)) {
+                antalIVagn = dataHandler.getShoppingCart().getItems().get(n).getAmount();
+            }
+        }
         confirmLabel.setTextFill(Color.GREEN);
-        confirmLabel.setText("Du har totalt "+ (antalIVagn+item.getAmount())+product.getUnitSuffix()+" "+ product.getName() + " i kundvagnen");
-        antalIVagn = antalIVagn+item.getAmount();
-        //item.setAmount(1.0);
+        confirmLabel.setText("Du har totalt "+ antalIVagn+product.getUnitSuffix()+" "+ product.getName() + " i kundvagnen");
         i=1.0;
         units.setText(i+"");
-       // units.setText(item.getAmount()+"");
     }
 
 
