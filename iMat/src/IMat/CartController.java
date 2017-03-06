@@ -35,7 +35,7 @@ public class CartController implements Initializable {
 
     //TODO add listener for shopping cart for better code
 
-    //TODO add functionality for removing a single object in the cart
+    //TODO add spinner for amount
 
     @FXML
     private javafx.scene.control.Label cartLabel;
@@ -94,11 +94,19 @@ public class CartController implements Initializable {
             public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
                 TableCell<ShoppingItem, ShoppingItem> cell = new CartTableRemoveCell();
                 return cell;
-                //TODO remove unnecessary types
             }
         });
 
+        //TODO fix this shit
+      /*  amountColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
+            @Override
+            public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
+                TableCell<ShoppingItem, ShoppingItem> cell = new CartTableAmountCell();
+                return cell;
+            }
+        });
 
+*/
         nameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
         amountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
         priceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
@@ -188,8 +196,12 @@ public class CartController implements Initializable {
         sumLabel.setText("Summa: " + formatPrice(dataHandler.getShoppingCart().getTotal()));
         if (dataHandler.getShoppingCart().getItems().isEmpty()) {
             saveListButton.setDisable(true);
+            clearCartButton.setDisable(true);
+            checkoutButton.setDisable(true);
         } else {
             saveListButton.setDisable(false);
+            clearCartButton.setDisable(false);
+            checkoutButton.setDisable(false);
         }
     }
 
@@ -216,31 +228,9 @@ public class CartController implements Initializable {
 
     }
 
-//    @FXML
-//    public void saveListButtonPressed(){
-//        TextInputDialog dialog = new TextInputDialog();
-//        dialog.setTitle("Spara som lista");
-//        dialog.setHeaderText("Fyll i namn och beskrvning för din lista");
-//        TextField name = new TextField();
-//        TextField description = new TextField();
-//
-//      /*  GridPane grid = new GridPane();
-//        grid.setHgap(10);
-//        grid.setVgap(10);
-//        grid.setPadding(new Insets(20,150,10,10));
-//        grid.add(new javafx.scene.control.Label("Namn"), 0 ,0);
-//        grid.add(name, 1, 0);
-//        grid.add(new javafx.scene.control.Label("Beskrvining"), 0 ,0);
-//        grid.add(description, 1, 1);
-//*/
-//        dialog.showAndWait();
-//    }
-
-
     //test
     @FXML public void checkoutButtonPressed(){
         IMatController.getInstance().checkoutButtonPressed();
     }
 
-    //TODO add spinner for amount, add remove button for each object and functionality for saving cart as a list
 }
