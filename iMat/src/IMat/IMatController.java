@@ -49,6 +49,7 @@ public class IMatController implements Initializable {
 
     private static final String DATE_FORMAT = "dd/MM - yyyy";
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("0.00");
+    private static final DecimalFormat LABEL_FORMAT = new DecimalFormat("#.##");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -106,7 +107,8 @@ public class IMatController implements Initializable {
             si.setAmount(si.getAmount() + item.getAmount());
             IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(item, false);
         }else
-            IMatDataHandler.getInstance().getShoppingCart().addItem(item);
+            IMatDataHandler.getInstance().getShoppingCart().addProduct(item.getProduct(), item.getAmount());
+        // Viktigt att använda addProduct för att undvika aliasing.
     }
 
     private void switchView(Node newView, Button newButton){
@@ -127,9 +129,17 @@ public class IMatController implements Initializable {
         return total;
     }
 
+    public static String formatAmount(double amount) {
+        return LABEL_FORMAT.format(amount).replaceAll("\\.", ",");
+    }
+
     public static String formatPrice(double price){
         return (DECIMAL_FORMAT.format(price) + " kr").replaceAll("\\.", ",");
         //return price + " :-";
+    }
+
+    public static String formatPriceWithUnit(double price, String suffix) {
+        return (DECIMAL_FORMAT.format(price) + " " + suffix.toLowerCase()).replaceAll("\\.", ",");
     }
 
     public static String formatDate(Date date){

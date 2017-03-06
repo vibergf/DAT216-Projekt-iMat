@@ -46,7 +46,14 @@
     -fx-background-color: #8CC6E2;
 }
 
-
+.homeGridCell {
+    -fx-border-color: #666666;
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+    -fx-padding: 7px;
+    -fx-background-color: #E6F4FB;
+    -fx-background-insets: 3px;
+}
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
 }
