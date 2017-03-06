@@ -45,7 +45,20 @@
 #toolbar {
     -fx-background-color: #8CC6E2;
 }
-
+.homeGrid {
+    -fx-border-color: #666666;
+    -fx-border-width: 2px;
+}
+.homeGridTextArea {
+    -fx-background-color: #FFFFFF;
+}
+.homeGridTextArea .content {
+    -fx-background-color: #FFFFFF;
+}
+.homeGridFlowPane {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 7 0 7 7;
+}
 .homeGridCell {
     -fx-border-color: #666666;
     -fx-border-radius: 10px;
