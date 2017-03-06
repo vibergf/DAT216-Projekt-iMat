@@ -28,8 +28,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static IMat.IMatController.formatDate;
 import static IMat.IMatController.formatPrice;
@@ -53,6 +52,7 @@ public class ShoppingListController implements Initializable, PropertyChangeList
 
     @FXML private Button btnBackToList;
     @FXML private Label labelTopTitle;
+    @FXML private Label labelNoLists;
 
     @FXML private TableView<ShoppingItem> detailedViewTable;
     @FXML private TableColumn<ShoppingItem, ShoppingItem> detailedViewNameColumn;
@@ -64,6 +64,7 @@ public class ShoppingListController implements Initializable, PropertyChangeList
     private void switchToList() {
         shoppingListView.setVisible(true);
         listDetailsView.setVisible(false);
+        labelNoLists.setVisible(ShoppingList.getAllShoppingLists().isEmpty());
     }
 
     private void switchToDetails(ShoppingList list) {
@@ -84,7 +85,6 @@ public class ShoppingListController implements Initializable, PropertyChangeList
         detailedViewNameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
         detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
         detailedViewPriceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
-
         detailedViewTable.setItems(FXCollections.observableList(list.getItems()));
     }
 
@@ -106,8 +106,11 @@ public class ShoppingListController implements Initializable, PropertyChangeList
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        items = FXCollections.observableArrayList (ShoppingList.getAllShoppingLists());
+        java.util.List<ShoppingList> shoppingLists = ShoppingList.getAllShoppingLists();
+        items = FXCollections.observableArrayList (shoppingLists);
+        labelNoLists.setVisible(ShoppingList.getAllShoppingLists().isEmpty());
         shoppingList.setItems(items);
+
         switchToList();
     }
 
