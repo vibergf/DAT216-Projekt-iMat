@@ -203,6 +203,8 @@ public class CartController implements Initializable {
             clearCartButton.setDisable(false);
             checkoutButton.setDisable(false);
         }
+        cartItems.getColumns().get(0).setVisible(false);
+        cartItems.getColumns().get(0).setVisible(true);
     }
 
     public void onEnter(){
