@@ -22,10 +22,11 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
     @FXML protected HBox hBox;
     @FXML
     private Label units;
-    @FXML
-    private Button incButton;
-    @FXML
-    private Button decButton;
+    @FXML protected Button incAmountButton;
+    @FXML protected Button decAmountButton;
+
+    @FXML protected ImageView incImageView;
+    @FXML protected ImageView decImageView;
 
     private FXMLLoader loader;
 
@@ -47,7 +48,7 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
 //        super.updateItem(item, empty);
 
         if (!(empty || item == null)) {
-            setContent(item);
+            setContent();
             setGraphic(hBox);
         }else{
             setGraphic(null);
@@ -55,7 +56,12 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
     }
 
 
-    private void setContent(ShoppingItem item) {
+
+    private void setContent() {
+        Image incImage = new Image("/resources/Arrow-Down-icon.png");
+        Image decImage = new Image("/resources/Arrow-Up-icon.png");
+        incImageView.setImage(incImage);
+        decImageView.setImage(decImage);
 
     }
 
@@ -75,5 +81,7 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
         }
     }
 }
+
+
 
 
