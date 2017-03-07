@@ -108,7 +108,7 @@ public class CartController implements Initializable {
 
 */
         nameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
-        amountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
+        amountColumn.setCellValueFactory(c-> new SimpleStringProperty(IMatController.formatAmount(c.getValue().getAmount())));
         priceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
         removeColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
 

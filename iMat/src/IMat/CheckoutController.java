@@ -99,7 +99,7 @@ public class CheckoutController implements Initializable {
         checkoutPhoneField.textProperty().addListener(checkoutPageOneListener);
         checkoutPhoneField.textProperty().addListener((observable, oldValue, newValue) -> {
             newValue = newValue.replaceAll("[^\\d]", "");
-            checkoutCardCVVField.setText(newValue);
+            checkoutPhoneField.setText(newValue);
         });
 
         checkoutCardOwnerField.textProperty().addListener(checkoutPageTwoListener);

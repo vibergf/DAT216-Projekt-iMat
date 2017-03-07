@@ -67,6 +67,10 @@
     -fx-background-color: #E6F4FB;
     -fx-background-insets: 3px;
 }
+.homeGridCell .text-field {
+    -fx-padding: 2px;
+    -fx-alignment: center;
+}
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
 }

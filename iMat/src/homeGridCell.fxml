@@ -32,7 +32,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Spinner fx:id="amountSpinner" editable="true" prefHeight="50.0" prefWidth="65.0" styleClass="inputField" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+      <Spinner fx:id="amountSpinner" editable="true" prefHeight="50.0" prefWidth="65.0" styleClass="receiptText" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
       <Label fx:id="confirmLabel" styleClass="plainText" text="5 st i kundvagnen." wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
       <Label fx:id="priceLabel" styleClass="plainText" text="59 kr" GridPane.columnIndex="1" />
    </children>

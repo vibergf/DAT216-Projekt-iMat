@@ -45,13 +45,13 @@ public class HomeController implements Initializable{
 
     @Override
         public void initialize (URL location, ResourceBundle resources){
-          Valkommen.setText("Välkommen till IMat" + "\n"
+          Valkommen.setText("Välkommen till IMat!" + "\n" + "\n"
                 + "I denna app kan du: " + "\n"
-                + "\t" + "-Söka & handla alla våra matvaror"
-                + "\n" + "\t" + "-Hålla koll på dina köp mha vår histoikfunktion"
-                + "\n" + "\t" + "-Göra dina egna inköpslistor så att du snabbt och lätt kan handla"
-                + "\n" + "\n" + "Längst upp på skärmen har du verktyg för att komma åt alla delar av programmet"
-                + "\n" + "Till vänster kan du söka efter varor eller välja en kategori.");
+                + "\t" + "- Söka & handla bland ett stort utbud av matvaror."
+                + "\n" + "\t" + "- Hålla koll på dina köp med hjälp av historikfunktionen."
+                + "\n" + "\t" + "- Göra dina egna inköpslistor som du sedan kan lägga i kundvagnen med ett enda klick."
+                + "\n" + "\n" + "Längst upp på skärmen har du verktyg för att komma åt alla delar av programmet."
+                + "\n" + "Använd sökfältet till vänster eller bläddra bland kategorier för att börja handla!");
 
         ObservableList<String> items = FXCollections.observableArrayList(
                 "Bröd",

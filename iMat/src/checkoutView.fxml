@@ -170,10 +170,10 @@
          <children>
             <BorderPane AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                <right>
-                  <Button fx:id="forwardButton" focusTraversable="false" mnemonicParsing="false" onAction="#forwardButtonPressed" prefHeight="60.0" prefWidth="90.0" text="Nästa" wrapText="true" BorderPane.alignment="CENTER" />
+                  <Button fx:id="forwardButton" focusTraversable="false" mnemonicParsing="false" onAction="#forwardButtonPressed" prefHeight="60.0" prefWidth="100.0" text="Nästa" wrapText="true" BorderPane.alignment="CENTER" />
                </right>
                <left>
-                  <Button fx:id="backButton" focusTraversable="false" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="60.0" prefWidth="90.0" text="Tillbaka" wrapText="true" BorderPane.alignment="CENTER" />
+                  <Button fx:id="backButton" focusTraversable="false" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="60.0" prefWidth="100.0" text="Tillbaka" wrapText="true" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <AnchorPane BorderPane.alignment="CENTER">

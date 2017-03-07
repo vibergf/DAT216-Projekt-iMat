@@ -96,7 +96,7 @@ public class HistoryController implements Initializable {
             }
         });
         detailedViewNameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
-        detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
+        detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty(IMatController.formatAmount(c.getValue().getAmount())));
         detailedViewPriceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
 
         detailedView.setVisible(false);

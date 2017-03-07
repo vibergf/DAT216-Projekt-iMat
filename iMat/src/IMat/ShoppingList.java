@@ -61,10 +61,10 @@ public class ShoppingList {
         List<Product> allItems = dataHandler.getProducts();
         List<ShoppingList> result = new ArrayList<>();
         result.add(new ShoppingList("Börjes Kakor", "Börjes specialkakor. Underbara!", getRandomItems(allItems, 5)));
-        result.add(new ShoppingList("Veckolistan", "De vanliga jag brukar köpa.", getRandomItems(allItems, 7)));
+        result.add(new ShoppingList("Veckolistan", "Det vanliga jag brukar köpa.", getRandomItems(allItems, 7)));
         result.add(new ShoppingList("Emils Hamburgare", "Stekta i Surte tågvagn.", getRandomItems(allItems, 3)));
-        result.add(new ShoppingList("Thai gryta", "God Thai gryta. Färsk riven ingefära.", getRandomItems(allItems, 10)));
-        result.add(new ShoppingList("Apelsin saft", "De som behövs för att göra god saft.", getRandomItems(allItems, 12)));
+        result.add(new ShoppingList("Thai gryta", "God Thai-gryta. Färsk riven ingefära.", getRandomItems(allItems, 10)));
+        result.add(new ShoppingList("Apelsin saft", "Det som behövs för att göra god saft.", getRandomItems(allItems, 12)));
         return result;
     }
 
@@ -98,16 +98,16 @@ public class ShoppingList {
         return items;
     }
 
-    public String getPriceString() {
-        double price = Math.round(getPrice() * 100.0) / 100.0;
-        String s = String.valueOf(price).replaceAll("\\.", ",");
-        int p1 = (int) ((price*100) % 10);
-        if (p1 == 0) {
-            s = s + "0";
-        }
-        s = s + " :-";
-        return s;
-    }
+//    public String getPriceString() {
+//        double price = Math.round(getPrice() * 100.0) / 100.0;
+//        String s = String.valueOf(price).replaceAll("\\.", ",");
+//        int p1 = (int) ((price*100) % 10);
+//        if (p1 == 0) {
+//            s = s + "0";
+//        }
+//        s = s + " :-";
+//        return s;
+//    }
     public double getPrice() {
         if (items == null) {
             return 0.0;

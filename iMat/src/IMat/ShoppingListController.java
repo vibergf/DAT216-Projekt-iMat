@@ -73,7 +73,7 @@ public class ShoppingListController implements Initializable, PropertyChangeList
         labelTopTitle.setText(list.getName());
         selectedList = list;
 
-        detailedViewSumLabel.setText("Summa: " + list.getPriceString());
+        detailedViewSumLabel.setText("Summa: " + formatPrice(list.getPrice()));
 
         detailedViewNameColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
             @Override
@@ -83,7 +83,7 @@ public class ShoppingListController implements Initializable, PropertyChangeList
             }
         });
         detailedViewNameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
-        detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty((int)c.getValue().getAmount() + ""));
+        detailedViewAmountColumn.setCellValueFactory(c-> new SimpleStringProperty(IMatController.formatAmount(c.getValue().getAmount())));
         detailedViewPriceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
         detailedViewTable.setItems(FXCollections.observableList(list.getItems()));
     }
@@ -171,7 +171,7 @@ public class ShoppingListController implements Initializable, PropertyChangeList
             labelTitle.setText(list.getName());
             labelDetails.setText(list.getDescription());
             labelSummary.setText(list.getShortIngredients());
-            labelPrice.setText(list.getPriceString());
+            labelPrice.setText(formatPrice(list.getPrice()));
             btnDelete.setOnAction(e -> {
                 ButtonType yes = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "",
