@@ -6,7 +6,7 @@
 }
 .plainText {
     -fx-font-family: "Verdana";
-    -fx-font-size: 16px;
+    -fx-font-size: 15px;
 }
 .receiptText {
     -fx-font-family: "Consolas";
@@ -25,8 +25,12 @@
     -fx-alignment: center;
 }
 
+.button {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 13px;
+}
 .buttonHighlight {
-    -fx-background-color: lightblue;
+    -fx-background-color: #E6F4FB;
 }
 .customTable .table-row-cell:empty {
     -fx-opacity: 0;
@@ -34,11 +38,35 @@
 .customList .list-cell:empty {
     -fx-opacity: 0;
 }
+.list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#65ADFD 0%, #429DEF 100%);
+}
 
 #toolbar {
     -fx-background-color: #8CC6E2;
 }
-
+.homeGrid {
+    -fx-border-color: #666666;
+    -fx-border-width: 2px;
+}
+.homeGridTextArea {
+    -fx-background-color: #FFFFFF;
+}
+.homeGridTextArea .content {
+    -fx-background-color: #FFFFFF;
+}
+.homeGridFlowPane {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 7 0 7 7;
+}
+.homeGridCell {
+    -fx-border-color: #666666;
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+    -fx-padding: 7px;
+    -fx-background-color: #E6F4FB;
+    -fx-background-insets: 3px;
+}
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
 }

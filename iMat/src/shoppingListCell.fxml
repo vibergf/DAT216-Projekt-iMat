@@ -13,9 +13,9 @@
          <font>
             <Font size="25.0" />
          </font></Label>
-      <Button fx:id="btnDetails" focusTraversable="false" layoutX="341.0" layoutY="111.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="94.0" text="Detaljer">
+      <Button fx:id="btnDetails" focusTraversable="false" layoutX="331.0" layoutY="111.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0" text="Detaljer">
          <graphic>
-            <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Button-Info-icon.png" />
                </image>
