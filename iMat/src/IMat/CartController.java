@@ -68,19 +68,19 @@ public class CartController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        // dataHandler.getShoppingCart();
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(2));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(11));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(21));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(26));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(30));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(8));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(20));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(22));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(23));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(24));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(25));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(27));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(2));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(11));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(21));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(26));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(30));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(8));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(20));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(22));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(23));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(24));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(25));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(27));
 
         nameColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
             @Override
@@ -189,10 +189,10 @@ public class CartController implements Initializable {
                 refreshCartView();
             }
         });
+        cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
     }
 
     private void refreshCartView() {
-        cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
         sumLabel.setText("Summa: " + formatPrice(dataHandler.getShoppingCart().getTotal()));
         if (dataHandler.getShoppingCart().getItems().isEmpty()) {
             saveListButton.setDisable(true);
@@ -223,7 +223,6 @@ public class CartController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == yes){
             dataHandler.getShoppingCart().clear();
-            cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
         } else {
             alert.close();
         }

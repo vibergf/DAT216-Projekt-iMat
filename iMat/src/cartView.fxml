@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane styleClass="viewPane" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CartController">
+<AnchorPane styleClass="viewPane" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CartController">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -29,7 +29,7 @@
          <center>
             <AnchorPane maxWidth="-Infinity" prefWidth="1400.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="cartItems" focusTraversable="false" prefHeight="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="cartItems" focusTraversable="false" maxWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nameColumn" editable="false" minWidth="200.0" prefWidth="460.0" sortable="false" text="Namn" />
                       <TableColumn fx:id="amountColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" styleClass="centeredColumn" text="Antal" />

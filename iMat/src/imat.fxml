@@ -27,7 +27,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="homeButton" contentDisplay="TOP" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.9976931348623157E308" mnemonicParsing="false" onAction="#homeButtonPressed" text="Handla">
+            <Button fx:id="homeButton" contentDisplay="TOP" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.9976931348623157E308" mnemonicParsing="false" onAction="#homeButtonPressed" styleClass="toolbarButton" text="Handla">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -35,7 +35,7 @@
                      </image></ImageView>
                </graphic>
             </Button>
-            <Button fx:id="listButton" contentDisplay="TOP" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.9976931348623157E308" mnemonicParsing="false" onAction="#listButtonPressed" text="Listor" GridPane.columnIndex="1">
+            <Button fx:id="listButton" contentDisplay="TOP" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.9976931348623157E308" mnemonicParsing="false" onAction="#listButtonPressed" styleClass="toolbarButton" text="Listor" GridPane.columnIndex="1">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
                      </image></ImageView>
                </graphic>
             </Button>
-            <Button fx:id="historyButton" contentDisplay="TOP" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.9976931348623157E308" mnemonicParsing="false" onAction="#historyButtonPressed" text="Historik" GridPane.columnIndex="2">
+            <Button fx:id="historyButton" contentDisplay="TOP" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.9976931348623157E308" mnemonicParsing="false" onAction="#historyButtonPressed" styleClass="toolbarButton" text="Historik" GridPane.columnIndex="2">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -51,7 +51,7 @@
                      </image></ImageView>
                </graphic>
             </Button>
-            <Button fx:id="cartButton" contentDisplay="TOP" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.9976931348623157E308" mnemonicParsing="false" onAction="#cartButtonPressed" text="Kundvagn (435 kr)" GridPane.columnIndex="5" GridPane.columnSpan="2">
+            <Button fx:id="cartButton" contentDisplay="TOP" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.9976931348623157E308" mnemonicParsing="false" onAction="#cartButtonPressed" styleClass="toolbarButton" text="Kundvagn (435 kr)" GridPane.columnIndex="5" GridPane.columnSpan="2">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>

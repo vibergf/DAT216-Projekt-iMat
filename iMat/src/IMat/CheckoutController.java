@@ -145,7 +145,6 @@ public class CheckoutController implements Initializable {
         checkoutPane.getChildren().clear();
         switch(currentPage){
             case 0:
-                //TODO Set wizard progress
                 backButton.setDisable(false);
                 backButton.setText("Tillbaka till kundvagnen");
                 forwardButton.setText(FORWARD);
@@ -156,7 +155,6 @@ public class CheckoutController implements Initializable {
                 checkoutPane.getChildren().add(checkoutPageOne);
                 break;
             case 1:
-                //TODO Set wizard progress
                 backButton.setDisable(false);
                 backButton.setText(BACK);
                 forwardButton.setText(FORWARD);
@@ -169,7 +167,6 @@ public class CheckoutController implements Initializable {
                 checkoutPane.getChildren().add(checkoutPageTwo);
                 break;
             case 2:
-                //TODO Set wizard progress
                 backButton.setDisable(false);
                 backButton.setText(BACK);
                 forwardButton.setDisable(false);
@@ -181,7 +178,6 @@ public class CheckoutController implements Initializable {
                 checkoutPane.getChildren().add(checkoutPageThree);
                 break;
             case 3:
-                //TODO Set wizard progress
                 backButton.setDisable(true);
                 backButton.setText(BACK);
                 forwardButton.setDisable(true);

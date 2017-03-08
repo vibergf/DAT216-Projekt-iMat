@@ -1,5 +1,6 @@
 package IMat;
 
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -27,7 +28,6 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
     private static final int SPINNER_INT_INCREMENT = 1;
     private static final int SPINNER_MAX = 99;
 
-
     private ShoppingItem item;
 
 
@@ -39,6 +39,11 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
             loader.load();
         } catch (IOException e) { e.printStackTrace(); }
 
+//        amountSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println(item.getProduct() + " " + oldValue + " " + newValue);
+//            item.setAmount(newValue);
+//            IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(item, false);
+//        });
     }
 
     @Override
@@ -55,51 +60,14 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
 
 
     private void setContent(ShoppingItem item) {
-
-            Product product = item.getProduct();
-           String unit = product.getUnit().toLowerCase();
+        this.item = item;
+        String unit = item.getProduct().getUnit().toLowerCase();
            if (unit.equals("kr/kg")) {
-               this.item = new ShoppingItem(product, 0.1);
                amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(
-                       SPINNER_DOUBLE_INCREMENT, SPINNER_MAX, SPINNER_DOUBLE_INCREMENT, SPINNER_DOUBLE_INCREMENT));
-               amountSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
-                   item.setAmount((double) newValue);
-               });
-               amountSpinner.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-                   if (newValue.equals(oldValue))
-                       return;
-                   if (newValue.length() != 0) {
-//                    if (Double.parseDouble(newValue) > SPINNER_MAX)
-//                        newValue = oldValue;
-//                    if (Double.parseDouble(newValue) <= 0)
-//                        newValue = "0.1";
-//                    Platform.runLater(() -> {
-//                        amountSpinner.getValueFactory().setValue(Double.parseDouble(newValue));
-//                    });
-                   }
-//                amountSpinner.getEditor().setText(newValue);
-               });
+                       SPINNER_DOUBLE_INCREMENT, SPINNER_MAX, item.getAmount(), SPINNER_DOUBLE_INCREMENT));
            } else {
-               this.item = new ShoppingItem(product, 1);
                amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(
-                       SPINNER_INT_INCREMENT, SPINNER_MAX, SPINNER_INT_INCREMENT, SPINNER_INT_INCREMENT));
-               amountSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
-                   item.setAmount(newValue);
-               });
-               amountSpinner.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-                   if (newValue.equals(oldValue))
-                       return;
-                   newValue = newValue.replaceAll("\\D", "");
-                   if (newValue.length() != 0) {
-                       if (Integer.parseInt(newValue) > SPINNER_MAX)
-                           newValue = oldValue;
-                       if (Integer.parseInt(newValue) <= 0)
-                           newValue = "1";
-                       amountSpinner.getValueFactory().setValue(Double.parseDouble(newValue));
-                   }
-
-                   amountSpinner.getEditor().setText(newValue);
-               });
+                       SPINNER_INT_INCREMENT, SPINNER_MAX, item.getAmount(), SPINNER_INT_INCREMENT));
            }
        }
     }
