@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane styleClass="viewPane" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CartController">
+<AnchorPane styleClass="viewPane" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IMat.CartController">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -48,7 +48,7 @@
                      <children>
                         <VBox fillWidth="false" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button fx:id="saveListButton" focusTraversable="false" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" text="Spara som lista">
+                              <Button fx:id="saveListButton" focusTraversable="false" mnemonicParsing="false" prefHeight="44.0" prefWidth="172.0" styleClass="buttonMain" text="Spara som lista">
                                  <graphic>
                                     <ImageView fitHeight="26.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -56,7 +56,7 @@
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
-                              <Button fx:id="clearCartButton" focusTraversable="false" mnemonicParsing="false" onAction="#clearCartButtonPressed" prefHeight="44.0" prefWidth="172.0" text="Töm kundvagn">
+                              <Button fx:id="clearCartButton" focusTraversable="false" mnemonicParsing="false" onAction="#clearCartButtonPressed" prefHeight="44.0" prefWidth="172.0" styleClass="buttonMain" text="Töm kundvagn">
                                  <graphic>
                                     <ImageView fitHeight="29.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -73,7 +73,7 @@
                                     <Font size="29.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="checkoutButton" focusTraversable="false" mnemonicParsing="false" onAction="#checkoutButtonPressed" prefHeight="52.0" prefWidth="172.0" text="Gå till kassan">
+                              <Button fx:id="checkoutButton" focusTraversable="false" mnemonicParsing="false" onAction="#checkoutButtonPressed" prefHeight="52.0" prefWidth="172.0" styleClass="buttonCart" text="Gå till kassan">
                                  <graphic>
                                     <ImageView fitHeight="75.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

@@ -55,9 +55,8 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
 
 
     private void setContent(ShoppingItem item) {
-       int size = dataHandler.getShoppingCart().getItems().size();
 
-
+            Product product = item.getProduct();
            String unit = product.getUnit().toLowerCase();
            if (unit.equals("kr/kg")) {
                this.item = new ShoppingItem(product, 0.1);
