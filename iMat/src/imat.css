@@ -47,11 +47,20 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
+.buttonMain:pressed{
+-fx-background-color: #47aee1;
+}
+
 .buttonCart {
     -fx-background-color: linear-gradient(#abe281 0%,#61c419 100%,#b4e391 100%);
         -fx-border-color: #545454;
         -fx-border-width: 1px;
         -fx-border-radius:2px;
+}
+
+.buttonCart:pressed{
+    -fx-background-color: linear-gradient(#5a9e26 0%,#356b0f 100%,#5ea22a 100%);
+
 }
 
 .buttonCart:hover{
@@ -62,16 +71,16 @@
     -fx-opacity: 0;
 }
 
-.customTable .table-row-cell{
+/*.customTable .table-row-cell{
 -fx-background-color: #f0fbff;
 }
 
 .customTable .table-row-cell:odd{
 -fx-background-color: #dbf6ff;
 }
-
+*
 .customTable .column-header{
--fx-background-color: linear-gradient(#3d86d9 0%,#69ace3 50%,#56a2e4 51%,#a3ceef 100%);
+-fx-background-color: linear-gradient(#7cbfe6 0%,#7cbfe6 100%);
 }
 
 .customList .list-cell{
@@ -81,6 +90,7 @@
 .customList .list-cell:odd{
 -fx-background-color: #dbf6ff;
 }
+*/
 .customList .list-cell:empty {
     -fx-opacity: 0;
 }
@@ -108,7 +118,7 @@
 .homeGridCell {
     -fx-border-color: #666666;
     -fx-border-radius: 10px;
-    -fx-border-width: 3px;
+    -fx-border-width: 2px;
     -fx-padding: 7px;
     -fx-background-color: #E6F4FB;
     -fx-background-insets: 3px;
