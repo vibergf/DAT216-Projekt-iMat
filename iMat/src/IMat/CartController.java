@@ -48,7 +48,7 @@ public class CartController implements Initializable {
     @FXML
     private TableColumn<ShoppingItem, ShoppingItem> nameColumn;
     @FXML
-    private TableColumn<ShoppingItem, String> amountColumn;
+    private TableColumn<ShoppingItem, ShoppingItem> amountColumn;
     @FXML
     private TableColumn<ShoppingItem, String> priceColumn;
     @FXML
@@ -98,17 +98,17 @@ public class CartController implements Initializable {
         });
 
         //TODO fix this shit
-      /*  amountColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
+       /* amountColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
             @Override
             public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
                 TableCell<ShoppingItem, ShoppingItem> cell = new CartTableAmountCell();
                 return cell;
             }
         });
-
 */
+
         nameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
-        amountColumn.setCellValueFactory(c-> new SimpleStringProperty(IMatController.formatAmount(c.getValue().getAmount())));
+        amountColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
         priceColumn.setCellValueFactory(c-> new SimpleStringProperty(formatPrice(c.getValue().getTotal())));
         removeColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
 

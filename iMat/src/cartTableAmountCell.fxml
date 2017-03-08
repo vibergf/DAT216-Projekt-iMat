@@ -19,7 +19,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField prefHeight="25.0" prefWidth="26.0" />
+      <TextField fx:id="unitsField" prefHeight="31.0" prefWidth="26.0" />
       <Button fx:id="decAmountButton" mnemonicParsing="false">
          <graphic>
             <ImageView fx:id="incImageView" pickOnBounds="true" preserveRatio="true">

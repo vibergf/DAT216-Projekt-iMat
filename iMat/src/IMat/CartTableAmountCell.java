@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -28,11 +29,12 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
     @FXML protected ImageView incImageView;
     @FXML protected ImageView decImageView;
 
+    @FXML protected TextField unitsField;
+
     private FXMLLoader loader;
 
     private int i = 1;
 
-    private static final int THUMBNAIL_SIZE = 50;
 
     public CartTableAmountCell(){
         loader = new FXMLLoader(getClass().getResource("/cartTableAmountCell.fxml"));
@@ -45,7 +47,6 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
 
     @Override
     public void updateItem(ShoppingItem item, boolean empty){
-//        super.updateItem(item, empty);
 
         if (!(empty || item == null)) {
             setContent();
