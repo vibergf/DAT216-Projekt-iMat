@@ -169,8 +169,8 @@ public class ShoppingListController implements Initializable, PropertyChangeList
         public void setInfo(final ShoppingList list, ListView<ShoppingList> listView)
         {
             labelTitle.setText(list.getName());
-            labelDetails.setText(list.getDescription());
-            labelSummary.setText(list.getShortIngredients());
+            labelSummary.setText(list.getDescription());
+            labelDetails.setText(list.getShortIngredients());
             labelPrice.setText(formatPrice(list.getPrice()));
             btnDelete.setOnAction(e -> {
                 ButtonType yes = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
