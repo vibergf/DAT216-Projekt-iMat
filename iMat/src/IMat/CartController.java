@@ -98,14 +98,14 @@ public class CartController implements Initializable {
         });
 
         //TODO fix this shit
-       /* amountColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
+        amountColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
             @Override
             public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
                 TableCell<ShoppingItem, ShoppingItem> cell = new CartTableAmountCell();
                 return cell;
             }
         });
-*/
+
 
         nameColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));
         amountColumn.setCellValueFactory(c-> new SimpleObjectProperty<ShoppingItem>(c.getValue()));

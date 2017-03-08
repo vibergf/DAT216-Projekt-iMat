@@ -10,24 +10,6 @@
 
 <HBox fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <Button fx:id="incAmountButton" mnemonicParsing="false">
-         <graphic>
-              <ImageView fx:id="incImageView" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Arrow-Up-icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <TextField fx:id="unitsField" prefHeight="31.0" prefWidth="26.0" />
-      <Button fx:id="decAmountButton" mnemonicParsing="false">
-         <graphic>
-            <ImageView fx:id="incImageView" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Arrow-Down-icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+        <Spinner fx:id="amountSpinner" editable="true" prefHeight="50.0" prefWidth="65.0" styleClass="receiptText" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
     </children>
 </HBox>

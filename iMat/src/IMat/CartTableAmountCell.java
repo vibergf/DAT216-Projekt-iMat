@@ -2,14 +2,12 @@ package IMat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
@@ -19,21 +17,19 @@ import java.io.IOException;
  */
 public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
 
-
+    private IMatDataHandler dataHandler = IMatDataHandler.getInstance();
     @FXML protected HBox hBox;
-    @FXML
-    private Label units;
-    @FXML protected Button incAmountButton;
-    @FXML protected Button decAmountButton;
 
-    @FXML protected ImageView incImageView;
-    @FXML protected ImageView decImageView;
-
-    @FXML protected TextField unitsField;
+    @FXML private Spinner<Double> amountSpinner;
 
     private FXMLLoader loader;
+    private static final double SPINNER_DOUBLE_INCREMENT = 0.1;
+    private static final int SPINNER_INT_INCREMENT = 1;
+    private static final int SPINNER_MAX = 99;
 
-    private int i = 1;
+
+    private ShoppingItem item;
+
 
 
     public CartTableAmountCell(){
@@ -49,7 +45,7 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
     public void updateItem(ShoppingItem item, boolean empty){
 
         if (!(empty || item == null)) {
-            setContent();
+            setContent(item);
             setGraphic(hBox);
         }else{
             setGraphic(null);
@@ -58,30 +54,58 @@ public class CartTableAmountCell extends TableCell<ShoppingItem, ShoppingItem> {
 
 
 
-    private void setContent() {
-        Image incImage = new Image("/resources/Arrow-Down-icon.png");
-        Image decImage = new Image("/resources/Arrow-Up-icon.png");
-        incImageView.setImage(incImage);
-        decImageView.setImage(decImage);
+    private void setContent(ShoppingItem item) {
+       int size = dataHandler.getShoppingCart().getItems().size();
 
+
+           String unit = product.getUnit().toLowerCase();
+           if (unit.equals("kr/kg")) {
+               this.item = new ShoppingItem(product, 0.1);
+               amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(
+                       SPINNER_DOUBLE_INCREMENT, SPINNER_MAX, SPINNER_DOUBLE_INCREMENT, SPINNER_DOUBLE_INCREMENT));
+               amountSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+                   item.setAmount((double) newValue);
+               });
+               amountSpinner.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+                   if (newValue.equals(oldValue))
+                       return;
+                   if (newValue.length() != 0) {
+//                    if (Double.parseDouble(newValue) > SPINNER_MAX)
+//                        newValue = oldValue;
+//                    if (Double.parseDouble(newValue) <= 0)
+//                        newValue = "0.1";
+//                    Platform.runLater(() -> {
+//                        amountSpinner.getValueFactory().setValue(Double.parseDouble(newValue));
+//                    });
+                   }
+//                amountSpinner.getEditor().setText(newValue);
+               });
+           } else {
+               this.item = new ShoppingItem(product, 1);
+               amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(
+                       SPINNER_INT_INCREMENT, SPINNER_MAX, SPINNER_INT_INCREMENT, SPINNER_INT_INCREMENT));
+               amountSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+                   item.setAmount(newValue);
+               });
+               amountSpinner.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+                   if (newValue.equals(oldValue))
+                       return;
+                   newValue = newValue.replaceAll("\\D", "");
+                   if (newValue.length() != 0) {
+                       if (Integer.parseInt(newValue) > SPINNER_MAX)
+                           newValue = oldValue;
+                       if (Integer.parseInt(newValue) <= 0)
+                           newValue = "1";
+                       amountSpinner.getValueFactory().setValue(Double.parseDouble(newValue));
+                   }
+
+                   amountSpinner.getEditor().setText(newValue);
+               });
+           }
+       }
     }
 
-    @FXML
-    void upPressed() {
-        i = Integer.parseInt(units.getText());
-        i++;
-        units.setText(i + "");
-    }
 
-    @FXML
-    void downPressed() {
-        i = Integer.parseInt(units.getText());
-        if (i > 1) {
-            i--;
-            units.setText(i + "");
-        }
-    }
-}
 
 
 
