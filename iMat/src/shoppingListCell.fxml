@@ -26,7 +26,8 @@
               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                       <Image url="@resources/remove-icon.png" />
-                  </image></ImageView>
+                  </image>
+              </ImageView>
           </graphic>
       </Button>
       <Label fx:id="labelPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="375.0" layoutY="34.0" prefHeight="73.0" prefWidth="220.0" text="257 :-">

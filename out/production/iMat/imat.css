@@ -25,16 +25,87 @@
     -fx-alignment: center;
 }
 
+/*.button {*/
+    /*-fx-font-family: "Verdana";*/
+    /*-fx-font-size: 13px;*/
+/*}*/
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler{
+    -fx-font-family: "Verdana";
+    -fx-font-size: 13px;
+    -fx-background-color: #c2e4f5;
+}
+
 .button {
     -fx-font-family: "Verdana";
     -fx-font-size: 13px;
+    -fx-background-color: #c2e4f5;
+    -fx-border-color: #545454;
+    -fx-border-width: 1px;
+    -fx-border-radius:2px;
 }
-.buttonHighlight {
+
+.button:hover{
+    -fx-background-color: #d5eefb;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:pressed{
+-fx-background-color: #47aee1;
+}
+
+.buttonCart{
+    -fx-background-color: linear-gradient(#abe281 0%,#61c419 100%,#b4e391 100%);
+        -fx-border-color: #545454;
+        -fx-border-width: 1px;
+        -fx-border-radius:2px;
+}
+
+.buttonCart:hover{
+    -fx-background-color: linear-gradient(#cbedb1 0%,#9beb61 100%,#d1eeba 100%);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.buttonCart:pressed{
+    -fx-background-color: linear-gradient(#5a9e26 0%,#356b0f 100%,#5ea22a 100%);
+
+}
+
+.toolbarButton:hover {
+    -fx-effect: none;
+}
+.buttonHighlight{
     -fx-background-color: #E6F4FB;
+    -fx-border-width: 0px;
+    -fx-border-style: none;
 }
+
 .customTable .table-row-cell:empty {
     -fx-opacity: 0;
 }
+
+/*.customTable .table-row-cell{
+-fx-background-color: #f0fbff;
+}
+
+.customTable .table-row-cell:odd{
+-fx-background-color: #dbf6ff;
+}
+*
+.customTable .column-header{
+-fx-background-color: linear-gradient(#7cbfe6 0%,#7cbfe6 100%);
+}
+
+.customList .list-cell{
+-fx-background-color: #f0fbff;
+}
+
+.customList .list-cell:odd{
+-fx-background-color: #dbf6ff;
+}
+*/
 .customList .list-cell:empty {
     -fx-opacity: 0;
 }
@@ -56,16 +127,20 @@
     -fx-background-color: #FFFFFF;
 }
 .homeGridFlowPane {
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #f5fdff;
     -fx-padding: 7 0 7 7;
 }
 .homeGridCell {
     -fx-border-color: #666666;
     -fx-border-radius: 10px;
-    -fx-border-width: 3px;
+    -fx-border-width: 2px;
     -fx-padding: 7px;
     -fx-background-color: #E6F4FB;
     -fx-background-insets: 3px;
+}
+.spinner .text-field {
+    -fx-padding: 2px;
+    -fx-alignment: center;
 }
 #historyDetailedViewSumLabel {
     -fx-font-size: 24px;
