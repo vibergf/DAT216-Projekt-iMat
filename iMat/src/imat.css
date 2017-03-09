@@ -118,7 +118,7 @@
 }
 .homeGrid {
     -fx-border-color: #666666;
-    -fx-border-width: 2px;
+    -fx-border-width: 1px;
 }
 .homeGridTextArea {
     -fx-background-color: #FFFFFF;
@@ -132,8 +132,9 @@
 }
 .homeGridCell {
     -fx-border-color: #666666;
-    -fx-border-radius: 10px;
-    -fx-border-width: 2px;
+    -fx-border-radius: 3px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-border-width: 1px;
     -fx-padding: 7px;
     -fx-background-color: #E6F4FB;
     -fx-background-insets: 3px;
@@ -147,4 +148,11 @@
 }
 #checkoutOverviewListTotalLabel {
     -fx-font-weight: bold;
+}
+
+
+#checkoutButton:hover{
+    -fx-background-color:
+            linear-gradient(rgb(183,245,75) 0%,rgb(186,245,91) 55%,rgb(162,251,9) 100%);
+
 }
