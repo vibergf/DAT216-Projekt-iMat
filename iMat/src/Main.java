@@ -3,11 +3,14 @@
  */
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 import java.util.ResourceBundle;
 
@@ -29,6 +32,11 @@ public class Main extends Application {
 
         Scene scene = new Scene(root);
 
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override public void handle(WindowEvent t) {
+                IMatDataHandler.getInstance().shutDown();
+            }
+        });
         stage.setTitle(bundle.getString("application.name"));
         stage.setScene(scene);
         stage.setMaximized(true);

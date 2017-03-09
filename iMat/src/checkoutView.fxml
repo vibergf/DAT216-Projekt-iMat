@@ -80,7 +80,7 @@
                               <TextField fx:id="checkoutPhoneField" styleClass="inputField" />
                            </children>
                         </VBox>
-                        <CheckBox focusTraversable="false" mnemonicParsing="false" styleClass="plainText" text="Spara mina personuppgifter till nästa gång" />
+                        <CheckBox fx:id="checkoutSaveCustomerCheckbox" focusTraversable="false" mnemonicParsing="false" styleClass="plainText" text="Spara mina personuppgifter till nästa gång" />
                      </children>
                   </VBox>
                </children>
@@ -129,7 +129,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <CheckBox focusTraversable="false" mnemonicParsing="false" styleClass="plainText" text="Spara mina kortuppgifter till nästa gång" />
+                        <CheckBox fx:id="checkoutSaveCardCheckbox" focusTraversable="false" mnemonicParsing="false" styleClass="plainText" text="Spara mina kortuppgifter till nästa gång" />
                      </children>
                   </VBox>
                </children>

@@ -6,12 +6,18 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.converter.IntegerStringConverter;
+import se.chalmers.ait.dat215.project.CreditCard;
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -43,6 +49,7 @@ public class CheckoutController implements Initializable {
     @FXML private TextField checkoutDoorField;
     @FXML private TextField checkoutCityField;
     @FXML private TextField checkoutPhoneField;
+    @FXML private CheckBox checkoutSaveCustomerCheckbox;
 
     @FXML private ChoiceBox<String> checkoutCardTypeField;
     @FXML private TextField checkoutCardOwnerField;
@@ -50,6 +57,7 @@ public class CheckoutController implements Initializable {
     @FXML private TextField checkoutCardMonthField;
     @FXML private TextField checkoutCardYearField;
     @FXML private TextField checkoutCardCVVField;
+    @FXML private CheckBox checkoutSaveCardCheckbox;
 
     @FXML private Button backButton;
     @FXML private Button forwardButton;
@@ -59,6 +67,8 @@ public class CheckoutController implements Initializable {
 
     private ChangeListener<String> checkoutPageOneListener;
     private ChangeListener<String> checkoutPageTwoListener;
+
+    private Customer customer;
 
     private int currentPage;
 
@@ -74,6 +84,14 @@ public class CheckoutController implements Initializable {
         checkoutPageTwo.setVisible(true);
         checkoutPageThree.setVisible(true);
         checkoutPageFour.setVisible(true);
+
+        customer = IMatDataHandler.getInstance().getCustomer();
+        if(customer.getLastName().length() == 0) {
+            setSaveInfo();
+        }
+        String[] info = customer.getLastName().split("_");
+//        checkoutSaveCustomerCheckbox.setSelected(Boolean.valueOf(info[0]));
+        checkoutSaveCardCheckbox.setSelected(Boolean.valueOf(info[1]));
 
         List<String> cardTypeList = new ArrayList<String>();
         cardTypeList.add("VISA");
@@ -100,6 +118,9 @@ public class CheckoutController implements Initializable {
         checkoutPhoneField.textProperty().addListener((observable, oldValue, newValue) -> {
             newValue = newValue.replaceAll("[^\\d]", "");
             checkoutPhoneField.setText(newValue);
+        });
+        checkoutSaveCustomerCheckbox.selectedProperty().addListener(c -> {
+            updatePageOne();
         });
 
         checkoutCardOwnerField.textProperty().addListener(checkoutPageTwoListener);
@@ -130,6 +151,9 @@ public class CheckoutController implements Initializable {
             newValue = newValue.length() <= 3 ? newValue : newValue.substring(0, 3);
             checkoutCardCVVField.setText(newValue);
         });
+        checkoutSaveCardCheckbox.selectedProperty().addListener(c -> {
+            updatePageTwo();
+        });
 
         successImage.setImage(new Image("/resources/order_success.png"));
 
@@ -151,6 +175,7 @@ public class CheckoutController implements Initializable {
                 wizardImage.setImage(new Image("/resources/wizard-1.png"));
                 wizardProgressLabel.setText("Kontaktuppgifter");
                 obligatoryLabel.setText(OBLIGATORY);
+                loadCustomerInfo();
                 updatePageOne();
                 checkoutPane.getChildren().add(checkoutPageOne);
                 break;
@@ -161,9 +186,10 @@ public class CheckoutController implements Initializable {
                 wizardImage.setImage(new Image("/resources/wizard-2.png"));
                 wizardProgressLabel.setText("Kortuppgifter");
                 obligatoryLabel.setText(OBLIGATORY);
+                loadCardInfo();
+                updatePageTwo();
                 if(checkoutCardOwnerField.getText().isEmpty())
                     checkoutCardOwnerField.setText(checkoutNameField.getText());
-                updatePageTwo();
                 checkoutPane.getChildren().add(checkoutPageTwo);
                 break;
             case 2:
@@ -186,10 +212,43 @@ public class CheckoutController implements Initializable {
                 wizardProgressLabel.setText("Beställning klar");
                 obligatoryLabel.setText("");
                 checkoutPane.getChildren().add(checkoutPageFour);
-                IMatDataHandler.getInstance().getShoppingCart().clear();
-                //IMatDataHandler.getInstance().placeOrder(true);
+//                IMatDataHandler.getInstance().getShoppingCart().clear();
+                IMatDataHandler.getInstance().placeOrder(true);
                 break;
         }
+    }
+
+    private void loadCustomerInfo(){
+        if(Boolean.valueOf(customer.getLastName().split("_")[0])){
+            checkoutNameField.setText(customer.getFirstName());
+            checkoutAddressField.setText(customer.getAddress());
+            checkoutCityField.setText(customer.getPostAddress());
+            checkoutPhoneField.setText(customer.getPhoneNumber());
+            String[] info = customer.getPostCode().split("_");
+            if(info.length == 2) {
+                checkoutApartmentField.setText(info[0]);
+                checkoutFloorField.setText(info[1]);
+                checkoutDoorField.setText(info[2]);
+            }
+            checkoutSaveCustomerCheckbox.setSelected(true);
+        }
+    }
+
+    private void loadCardInfo(){
+        if(Boolean.valueOf(customer.getLastName().split("_")[1])){
+            CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+            checkoutCardTypeField.setValue(card.getCardType());
+            checkoutCardOwnerField.setText(card.getHoldersName());
+            checkoutCardNumberField.setText(card.getCardNumber());
+            checkoutCardMonthField.setText(card.getValidMonth() + "");
+            checkoutCardYearField.setText(card.getValidYear() + "");
+            checkoutSaveCardCheckbox.setSelected(true);
+        }
+    }
+
+    private void setSaveInfo(){
+        customer.setLastName(Boolean.toString(checkoutSaveCustomerCheckbox.isSelected()) + "_" +
+                Boolean.toString(checkoutSaveCardCheckbox.isSelected()));
     }
 
     private void updatePageOne(){
@@ -198,6 +257,15 @@ public class CheckoutController implements Initializable {
             forwardButton.setDisable(true);
         else
             forwardButton.setDisable(false);
+        if(checkoutSaveCustomerCheckbox.isSelected()){
+            customer.setFirstName(checkoutNameField.getText());
+            customer.setAddress(checkoutAddressField.getText());
+            customer.setPostAddress(checkoutCityField.getText());
+            customer.setPhoneNumber(checkoutPhoneField.getText());
+            customer.setPostCode(checkoutApartmentField.getText() + '_' +
+                    checkoutFloorField.getText() + '_' + checkoutDoorField.getText());
+        }
+        setSaveInfo();
     }
 
     private void updatePageTwo(){
@@ -207,6 +275,18 @@ public class CheckoutController implements Initializable {
             forwardButton.setDisable(true);
         else
             forwardButton.setDisable(false);
+
+        if(checkoutSaveCardCheckbox.isSelected()){
+            CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+            card.setCardType(checkoutCardTypeField.getValue());
+            card.setHoldersName(checkoutCardOwnerField.getText());
+            card.setCardNumber(checkoutCardNumberField.getText());
+            try {
+                card.setValidMonth(Integer.parseInt(checkoutCardMonthField.getText()));
+                card.setValidYear(Integer.parseInt(checkoutCardYearField.getText()));
+            }catch(NumberFormatException e){}
+        }
+        setSaveInfo();
     }
 
     private void updateOverview(){

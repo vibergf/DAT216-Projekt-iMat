@@ -24,7 +24,11 @@
             </AnchorPane>
          </top>
          <center>
-            <ListView fx:id="historyListView" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" styleClass="customList" BorderPane.alignment="CENTER" />
+            <ListView fx:id="historyListView" focusTraversable="false" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <styleClass>
+                  <String fx:value="customList" />
+                  <String fx:value="plainText" />
+               </styleClass></ListView>
          </center>
       </BorderPane>
       <BorderPane fx:id="detailedView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

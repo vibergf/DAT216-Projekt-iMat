@@ -81,7 +81,7 @@ public class CartController implements Initializable {
 //        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(24));
 //        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(25));
 //        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(27));
-
+dataHandler.reset();
         nameColumn.setCellFactory(new Callback<TableColumn<ShoppingItem, ShoppingItem>, TableCell<ShoppingItem, ShoppingItem>>() {
             @Override
             public TableCell<ShoppingItem, ShoppingItem> call(TableColumn<ShoppingItem, ShoppingItem> param) {
@@ -193,6 +193,7 @@ public class CartController implements Initializable {
     }
 
     private void refreshCartView() {
+        cartItems.setItems(FXCollections.observableList(dataHandler.getShoppingCart().getItems()));
         sumLabel.setText("Summa: " + formatPrice(dataHandler.getShoppingCart().getTotal()));
         if (dataHandler.getShoppingCart().getItems().isEmpty()) {
             saveListButton.setDisable(true);

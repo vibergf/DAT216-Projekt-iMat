@@ -40,41 +40,41 @@ public class HistoryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(1));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(10));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(5));
-        dataHandler.placeOrder();
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(2));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(11));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(21));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(26));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(30));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(8));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
-        dataHandler.placeOrder();
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(3));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(11));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(21));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(26));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(30));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(8));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(20));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(22));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(23));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(24));
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(25));
-        dataHandler.placeOrder();
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(4));
-        dataHandler.placeOrder();
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(1));
-        dataHandler.placeOrder();
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(2));
-        dataHandler.placeOrder();
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(3));
-        dataHandler.placeOrder();
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(4));
-        dataHandler.placeOrder();
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(1));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(10));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(5));
+//        dataHandler.placeOrder();
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(2));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(11));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(21));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(26));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(30));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(8));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
+//        dataHandler.placeOrder();
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(3));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(11));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(21));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(26));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(30));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(8));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(19));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(20));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(22));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(23));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(24));
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(25));
+//        dataHandler.placeOrder();
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(4));
+//        dataHandler.placeOrder();
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(1));
+//        dataHandler.placeOrder();
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(2));
+//        dataHandler.placeOrder();
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(3));
+//        dataHandler.placeOrder();
+//        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(4));
+//        dataHandler.placeOrder();
 
         HistoryController handle = this;
         historyListView.setSelectionModel(new DisabledSelectionModel<Order>());
@@ -85,6 +85,7 @@ public class HistoryController implements Initializable {
                 return new HistoryListCell(handle);
             }
         });
+        historyListView.setPlaceholder(new Label("Historiken är tom."));
 
         detailedViewTable.setSelectionModel(null);
 
@@ -104,6 +105,7 @@ public class HistoryController implements Initializable {
     }
 
     public void onEnter(){
+        historyListView.setItems(FXCollections.observableList(dataHandler.getOrders()));
         switchToMainView();
     }
 
